@@ -14,8 +14,8 @@
 <!--    <extension name='yacceleratorstorefront' />-->
 <!--    <extension name='ycommercewebservices' />-->
 <!--    <extension name='ycommercewebservicestest' />-->
-    <extension name='electronicsstore' />
-    <extension name='apparelstore' />
+<!--    <extension name='electronicsstore' />-->
+<!--    <extension name='apparelstore' />-->
     <extension name='captchaaddon' />
     <extension name='acceleratorwebservicesaddon' />
     <extension name='commerceorgsamplesaddon' />

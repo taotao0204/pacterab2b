@@ -19,6 +19,17 @@
 	      parent="abstractCoreSystemSetup">
 		<property name="coreDataImportService" ref="coreDataImportService"/>
 		<property name="sampleDataImportService" ref="sampleDataImportService"/>
+		<property name="pacterab2bCoreDataImportService" ref="pacteraCoreDataImportService"/>
+		<property name="pacterab2bSampleDataImportService" ref="pacteraSampleDataImportService"/>
+
+	</bean>
+
+
+	<bean id="pacteraSampleDataImportService" class="com.pactera.initialdata.impl.Pacterab2bSampleDataImportService"
+		  parent="sampleDataImportService">
+	</bean>
+	<bean id="pacteraCoreDataImportService" class="com.pactera.initialdata.impl.Pacterab2bCoreDataImportService"
+		  parent="coreDataImportService">
 	</bean>
 
 </beans>

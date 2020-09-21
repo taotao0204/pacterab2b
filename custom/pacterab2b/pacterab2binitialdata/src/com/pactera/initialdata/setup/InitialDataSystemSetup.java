@@ -3,9 +3,14 @@
  */
 package com.pactera.initialdata.setup;
 
+import com.pactera.initialdata.impl.Pacterab2bCoreDataImportService;
+import com.pactera.initialdata.impl.Pacterab2bSampleDataImportService;
 import de.hybris.platform.commerceservices.dataimport.impl.CoreDataImportService;
 import de.hybris.platform.commerceservices.dataimport.impl.SampleDataImportService;
 import de.hybris.platform.commerceservices.setup.AbstractSystemSetup;
+import de.hybris.platform.commerceservices.setup.data.ImportData;
+import de.hybris.platform.commerceservices.setup.events.CoreDataImportedEvent;
+import de.hybris.platform.commerceservices.setup.events.SampleDataImportedEvent;
 import de.hybris.platform.core.initialization.SystemSetup;
 import de.hybris.platform.core.initialization.SystemSetup.Process;
 import de.hybris.platform.core.initialization.SystemSetup.Type;
@@ -15,6 +20,7 @@ import de.hybris.platform.core.initialization.SystemSetupParameterMethod;
 import com.pactera.initialdata.constants.Pacterab2bInitialDataConstants;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -36,6 +42,9 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 
 	private CoreDataImportService coreDataImportService;
 	private SampleDataImportService sampleDataImportService;
+
+	private Pacterab2bCoreDataImportService pacterab2bCoreDataImportService;
+	private Pacterab2bSampleDataImportService pacterab2bSampleDataImportService;
 
 	/**
 	 * Generates the Dropdown and Multi-select boxes for the project data import
@@ -91,12 +100,30 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 	 * @param context
 	 *           the context provides the selected parameters and values
 	 */
+
+	public static final String Pactera_b2b = "pacterab2b";
 	@SystemSetup(type = Type.PROJECT, process = Process.ALL)
 	public void createProjectData(final SystemSetupContext context)
 	{
 		/*
 		 * Add import data for each site you have configured
 		 */
+
+		final List<ImportData> importData = new ArrayList<ImportData>();
+
+		final ImportData powertoolsImportData = new ImportData();
+		powertoolsImportData.setProductCatalogName(Pactera_b2b);
+		powertoolsImportData.setContentCatalogNames(Arrays.asList(Pactera_b2b));
+		powertoolsImportData.setStoreNames(Arrays.asList(Pactera_b2b));
+		importData.add(powertoolsImportData);
+
+		getPacterab2bCoreDataImportService().execute(this, context, importData);
+		getEventService().publishEvent(new CoreDataImportedEvent(context, importData));
+
+		getPacterab2bSampleDataImportService().execute(this, context, importData);
+		getPacterab2bSampleDataImportService().importCommerceOrgData(context);
+		getEventService().publishEvent(new SampleDataImportedEvent(context, importData));
+
 	}
 
 	public CoreDataImportService getCoreDataImportService()
@@ -119,5 +146,21 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 	public void setSampleDataImportService(final SampleDataImportService sampleDataImportService)
 	{
 		this.sampleDataImportService = sampleDataImportService;
+	}
+
+	public Pacterab2bCoreDataImportService getPacterab2bCoreDataImportService() {
+		return pacterab2bCoreDataImportService;
+	}
+
+	public void setPacterab2bCoreDataImportService(Pacterab2bCoreDataImportService pacterab2bCoreDataImportService) {
+		this.pacterab2bCoreDataImportService = pacterab2bCoreDataImportService;
+	}
+
+	public Pacterab2bSampleDataImportService getPacterab2bSampleDataImportService() {
+		return pacterab2bSampleDataImportService;
+	}
+
+	public void setPacterab2bSampleDataImportService(Pacterab2bSampleDataImportService pacterab2bSampleDataImportService) {
+		this.pacterab2bSampleDataImportService = pacterab2bSampleDataImportService;
 	}
 }
