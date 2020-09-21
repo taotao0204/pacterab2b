@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+--><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+        	
+    
+    <extension abstractclassprefix="Generated" classprefix="Yacceleratorbackoffice" name="pacterab2bbackoffice" usemaven="false">
+                		
+		
+        
+        <!-- you should add all required extensions to this list, except platform extensions which are automatically required -->
+                		
+        
+        <requires-extension name="acceleratorbackoffice"/>
+                		
+        
+        <requires-extension name="pacterab2bcore"/>
+                		
+        
+        <coremodule generated="true" manager="org.pacterab2bbackoffice.jalo.YacceleratorbackofficeManager" packageroot="org.pacterab2bbackoffice"/>
+                		
+        
+        		
+        
+        <meta key="backoffice-module" value="true"/>
+                		
+	
+    
+    </extension>
+        
+
+</extensioninfo>
