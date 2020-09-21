@@ -1,0 +1,201 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Category Classifications
+
+# Macros / Replacement Parameter definitions
+$productCatalog=pacterab2bProductCatalog
+$productCatalogName=pacterab2b Product Catalog
+$classificationCatalog=pacterab2bClassification
+
+$classCatalogVersion=catalogversion(catalog(id[default='$classificationCatalog']),version[default='1.0'])[unique=true,default='$classificationCatalog:1.0']
+$classSystemVersion=systemVersion(catalog(id[default='$classificationCatalog']),version[default='1.0'])[unique=true]
+
+# Language
+$lang=en
+
+
+# Insert Classifications
+UPDATE ClassificationClass;code[unique=true];$classCatalogVersion;name[lang=$lang]
+
+# Insert Classification Attributes
+INSERT_UPDATE ClassificationAttribute;code[unique=true];$classSystemVersion;name[lang=$lang]
+#                                     ;Brand,1000;;Brand;
+#                                     ;Series,1001;;Series
+#                                     ;Monitor age,1002;;Monitor
+#                                     ;Manufacturer,1003;;Manufacturer
+#                                     ;Bluetooth,1004;;Bluetooth
+#                                     ;Camera,1006;;Camera
+
+# Add new classification for Dec Demo
+INSERT_UPDATE ClassificationAttribute;$classSystemVersion;code[unique=true];name[lang=$lang]
+#                                    #all category
+                                     ;;jan_cd;Jan code
+
+                                     ;;ec_daibri_mei;EC Major classification name
+                                     ;;ec_chubri_mei;EC Medium classification name
+                                     ;;ec_shobri_mei;EC small classification name
+                                     ;;cdt;product condition
+                                     ;;mkr_brand;manifacture・brand
+                                     ;;product_type;type
+
+                                     ;;v_fragrance;fragrance
+                                     ;;v_clr;color
+                                     ;;v_size;size
+                                     ;;kouchin_komikomi;kouchin komikomi
+
+
+
+                                     ;;hole_su;Number of holes
+                                     ;;pcd;pcd
+                                     ;;ktrg_clr_mei;catalog color name
+##                                    #other than tires and wheels start
+                                     ;;tnpn_siz_jyr;single size(heavy weight)
+                                     ;;tnpn_siz_oky;single size (depth)
+                                     ;;tnpn_siz_ykh;single size (width)
+                                     ;;tnpn_siz_hig;single size (height)
+##                                    #other than tires and wheels end
+#wheel start
+                                     ;;wheel_mkr_brand_wheel;
+                                     ;;tire_nikei_wheel;tire Inner diameter
+                                     ;;rim_haba_wheel;rim width
+                                     ;;inset_wheel;inset
+#wheel end
+
+                                     ;;ec_szn_shohin_kbn_tire;seasonal product division
+                                     ;;ec_tire_sbt_tire;tire type
+                                     ;;tire_haba_tire;tire width
+                                     ;;tire_hnpi_rt_tire;tire flatness
+                                     ;;tire_nikei_tire;tire Inner diameter
+                                     ;;load_indx_tire;Load index
+                                     ;;skd_kigo_tire;Speed ​​symbol
+                                     ;;krgri_teik_keisu_tire;Rolling resistance coefficient
+                                     ;;wetgrip_sino_tire;Wet grip performance
+                                     ;;oil_nendo_engine_oil;oil viscosity
+                                     ;;oil_sebn_kbn_engine_oil;oil Component classification
+                                     ;;capa_engine_oil;packing・capacity
+                                     ;;clean_diesel_taio_engine_oil;
+                                     ;;api_kikaku_engine_oil;
+
+                                     ;;car_navi_monitor_size_car_navigation;monitor size
+                                     ;;tv_tuner_car_navigation;TV tunner
+                                     ;;bluetooth_car_navigation;Bluetooth
+                                     ;;ipod_iphone_taio_car_navigation;for iPod/iPhone
+                                     ;;android_auto_taio_car_navigation;Android auto Correspondence
+                                     ;;apple_car_play_taio_car_navigation;Apple car play Correspondence
+                                     ;;blu_ray_disk_taiou_car_navigation;Blu-ray video play
+                                     ;;dvd_douga_model_car_navigation;DVD video play
+                                     ;;cd_recording_taiou_car_navigation;CD recording
+                                     ;;muryo_tizu_kousin_car_navigation;free map updates
+                                     ;;vics_wide_car_navigation;VICS WIDE
+                                     ;;gyro_sensor_3d_car_navigation;3D gyro
+                                     ;;etc_20_taio_car_navigation;ETC2.0 Correspondence
+                                     ;;navi_tv_2gamen_hyouji_car_navigation;Navi/TV2 Screen display
+                                     ;;rear_seat_dokuritsu_av_taio_car_navigation;Rear seat AV Source correspondense
+                                     ;;high_res_taio_car_navigation;high resolution Correspondence
+                                     ;;time_alignment_car_navigation;Time alignment
+                                     ;;usb_setsuzoku_car_navigation;USB Connection
+                                     ;;hdmi_io_taio_car_navigation;HDMI/Output support
+                                     ;;steering_remocon_sousa_car_navigation;Steering Remote controller operation
+                                     ;;wifi_car_navigation;Wifi
+                                     ;;map_furikku_pinchi_car_navigation;map flick/pinch
+                                     ;;naizou_denchi_car_navigation;Built-in battery
+                                     ;;v_taio_24_car_navigation;24 Correspondence
+                                     ;;densou_youhin_knrn_diy_repairpaint;
+                                     ;;hosyu_youhin_knrn_diy_repairpaint;
+                                     ;;haisendome_tape_knrn_diy_repairpaint;
+                                     ;;air_con_knrn_diy_repairpaint;
+                                     ;;paint_youhin_knrn_diy_repairpaint;
+                                     ;;car_monitor_size_car_monitor;monitor size
+                                     ;;syasai_mntr_torituke_type_car_monitor;installation type
+                                     ;;car_monitor_clr_car_monitor;color
+                                     ;;ekisyou_gashitsu_car_monitor;LCD quality
+                                     ;;ar_corting_taio_car_monitor;AR coding correspondense
+                                     ;;plasma_cluster_car_monitor;plasma cluster
+                                     ;;led_light_car_monitor;LED light
+                                     ;;hdmi_io_taio_car_monitor;HDMI/Output support
+                                     ;;rca_ip_car_monitor;RCA input
+                                     ;;arta_goods_sports_goods;ARTA items
+                                     ;;v_yoryo_setto_suu_sports_goods;sports goods
+                                     ;;drv_rcdr_camera_type_drive_recorder;camera type
+                                     ;;drv_rcdr_torituke_type_drive_recorder;installation type
+                                     ;;drv_rcdr_monitor_size_drive_recorder;monitor size
+                                     ;;gashitsu_full_hd_over_drive_recorder;resolution  : more than full HD
+                                     ;;gazou_hosei_hdr_wdr_drive_recorder;Image correction:HDR/WDR function
+                                     ;;g_sensor_drive_recorder;G sensor
+                                     ;;gps_drive_recorder;GPS
+                                     ;;tyuusya_kanshi_taiou_drive_recorder;Parking monitoring function
+                                     ;;wifi_drive_recorder;Wifi
+                                     ;;azn_unten_shien_kinou_drive_recorder;safty drive surpport function
+                                     ;;kougu_knrn_emergencysafety_garage;
+                                     ;;seibi_youhin_knrn_emergencysafety_garage;
+                                     ;;azn_youhin_knrn_emergencysafety_garage;
+                                     ;;tire_oukyu_knrn_emergencysafety_garage;
+                                     ;;base_carrier_base_carrier;base  carrier
+                                     ;;cho_sokumen_nagasa_battery;
+                                     ;;iss_taio_battery;
+                                     ;;kbn_kigo_battery;
+                                     ;;nirinsha_battery_battery;
+                                     ;;sino_rank_battery;
+                                     ;;tanshi_ichi_battery;
+                                     ;;led_singouki_taio_drive_recorder;LED traffic lights correspondense
+                                     ;;suihei_gakaku_108_over_drive_recorder;Horizontal angle of view over 108°
+                                     ;;suityoku_gakaku_60_over_drive_recorder;Vertical angle of view over 60°
+                                     ;;bkup_dngn_drive_recorder;backup power source
+                                     ;;fuzoku_sd_card_drive_recorder;Attached SD card
+                                     ;;v_taio_24_drive_recorder;24 Correspondence
+                                     ;;bucket_type_sports_seat;
+                                     ;;v_setti_basyo_type_sports_seat;
+                                     ;;bycycle_motorcycle_bicycle_motorcycle;bicycle・mortor cycle
+                                     ;;main_unit_type_car_audio;main unit type
+                                     ;;bluetooth_car_audio;bluetooth
+                                     ;;etc_type_etc_vehicle_unit;ETC type
+                                     ;;car_navi_rendou_etc_vehicle_unit;car navi Interlocking
+                                     ;;new_security_taio_etc_vehicle_unit;new seccurity correspondense
+                                     ;;v_body_clr_car_shampoo;　body color
+                                     ;;v_yoryo_setto_suu_car_shampoo;
+                                     ;;car_tlv_monitor_size_car_television;monitor size
+                                     ;;v_body_clr_car_wax;　body color
+                                     ;;v_yoryo_setto_suu_car_wax;
+                                     ;;carrier_attachment_carrier_attachment; carrier attachment
+                                     ;;speaker_size_coaxial_loudspeaker;サイズ
+                                     ;;rdr_tnck_camera_type_radar_detector;camera type
+                                     ;;rdr_tnck_monitor_size_radar_detector;monitor size
+                                     ;;gps_radar_detector;GPS
+                                     ;;g_sensor_radar_detector;g_sensor
+                                     ;;jairo_sensor_taio_radar_detector;gyro sensor correspondense
+                                     ;;zone30_taio_radar_detector;zone 30correspondense
+                                     ;;odbii_taio_radar_detector;OBDII correspondense
+                                     ;;data_upd_muryou_taio_radar_detector;free data update service correspondense
+                                     ;;hikari_obisu_rcv_taio_radar_detector;light Orbis receive correspondense
+                                     ;;engine_oil_knrn_engine_oil_option;
+                                     ;;filter_brakepad_car_mkr_cd_filter_brakepad;
+                                     ;;drone_drone_related;
+                                     ;;mounting_kit_mkr_cd_mounting_kit;manifacture・brand
+                                     ;;haisen_kit_mounting_kit;Wiring kit
+                                     ;;mounting_kit_mounting_kit;installation kit
+                                     ;;dosu_bulb_light;frequency
+                                     ;;harogen_hosyu_bulb_knrn_bulb_light;
+                                     ;;led_knrn_bulb_light;
+                                     ;;hid_knrn_bulb_light;
+                                     ;;hojyo_headlamp_knrn_bulb_light;
+                                     ;;drone_drone;
+                                     ;;indoor_indoor;indoor
+                                     ;;v_yoryo_setto_suu_indoor;
+                                     ;;keyholder_cover_car_mkr_cd_keyholder_cover;car manufacture
+                                     ;;mark_type_beginner_sign;mark type
+                                     ;;nut_form_wheel_nut_adapter;shape
+                                     ;;outdoor_leisure_outdoor;outdoor/leisure
+
+                                     ;;rain_wiper_brade_type_wiper;
+                                     ;;rain_wiper_spare_gm_type_wiper;
+                                     ;;snow_wiper_brade_type_wiper;
+                                     ;;snow_wiper_spare_gm_type_wiper;
+
+
+                                     ;;speaker_size_separate_speaker;size
+                                     ;;tijo_digital_tuner_terrestrial_digital_tuner;Terrestrial digital tuner
+                                     ;;tv_kit_television_kit;TV kit
+                                     ;;wheel_cover_clr_wheel_cover;color
+                                     ;;wheel_cover_inch_wheel_cover;inch
+                                     ;;winter_car_care_goods_winter_car_supplies;

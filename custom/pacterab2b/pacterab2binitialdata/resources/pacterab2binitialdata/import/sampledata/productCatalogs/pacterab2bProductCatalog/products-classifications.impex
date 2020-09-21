@@ -1,0 +1,246 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Product Classifications
+
+#% impex.setLocale(Locale.ENGLISH);
+
+# Macros / Replacement Parameter definitions
+$productCatalog=pacterab2bProductCatalog
+$productCatalogName=pacterab2b Product Catalog
+$classificationCatalog=pacterab2bClassification
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$clAttrModifiers=system='$classificationCatalog',version='1.0',translator=de.hybris.platform.catalog.jalo.classification.impex.ClassificationAttributeTranslator
+# Insert Product Classifications
+
+#pieces
+
+# replace <string> and <int> with actual values
+$feature1=@Brand,1000[$clAttrModifiers]; #Brand
+$feature2=@Series,1001[$clAttrModifiers];#Series
+$feature3=@Monitor age,1002[$clAttrModifiers];#Monitor
+$feature4=@Manufacturer,1003[$clAttrModifiers];
+$feature5=@Bluetooth,1004[$clAttrModifiers];
+$feature6=@Camera,1006[$clAttrModifiers];
+
+
+
+INSERT_UPDATE Product;code[unique=true];$feature1[lang=en];$feature1[lang=ja];$feature2[lang=en];$feature2[lang=ja];$feature3[lang=en];$feature3[lang=ja];$feature4[lang=en];$feature4[lang=ja];$feature5[lang=en];$feature5[lang=ja];$feature6[lang=en];$feature6[lang=ja];$catalogVersion;
+;1478891;BIG-X;BIG-X;X8Z;X8Z;10;10;;;Yes;ある;Y;Y
+;1478889;BIG-X;BIG-X;X8Z;X8Z;10;10;（HONDA）;ホンダ（HONDA）;Yes;ある;Y;Y
+;1478888;BIG-X;BIG-X;X8Z;X8Z;10;10;TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478887;BIG-X;BIG-X;X8Z;X8Z;10;10;TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478886;BIG-X;BIG-X;X8Z;X8Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478890;BIG-X;BIG-X;X8Z;X8Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478881;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478880;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478871;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478873;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478882;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478864;BIG-X;BIG-X;X9Z;X9Z;10;10;（HONDA）;ホンダ（HONDA）;Yes;ある;Y;Y
+;1478878;BIG-X;BIG-X;X9Z;X9Z;10;10;（NISSAN）;ニッサン（NISSAN）;Yes;ある;Y;Y
+;1478877;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478876;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478875;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478874;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478872;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478885;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478867;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478866;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478879;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478863;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478868;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1478883;BIG-X;BIG-X;X9Z;X9Z;10;10;（SUBARU）;スバル（SUBARU）;Yes;ある;Y;Y
+;1478884;BIG-X;BIG-X;X9Z;X9Z;10;10;;;Yes;ある;Y;Y
+;1501234;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1501248;BIG-X;BIG-X;X9Z;X9Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1501246;BIG-X;BIG-X;XF11Z;XF11Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1501253;BIG-X;BIG-X;XF11Z;XF11Z;10;10;;;Yes;ある;Y;Y
+;1501247;BIG-X;BIG-X;XF11Z;XF11Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1501237;BIG-X;BIG-X;XF11Z;XF11Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1501245;BIG-X;BIG-X;XF11Z;XF11Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1501251;BIG-X;BIG-X;XF11Z;XF11Z;10;10;（HONDA）;ホンダ（HONDA）;Yes;ある;Y;Y
+;1501241;BIG-X;BIG-X;XF11Z;XF11Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1501252;BIG-X;BIG-X;XF11Z;XF11Z;10;10;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;Y;Y
+;1501249;BIG-X;BIG-X;XF11Z;XF11Z;10;10;（HONDA）;ホンダ（HONDA）;Yes;ある;Y;Y
+;1501250;BIG-X;BIG-X;EX9Z;EX9Z;8;8;（NISSAN）;ニッサン（NISSAN）;Yes;ある;N;N
+;1478862;BIG-X;BIG-X;EX9Z;EX9Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478869;BIG-X;BIG-X;EX9Z;EX9Z;8;8;noting;その他メ無カ無;Yes;ある;N;N
+;1481998;BIG-X;BIG-X;EX10Z;EX10Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478859;BIG-X;BIG-X;EX10Z;EX10Z;8;8;（HONDA）;ホンダ（HONDA）;Yes;ある;N;N
+;1478861;BIG-X;BIG-X;X9Z;X9Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478860;BIG-X;BIG-X;X9Z;X9Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478870;BIG-X;BIG-X;EX9Z;EX9Z;8;8;noting;その他メ無カ無;Yes;ある;N;N
+;1501235;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（NISSAN）;ニッサン（NISSAN）;Yes;ある;N;N
+;1478856;BIG-X;BIG-X;EX10Z;EX10Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478858;BIG-X;BIG-X;EX10Z;EX10Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478857;BIG-X;BIG-X;EX10Z;EX10Z;8;8;TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478852;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478855;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478854;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478851;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478853;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1501236;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（NISSAN）;ニッサン（NISSAN）;Yes;ある;N;N
+;1478850;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478849;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1501239;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1501238;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1501240;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1501243;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1501242;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1501244;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1524850;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（NISSAN）;ニッサン（NISSAN）;Yes;ある;N;N
+;1538235;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（MAZDA）;マツダ（MAZDA）;Yes;ある;N;N
+;1538236;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（MAZDA）;マツダ（MAZDA）;Yes;ある;N;N
+;1478847;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1498135;BIG-X;BIG-X;EX10Z;EX10Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1498136;BIG-X;BIG-X;EX10Z;EX10Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493411;BIG-X;BIG-X;EX10Z;EX10Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493413;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493414;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493415;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493416;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493412;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493421;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493419;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493420;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493407;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493409;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493410;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493408;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493417;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493418;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1478848;BIG-X;BIG-X;EX11Z;EX11Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1493422;BIG-X;BIG-X;EX10Z;EX10Z;8;8;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1547730;;;EX10Z;EX10Z;8;8;;;Yes;ある;N;N
+;1547729;;;ECLIPSE AVN;ECLIPSE AVN;8;8;;;Yes;ある;N;N
+;1546714;carrozzeria;carrozzeria;ECLIPSE AVN;ECLIPSE AVN;8;8;;;No;無;N;N
+;1546715;carrozzeria;carrozzeria;;;;;;;No;無;N;N
+#;;carrozzeria;carrozzeria;;;;;;;Yes;ある;N;N
+;1493616;carrozzeria;carrozzeria;;;;;;;Yes;ある;N;N
+#;;carrozzeria;carrozzeria;;;;;;;Yes;ある;N;N
+#;;carrozzeria;carrozzeria;;;;;;;Yes;ある;N;N
+#;;carrozzeria;carrozzeria;;;;;;;Yes;ある;N;N
+#;;carrozzeria;carrozzeria;;;;;;;Yes;ある;N;N
+#;;carrozzeria;carrozzeria;;;;;;;Yes;ある;N;N
+#;;carrozzeria;carrozzeria;;;;;;;Yes;ある;N;N
+;1522000;carrozzeria;carrozzeria;;;;;;;Yes;ある;N;N
+;1521999;carrozzeria;carrozzeria;;;;;;;Yes;ある;N;N
+;1522010;carrozzeria;carrozzeria;;;;;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1522009;carrozzeria;carrozzeria;;;;;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1522005;carrozzeria;carrozzeria;;;;;（NISSAN）;ニッサン（NISSAN）;Yes;ある;N;N
+;1522011;carrozzeria;carrozzeria;;;;;（HONDA）;ホンダ（HONDA）;Yes;ある;N;N
+;1522008;carrozzeria;carrozzeria;;;;;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1522006;carrozzeria;carrozzeria;;;;;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+;1522007;carrozzeria;carrozzeria;;;;;（TOYOTA）;トヨタ（TOYOTA）;Yes;ある;N;N
+#;1558959;;;;;;;;;No;無;N;N
+#;1558960;;;;;;;;;No;無;N;N
+;1558957;;;;;;;;;Yes;ある;N;N
+;1558958;;;;;;;;;Yes;ある;N;N
+;1558956;;;;;;;;;Yes;ある;N;N
+;1509343;;;;;;;;;Yes;ある;N;N
+;1509344;;;;;;;;;Yes;ある;N;N
+;1558955;;;;;;;;;Yes;ある;N;N
+;1527844;;;;;;;;;Yes;ある;N;N
+;1552136;;;;;;;;;No;無;N;N
+;1552135;;;;;;;;;No;無;N;N
+;1543811;;;;;;;;;Yes;ある;N;N
+;1543809;;;;;;;;;Yes;ある;N;N
+;1491292;;;;;;;;;Yes;ある;N;N
+;1543803;;;;;;;;;Yes;ある;N;N
+;1543805;;;;;;;;;Yes;ある;N;N
+;1543807;;;;;;;;;Yes;ある;N;N
+;1575499;;;;;;;;;No;無;N;N
+;1575500;;;;;;;;;No;無;N;N
+;1518918;;;;;;;;;No;無;N;N
+;1533415;;;;;;;;;No;無;N;N
+;1533416;;;;;;;;;No;無;N;N
+;1468195;;;;;;;;;No;無;N;N
+;1526927;;;;;;;;;No;無;N;N
+;1526925;;;;;;;;;No;無;N;N
+;1526923;;;;;;;;;No;無;N;N
+;1566557;;;;;;;;;No;無;N;N
+;1566559;;;;;;;;;No;無;;
+
+
+######################################## accroding to pim data import with akeno service ###################################################################
+
+$feature7=@cdt[$clAttrModifiers];
+
+INSERT_UPDATE Product;code[unique=true];$feature7[lang=en];$feature7[lang=ja];$catalogVersion;
+                     ;01163090;aaa_en;新品;
+                     ;01163093;bbb_en;アウトレット;
+                     ;00583033;ccc_en;中古品;
+
+
+# Add new classification values for Dec Demo
+$feature2000=@Model,2000[$clAttrModifiers];
+$feature2001=@Front,2001[$clAttrModifiers];
+$feature2002=@Rear,2002[$clAttrModifiers];
+$feature2003=@Media,2003[$clAttrModifiers];
+$feature2004=@GPS,2004[$clAttrModifiers];
+$feature2005=@Voltage,2005[$clAttrModifiers];
+$feature2006=@Power,2006[$clAttrModifiers];
+$feature2007=@Working Temperature,2007[$clAttrModifiers];
+$feature2008=@Attachment,2008[$clAttrModifiers];
+#
+$feature2100=@Color,2100[$clAttrModifiers];
+$feature2101=@Tissue Size,2101[$clAttrModifiers];
+$feature2102=@Bottle Size,2102[$clAttrModifiers];
+$feature2103=@Material,2103[$clAttrModifiers];
+$feature2104=@Pieces,2104[$clAttrModifiers];
+$feature2200=@Size,2200[$clAttrModifiers];
+$feature2201=@Inset,2201[$clAttrModifiers];
+$feature2202=@P.C.D,2202[$clAttrModifiers];
+$feature2203=@Holes,2203[$clAttrModifiers];
+$feature2204=@Type,2204[$clAttrModifiers];
+$feature2205=@Country Of Origin,2205[$clAttrModifiers];
+#
+$feature2009=@Installation,2009[$clAttrModifiers];
+$feature2010=@Monitor,2010[$clAttrModifiers];
+$feature2011=@Resolution,2011[$clAttrModifiers];
+$feature2012=@Image Correction,2012[$clAttrModifiers];
+$feature2013=@G-censor,2013[$clAttrModifiers];
+$feature2014=@Parking Monitor,2014[$clAttrModifiers];
+$feature2015=@WIFI,2015[$clAttrModifiers];
+$feature2016=@Safety Drive,2016[$clAttrModifiers];
+$feature2017=@LED,2017[$clAttrModifiers];
+$feature2018=@Horizontal,2018[$clAttrModifiers];
+$feature2019=@Vertical,2019[$clAttrModifiers];
+$feature2020=@Backup,2020[$clAttrModifiers];
+$feature2021=@SD Card,2021[$clAttrModifiers];
+$feature2022=@24V,2022[$clAttrModifiers];
+$feature2023=@Installation Set,2023[$clAttrModifiers];
+#
+$feature2206=@Garage Supplies / Tools,2206[$clAttrModifiers];
+#
+$feature2301=@Season,2301[$clAttrModifiers];
+$feature2302=@Tire Type,2302[$clAttrModifiers];
+#
+#
+INSERT_UPDATE Product;code[unique=true];$feature2000[lang=ja];$feature2001[lang=ja];$feature2002[lang=ja];$feature2003[lang=ja];$feature2004[lang=ja];$feature2005[lang=ja];$feature2006[lang=ja];$feature2007[lang=ja];$feature2008[lang=ja];$catalogVersion
+                     ;01558954;DRY-TW7500d;・サイズ：幅64×高49×奥行38mm<br>※取付ブラケット（テープ貼付）装着時：高さ85mm（窓ガラス25°想定の場合）<br>・重量：約71g（microSDカード含む）<br>・映像素子：200万画素カラーCMOS<br>・レンズ画角：対角153°<br>・最大記録画角：対角153°（水平128°　垂直68°）<br>・記録解像度：200万画素　1080P HD（1920×1080）;・サイズ：幅54×直径25mm<br>※取付ブラケット（テープ貼付）装着時：高さ36mm（窓ガラス25°想定の場合）<br>・重量：約18g<br>・映像素子：100万画素カラーCMOS<br>・レンズ画角：対角95°<br>・最大記録画角：対角95°（水平82°　垂直45°）<br>・記録解像度：100万画素　720P（1280×720）;microSDカード（16GB付属）;あり;DC12V（5V入力）;5W;0℃ ～＋60℃;5Vコンバーター付電源直結コード（約4m）×1・リアカメラケーブル（約9m）×1・ブラケット×2・両面テープ×1・microSDカード（16GB）×1・取扱説明書・保証書;;
+#
+INSERT_UPDATE Product;code[unique=true];$feature2100[lang=ja];$feature2101[lang=ja];$feature2102[lang=ja];$feature2103[lang=ja];$feature2104[lang=ja];$catalogVersion
+                     ;01485374;ブルー;縦180×横130mm;約Φ68×H148mm;<br>・ティシュー：竹パルプ<br>・ボトル：紙<br>・ボトル底面：ポリプロピレン<br>;120枚（60組）;
+                     ;01485375;ホワイト;縦180×横130mm;約Φ68×H148mm;<br>・ティシュー：竹パルプ<br>・ボトル：紙<br>・ボトル底面：ポリプロピレン<br>;120枚（60組）<br><br>※商品留意事項<br>※水には溶けません。トイレに流さないでください。;
+                     ;01485376;イエロー;縦180×横130mm;約Φ68×H148mm;<br>・ティシュー：竹パルプ<br>・ボトル：紙<br>・ボトル底面：ポリプロピレン<br>;120枚（60組）<br><br>※商品留意事項<br>※水には溶けません。トイレに流さないでください。;
+
+INSERT_UPDATE Product;code[unique=true];$feature2[lang=ja];$feature2200[lang=ja];$feature2201[lang=ja];$feature2202[lang=ja];$feature2203[lang=ja];$feature2204[lang=ja];$feature2205[lang=ja];$feature4[lang=ja];$catalogVersion
+                     ;01404886;レーベン　BL1;65-16インチ;+50;114;5H;;;Autobacs;
+                     ;01541423;アイスエスポルテ;05/65R16 95Q;;;;スタッドレスタイヤ単品（１本;日本製;PB;
+#
+#
+INSERT_UPDATE Product;code[unique=true];$feature4[lang=ja];$feature6[lang=ja];$feature2009[lang=ja];$feature2010[lang=ja];$feature2011[lang=ja];$feature2012[lang=ja];$feature2013[lang=ja];$feature2014[lang=ja];$feature2015[lang=ja];$feature2016[lang=ja];$feature2017[lang=ja];$feature2018[lang=ja];$feature2019[lang=ja];$feature2020[lang=ja];$feature2021[lang=ja];$feature2022[lang=ja];$feature2023[lang=ja];$catalogVersion
+                     ;01558954;Yupiteru;前後2カメラタイプ;別体モデル;2.0インチ～;なし;あり;あり;あり;なし;なし;あり;あり;あり;あり;16GB;なし;なし;
+#
+INSERT_UPDATE Product;code[unique=true];$feature4[lang=ja];$feature2206[lang=ja];$catalogVersion
+                     ;01485374;AUTOBACS(GORDON MILLER);PBガレージ用品・工具;
+                     ;01485375;AUTOBACS(GORDON MILLER);PBガレージ用品・工具;
+                     ;01485376;AUTOBACS(GORDON MILLER);PBガレージ用品・工具;
+
+INSERT_UPDATE Product;code[unique=true];$feature2301[lang=ja];$feature2302[lang=ja];$catalogVersion
+                     ;01541423;冬タイヤ;一般タイヤ;
+
+# Add new classification values for Dec Demo -END

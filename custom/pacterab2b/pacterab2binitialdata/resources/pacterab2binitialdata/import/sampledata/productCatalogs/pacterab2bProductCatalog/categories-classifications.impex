@@ -1,0 +1,629 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Category Classifications
+
+# Macros / Replacement Parameter definitions
+$productCatalog=pacterab2bProductCatalog
+$productCatalogName=pacterab2b Product Catalog
+$classificationCatalog=pacterab2bClassification
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$classCatalogVersion=catalogversion(catalog(id[default='$classificationCatalog']),version[default='1.0'])[unique=true,default='$classificationCatalog:1.0']
+$classSystemVersion=systemVersion(catalog(id[default='$classificationCatalog']),version[default='1.0'])[unique=true]
+$class=classificationClass(ClassificationClass.code,$classCatalogVersion)[unique=true]
+$supercategories=source(code, $classCatalogVersion)[unique=true]
+$categories=target(code, $catalogVersion)[unique=true]
+$attribute=classificationAttribute(code,$classSystemVersion)[unique=true]
+$unit=unit(code,$classSystemVersion)
+
+# Insert Classifications
+INSERT_UPDATE ClassificationClass;$classCatalogVersion;code[unique=true];allowedPrincipals(uid)[default='customergroup'];
+#root
+                                 ;;9000
+#exclu_tire_wheel
+                                 ;;900001
+                                 ;;9000001
+                                 ;;9000002
+                                 ;;9000003
+                                 ;;9000004
+                                 ;;9000005
+                                 ;;9000006
+                                 ;;9000007
+                                 ;;9000008
+                                 ;;9000009
+                                 ;;9000010
+                                 ;;9000011
+                                 ;;9000012
+                                 ;;9000100
+                                 ;;9000101
+                                 ;;9000102
+                                 ;;9000103
+                                 ;;9000104
+                                 ;;9000105
+                                 ;;9000106
+                                 ;;9000107
+                                 ;;9000108
+                                 ;;9000109
+                                 ;;9000110
+                                 ;;9000111
+                                 ;;9000112
+                                 ;;9000113
+                                 ;;9000114
+                                 ;;9000115
+                                 ;;9000116
+                                 ;;9000117
+                                 ;;9000118
+                                 ;;9000119
+                                 ;;9000120
+                                 ;;9000121
+                                 ;;9000122
+                                 ;;9000123
+                                 ;;9000124
+                                 ;;9000125
+                                 ;;9000126
+                                 ;;9000127
+                                 ;;9000128
+                                 ;;9000129
+                                 ;;9000130
+                                 ;;9000200
+                                 ;;9000201
+                                 ;;9000202
+                                 ;;9000203
+                                 ;;9000204
+                                 ;;9000205
+                                 ;;9000206
+                                 ;;9000207
+                                 ;;9000208
+                                 ;;9000209
+                                 ;;9000210
+                                 ;;9000211
+                                 ;;9000212
+                                 ;;9000213
+                                 ;;9000214
+                                 ;;9000215
+                                 ;;9000216
+                                 ;;9000217
+                                 ;;9000218
+                                 ;;9000219
+                                 ;;9000220
+                                 ;;9000221
+                                 ;;9000222
+                                 ;;9000223
+                                 ;;9000224
+                                 ;;9000225
+                                 ;;9000226
+                                 ;;9000227
+                                 ;;9000228
+                                 ;;9000229
+                                 ;;9000230
+                                 ;;9000231
+                                 ;;9000232
+                                 ;;9000233
+                                 ;;9000234
+                                 ;;9000235
+                                 ;;9000236
+                                 ;;9000237
+                                 ;;9000238
+                                 ;;9000239
+                                 ;;9000240
+                                 ;;9000241
+                                 ;;9000242
+                                 ;;9000243
+                                 ;;9000244
+                                 ;;9000245
+                                 ;;9000246
+                                 ;;9000247
+                                 ;;9000300
+                                 ;;9000301
+                                 ;;9000302
+                                 ;;9000303
+                                 ;;9000304
+                                 ;;9000305
+                                 ;;9000306
+                                 ;;9000307
+                                 ;;9000308
+                                 ;;9000309
+                                 ;;9000310
+                                 ;;9000400
+                                 ;;9000401
+                                 ;;9000402
+                                 ;;9000403
+                                 ;;9000404
+                                 ;;9000405
+                                 ;;9000406
+                                 ;;9000407
+                                 ;;9000408
+                                 ;;9000409
+                                 ;;9000410
+                                 ;;9000411
+                                 ;;9000412
+                                 ;;9000413
+                                 ;;9000414
+                                 ;;9000415
+                                 ;;9000416
+                                 ;;9000417
+                                 ;;9000418
+                                 ;;9000419
+                                 ;;9000420
+                                 ;;9000421
+                                 ;;9000422
+                                 ;;9000423
+                                 ;;9000424
+                                 ;;9000425
+                                 ;;9000426
+                                 ;;9000427
+                                 ;;9000428
+                                 ;;9000429
+                                 ;;9000430
+                                 ;;9000431
+                                 ;;9000432
+                                 ;;9000433
+                                 ;;9000434
+                                 ;;9000435
+                                 ;;9000436
+                                 ;;9000437
+                                 ;;9000500
+                                 ;;9000501
+                                 ;;9000502
+                                 ;;9000503
+                                 ;;9000504
+                                 ;;9000505
+                                 ;;9000506
+                                 ;;9000507
+                                 ;;9000508
+                                 ;;9000509
+                                 ;;9000510
+
+#
+
+# Insert Classification Attributes
+INSERT_UPDATE ClassificationAttribute;$classSystemVersion;code[unique=true]
+;;Brand,1000
+;;Series,1001
+;;Monitor age,1002
+;;Manufacturer,1003
+;;Bluetooth,1004
+;;Camera,1006
+
+
+
+
+
+# Links ClassificationClasses to Categories
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
+                                      ;90000000;9000
+                                      ;50000000;9000
+
+######################################## accroding to pim data import to db manually###################################################################
+INSERT_UPDATE ClassificationAttribute;$classSystemVersion;code[unique=true]
+#                                    #all category
+                                     ;;jan_cd;
+                                     ;;ec_daibri_mei;
+                                     ;;ec_chubri_mei;
+                                     ;;ec_shobri_mei;
+                                     ;;cdt;
+                                     ;;hole_su;
+                                     ;;pcd;
+                                     ;;ktrg_clr_mei;
+                                     ;;mkr_brand;
+                                     ;;product_type;
+
+                                     ;;v_fragrance;
+                                     ;;v_clr;
+                                     ;;v_size;
+                                     ;;kouchin_komikomi;
+
+
+
+##                                    #other than tires and wheels start
+                                     ;;tnpn_siz_jyr;
+                                     ;;tnpn_siz_oky;
+                                     ;;tnpn_siz_ykh;
+                                     ;;tnpn_siz_hig;
+##                                    #other than tires and wheels end
+#wheel start
+                                     ;;wheel_mkr_brand_wheel;
+                                     ;;tire_nikei_wheel;
+                                     ;;rim_haba_wheel;
+                                     ;;inset_wheel;
+#wheel end
+
+                                     ;;ec_szn_shohin_kbn_tire;
+                                     ;;ec_tire_sbt_tire;
+                                     ;;tire_haba_tire;
+                                     ;;tire_hnpi_rt_tire;
+                                     ;;tire_nikei_tire;
+                                     ;;load_indx_tire;
+                                     ;;skd_kigo_tire;
+                                     ;;krgri_teik_keisu_tire;
+                                     ;;wetgrip_sino_tire;
+                                     ;;oil_nendo_engine_oil;
+                                     ;;oil_sebn_kbn_engine_oil;
+                                     ;;capa_engine_oil;
+                                     ;;clean_diesel_taio_engine_oil;
+                                     ;;api_kikaku_engine_oil;
+
+
+                                     ;;car_navi_monitor_size_car_navigation;
+                                     ;;tv_tuner_car_navigation;
+                                     ;;bluetooth_car_navigation;
+                                     ;;ipod_iphone_taio_car_navigation;
+                                     ;;android_auto_taio_car_navigation;
+                                     ;;apple_car_play_taio_car_navigation;
+                                     ;;blu_ray_disk_taiou_car_navigation;
+                                     ;;dvd_douga_model_car_navigation;
+                                     ;;cd_recording_taiou_car_navigation;
+                                     ;;muryo_tizu_kousin_car_navigation;
+                                     ;;vics_wide_car_navigation;
+                                     ;;gyro_sensor_3d_car_navigation;
+                                     ;;etc_20_taio_car_navigation;
+                                     ;;navi_tv_2gamen_hyouji_car_navigation;
+                                     ;;rear_seat_dokuritsu_av_taio_car_navigation;
+                                     ;;high_res_taio_car_navigation;
+                                     ;;time_alignment_car_navigation;
+                                     ;;usb_setsuzoku_car_navigation;
+                                     ;;hdmi_io_taio_car_navigation;
+                                     ;;steering_remocon_sousa_car_navigation;
+                                     ;;wifi_car_navigation;
+                                     ;;map_furikku_pinchi_car_navigation;
+                                     ;;naizou_denchi_car_navigation;
+                                     ;;v_taio_24_car_navigation;
+                                     ;;densou_youhin_knrn_diy_repairpaint;
+                                     ;;hosyu_youhin_knrn_diy_repairpaint;
+                                     ;;haisendome_tape_knrn_diy_repairpaint;
+                                     ;;air_con_knrn_diy_repairpaint;
+                                     ;;paint_youhin_knrn_diy_repairpaint;
+                                     ;;car_monitor_size_car_monitor;
+                                     ;;syasai_mntr_torituke_type_car_monitor;
+                                     ;;car_monitor_clr_car_monitor;
+                                     ;;ekisyou_gashitsu_car_monitor;
+                                     ;;ar_corting_taio_car_monitor;
+                                     ;;plasma_cluster_car_monitor;
+                                     ;;led_light_car_monitor;
+                                     ;;hdmi_io_taio_car_monitor;
+                                     ;;rca_ip_car_monitor;
+                                     ;;arta_goods_sports_goods;
+                                     ;;v_yoryo_setto_suu_sports_goods;
+                                     ;;drv_rcdr_camera_type_drive_recorder;
+                                     ;;drv_rcdr_torituke_type_drive_recorder;
+                                     ;;drv_rcdr_monitor_size_drive_recorder;
+                                     ;;gashitsu_full_hd_over_drive_recorder;
+                                     ;;gazou_hosei_hdr_wdr_drive_recorder;
+                                     ;;g_sensor_drive_recorder;
+                                     ;;gps_drive_recorder;
+                                     ;;tyuusya_kanshi_taiou_drive_recorder;
+                                     ;;wifi_drive_recorder;
+                                     ;;azn_unten_shien_kinou_drive_recorder;
+                                     ;;kougu_knrn_emergencysafety_garage;
+                                     ;;seibi_youhin_knrn_emergencysafety_garage;
+                                     ;;azn_youhin_knrn_emergencysafety_garage;
+                                     ;;tire_oukyu_knrn_emergencysafety_garage;
+                                     ;;base_carrier_base_carrier;
+                                     ;;cho_sokumen_nagasa_battery;
+                                     ;;iss_taio_battery;
+                                     ;;kbn_kigo_battery;
+                                     ;;nirinsha_battery_battery;
+                                     ;;sino_rank_battery;
+                                     ;;tanshi_ichi_battery;
+                                     ;;led_singouki_taio_drive_recorder;
+                                     ;;suihei_gakaku_108_over_drive_recorder;
+                                     ;;suityoku_gakaku_60_over_drive_recorder;
+                                     ;;bkup_dngn_drive_recorder;
+                                     ;;fuzoku_sd_card_drive_recorder;
+                                     ;;v_taio_24_drive_recorder;
+                                     ;;bucket_type_sports_seat;
+                                     ;;v_setti_basyo_type_sports_seat;
+                                     ;;bycycle_motorcycle_bicycle_motorcycle;
+                                     ;;main_unit_type_car_audio;
+                                     ;;etc_type_etc_vehicle_unit;
+                                     ;;bluetooth_car_audio;
+                                     ;;car_navi_rendou_etc_vehicle_unit;
+                                     ;;new_security_taio_etc_vehicle_unit;
+                                     ;;v_body_clr_car_shampoo;
+                                     ;;v_yoryo_setto_suu_car_shampoo;
+                                     ;;car_tlv_monitor_size_car_television;
+                                     ;;v_body_clr_car_wax;
+                                     ;;v_yoryo_setto_suu_car_wax;
+                                     ;;carrier_attachment_carrier_attachment;
+                                     ;;speaker_size_coaxial_loudspeaker;
+                                     ;;rdr_tnck_camera_type_radar_detector;
+                                     ;;rdr_tnck_monitor_size_radar_detector;
+                                     ;;gps_radar_detector;
+                                     ;;g_sensor_radar_detector;
+                                     ;;jairo_sensor_taio_radar_detector;
+                                     ;;zone30_taio_radar_detector;
+                                     ;;odbii_taio_radar_detector;
+                                     ;;data_upd_muryou_taio_radar_detector;
+                                     ;;hikari_obisu_rcv_taio_radar_detector;
+                                     ;;engine_oil_knrn_engine_oil_option;
+                                     ;;filter_brakepad_car_mkr_cd_filter_brakepad;
+                                     ;;drone_drone_related;
+                                     ;;mounting_kit_mkr_cd_mounting_kit;
+                                     ;;haisen_kit_mounting_kit;
+                                     ;;mounting_kit_mounting_kit;
+                                     ;;dosu_bulb_light;
+                                     ;;harogen_hosyu_bulb_knrn_bulb_light;
+                                     ;;led_knrn_bulb_light;
+                                     ;;hid_knrn_bulb_light;
+                                     ;;hojyo_headlamp_knrn_bulb_light;
+                                     ;;drone_drone;
+                                     ;;indoor_indoor;
+                                     ;;v_yoryo_setto_suu_indoor;
+                                     ;;keyholder_cover_car_mkr_cd_keyholder_cover;
+                                     ;;mark_type_beginner_sign;
+                                     ;;nut_form_wheel_nut_adapter;
+                                     ;;outdoor_leisure_outdoor;
+                                     ;;rain_wiper_brade_type_wiper;
+                                     ;;rain_wiper_spare_gm_type_wiper;
+                                     ;;snow_wiper_brade_type_wiper;
+                                     ;;snow_wiper_spare_gm_type_wiper;
+                                     ;;speaker_size_separate_speaker;
+                                     ;;tijo_digital_tuner_terrestrial_digital_tuner;
+                                     ;;tv_kit_television_kit;
+                                     ;;wheel_cover_clr_wheel_cover;
+                                     ;;wheel_cover_inch_wheel_cover;
+                                     ;;winter_car_care_goods_winter_car_supplies;
+
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
+                  ;50000000;9000
+
+INSERT_UPDATE ClassAttributeAssignment;$class;$attribute;position;$unit;attributeType(code[default=string]);multiValued[default=false];range[default=false];localized[default=true]
+                                      ;9000;jan_cd;0;;
+
+                                      ;9000;ec_daibri_mei;0;;
+                                      ;9000;ec_chubri_mei;0;;
+                                      ;9000;ec_shobri_mei;0;;
+                                      ;9000;cdt;0;;
+                                      ;9000;hole_su;0;;
+                                      ;9000;pcd;0;;
+                                      ;9000;ktrg_clr_mei;0;;
+                                      ;9000;mkr_brand;0;;
+                                      ;9000;product_type;0;;
+                                      ;9000;v_fragrance;0;;
+                                      ;9000;v_clr;0;;
+                                      ;9000;v_size;0;;
+                                      ;9000;kouchin_komikomi;0;;
+
+
+                                      ;900001;tnpn_siz_jyr;0;;
+                                      ;900001;tnpn_siz_oky;0;;
+                                      ;900001;tnpn_siz_ykh;0;;
+                                      ;900001;tnpn_siz_hig;0;;
+#wheel start
+                                      ;9000003;wheel_mkr_brand_wheel;0;;
+                                      ;9000003;tire_nikei_wheel;0;;
+                                      ;9000003;rim_haba_wheel;0;;
+                                      ;9000003;inset_wheel;0;;
+#wheel end
+
+                                      ;9000001;ec_szn_shohin_kbn_tire;0;;
+                                      ;9000001;ec_tire_sbt_tire;0;;
+                                      ;9000001;tire_haba_tire;0;;
+                                      ;9000001;tire_hnpi_rt_tire;0;;
+                                      ;9000001;tire_nikei_tire;0;;
+                                      ;9000001;load_indx_tire;0;;
+                                      ;9000001;skd_kigo_tire;0;;
+                                      ;9000001;krgri_teik_keisu_tire;0;;
+                                      ;9000001;wetgrip_sino_tire;0;;
+                                      ;9000300;oil_nendo_engine_oil;0;;
+                                      ;9000300;oil_sebn_kbn_engine_oil;0;;
+                                      ;9000300;capa_engine_oil;0;;
+                                      ;9000300;clean_diesel_taio_engine_oil;0;;
+                                      ;9000300;api_kikaku_engine_oil;0;;
+
+                                      ;9000100;car_navi_monitor_size_car_navigation;0;;
+                                      ;9000100;tv_tuner_car_navigation;0;;
+                                      ;9000100;bluetooth_car_navigation;0;;
+                                      ;9000100;ipod_iphone_taio_car_navigation;0;;
+                                      ;9000100;android_auto_taio_car_navigation;0;;
+                                      ;9000100;apple_car_play_taio_car_navigation;0;;
+                                      ;9000100;blu_ray_disk_taiou_car_navigation;0;;
+                                      ;9000100;dvd_douga_model_car_navigation;0;;
+                                      ;9000100;cd_recording_taiou_car_navigation;0;;
+                                      ;9000100;muryo_tizu_kousin_car_navigation;0;;
+                                      ;9000100;vics_wide_car_navigation;0;;
+                                      ;9000100;gyro_sensor_3d_car_navigation;0;;
+                                      ;9000100;etc_20_taio_car_navigation;0;;
+                                      ;9000100;navi_tv_2gamen_hyouji_car_navigation;0;;
+                                      ;9000100;rear_seat_dokuritsu_av_taio_car_navigation;0;;
+                                      ;9000100;high_res_taio_car_navigation;0;;
+                                      ;9000100;time_alignment_car_navigation;0;;
+                                      ;9000100;usb_setsuzoku_car_navigation;0;;
+                                      ;9000100;hdmi_io_taio_car_navigation;0;;
+                                      ;9000100;steering_remocon_sousa_car_navigation;0;;
+                                      ;9000100;wifi_car_navigation;0;;
+                                      ;9000100;map_furikku_pinchi_car_navigation;0;;
+                                      ;9000100;naizou_denchi_car_navigation;0;;
+                                      ;9000100;v_taio_24_car_navigation;0;;
+                                      ;9000307;densou_youhin_knrn_diy_repairpaint;0;;
+                                      ;9000307;hosyu_youhin_knrn_diy_repairpaint;0;;
+                                      ;9000307;haisendome_tape_knrn_diy_repairpaint;0;;
+                                      ;9000307;air_con_knrn_diy_repairpaint;0;;
+                                      ;9000307;paint_youhin_knrn_diy_repairpaint;0;;
+                                      ;9000117;car_monitor_size_car_monitor;0;;
+                                      ;9000117;syasai_mntr_torituke_type_car_monitor;0;;
+                                      ;9000117;car_monitor_clr_car_monitor;0;;
+                                      ;9000117;car_monitor_clr_car_monitor;0;;
+                                      ;9000117;ekisyou_gashitsu_car_monitor;0;;
+                                      ;9000117;ar_corting_taio_car_monitor;0;;
+                                      ;9000117;plasma_cluster_car_monitor;0;;
+                                      ;9000117;led_light_car_monitor;0;;
+                                      ;9000117;hdmi_io_taio_car_monitor;0;;
+                                      ;9000117;rca_ip_car_monitor;0;;
+                                      ;9000509;arta_goods_sports_goods;0;;
+                                      ;9000509;v_yoryo_setto_suu_sports_goods;0;;
+                                      ;9000102;drv_rcdr_camera_type_drive_recorder;0;;
+                                      ;9000102;drv_rcdr_torituke_type_drive_recorder;0;;
+                                      ;9000102;drv_rcdr_monitor_size_drive_recorder;0;;
+                                      ;9000102;gashitsu_full_hd_over_drive_recorder;0;;
+                                      ;9000102;gazou_hosei_hdr_wdr_drive_recorder;0;;
+                                      ;9000102;g_sensor_drive_recorder;0;;
+                                      ;9000102;gps_drive_recorder;0;;
+                                      ;9000102;tyuusya_kanshi_taiou_drive_recorder;0;;
+                                      ;9000102;wifi_drive_recorder;0;;
+                                      ;9000102;azn_unten_shien_kinou_drive_recorder;0;;
+                                      ;9000308;kougu_knrn_emergencysafety_garage;0;;
+                                      ;9000308;seibi_youhin_knrn_emergencysafety_garage;0;;
+                                      ;9000308;azn_youhin_knrn_emergencysafety_garage;0;;
+                                      ;9000308;tire_oukyu_knrn_emergencysafety_garage;0;;
+                                      ;9000502;base_carrier_base_carrier;0;;
+                                      ;9000302;cho_sokumen_nagasa_battery;0;;
+                                      ;9000302;iss_taio_battery;0;;
+                                      ;9000302;kbn_kigo_battery;0;;
+                                      ;9000302;nirinsha_battery_battery;0;;
+                                      ;9000302;sino_rank_battery;0;;
+                                      ;9000302;tanshi_ichi_battery;0;;
+                                      ;9000102;led_singouki_taio_drive_recorder;0;;
+                                      ;9000102;suihei_gakaku_108_over_drive_recorder;0;;
+                                      ;9000102;suityoku_gakaku_60_over_drive_recorder;0;;
+                                      ;9000102;bkup_dngn_drive_recorder;0;;
+                                      ;9000102;fuzoku_sd_card_drive_recorder;0;;
+                                      ;9000102;v_taio_24_drive_recorder;0;;
+                                      ;9000200;bucket_type_sports_seat;0;;
+                                      ;9000200;v_setti_basyo_type_sports_seat;0;;
+                                      ;9000510;bycycle_motorcycle_bicycle_motorcycle;0;;
+                                      ;9000108;main_unit_type_car_audio;0;;
+                                      ;9000108;bluetooth_car_audio;0;;
+                                      ;9000106;etc_type_etc_vehicle_unit;0;;
+                                      ;9000106;car_navi_rendou_etc_vehicle_unit;0;;
+                                      ;9000106;new_security_taio_etc_vehicle_unit;0;;
+                                      ;9000400;v_body_clr_car_shampoo;0;;
+                                      ;9000400;v_yoryo_setto_suu_car_shampoo;0;;
+                                      ;9000118;car_tlv_monitor_size_car_television;0;;
+                                      ;9000401;v_body_clr_car_wax;0;;
+                                      ;9000401;v_yoryo_setto_suu_car_wax;0;;
+                                      ;9000504;carrier_attachment_carrier_attachment;0;;
+                                      ;9000109;speaker_size_coaxial_loudspeaker;0;;
+                                      ;9000104;rdr_tnck_camera_type_radar_detector;0;;
+                                      ;9000104;rdr_tnck_monitor_size_radar_detector;0;;
+                                      ;9000104;gps_radar_detector;0;;
+                                      ;9000104;g_sensor_radar_detector;0;;
+                                      ;9000104;jairo_sensor_taio_radar_detector;0;;
+                                      ;9000104;zone30_taio_radar_detector;0;;
+                                      ;9000104;odbii_taio_radar_detector;0;;
+                                      ;9000104;data_upd_muryou_taio_radar_detector;0;;
+                                      ;9000104;hikari_obisu_rcv_taio_radar_detector;0;;
+                                      ;9000301;engine_oil_knrn_engine_oil_option;0;;
+                                      ;9000306;filter_brakepad_car_mkr_cd_filter_brakepad;0;;
+                                      ;9000501;drone_drone_related;0;;
+                                      ;9000128;mounting_kit_mkr_cd_mounting_kit;0;;
+                                      ;9000128;haisen_kit_mounting_kit;0;;
+                                      ;9000128;mounting_kit_mounting_kit;0;;
+                                      ;9000304;dosu_bulb_light;0;;
+                                      ;9000304;harogen_hosyu_bulb_knrn_bulb_light;0;;
+                                      ;9000304;led_knrn_bulb_light;0;;
+                                      ;9000304;hid_knrn_bulb_light;0;;
+                                      ;9000304;hojyo_headlamp_knrn_bulb_light;0;;
+                                      ;9000500;drone_drone;0;;
+                                      ;9000508;indoor_indoor;0;;
+                                      ;9000508;v_yoryo_setto_suu_indoor;0;;
+                                      ;9000418;keyholder_cover_car_mkr_cd_keyholder_cover;0;;
+                                      ;9000423;mark_type_beginner_sign;0;;
+                                      ;9000005;nut_form_wheel_nut_adapter;0;;
+                                      ;9000507;outdoor_leisure_outdoor;0;;
+                                      ;9000305;rain_wiper_brade_type_wiper;0;;
+                                      ;9000305;rain_wiper_spare_gm_type_wiper;0;;
+                                      ;9000305;snow_wiper_brade_type_wiper;0;;
+                                      ;9000305;snow_wiper_spare_gm_type_wiper;0;;
+                                      ;9000110;speaker_size_separate_speaker;0;;
+                                      ;9000120;tijo_digital_tuner_terrestrial_digital_tuner;0;;
+                                      ;9000119;tv_kit_television_kit;0;;
+                                      ;9000006;wheel_cover_clr_wheel_cover;0;;
+                                      ;9000006;wheel_cover_inch_wheel_cover;0;;
+                                      ;9000409;winter_car_care_goods_winter_car_supplies;0;;
+
+
+
+
+# Add new classification for Dec Demo
+INSERT_UPDATE ClassificationAttribute;$classSystemVersion;code[unique=true]
+                                     ;;Model,2000
+                                     ;;Front,2001
+                                     ;;Rear,2002
+                                     ;;Media,2003
+                                     ;;GPS,2004
+                                     ;;Voltage,2005
+                                     ;;Power,2006
+                                     ;;Working Temperature,2007
+                                     ;;Attachment,2008
+
+                                     ;;Installation,2009
+                                     ;;Monitor,2010
+                                     ;;Resolution,2011
+                                     ;;Image Correction,2012
+                                     ;;G-censor,2013
+                                     ;;Parking Monitor,2014
+                                     ;;WIFI,2015
+                                     ;;Safety Drive,2016
+                                     ;;LED,2017
+                                     ;;Horizontal,2018
+                                     ;;Vertical,2019
+                                     ;;Backup,2020
+                                     ;;SD Card,2021
+                                     ;;24V,2022
+                                     ;;Installation Set,2023
+
+                                     ;;Color,2100
+                                     ;;Tissue Size,2101
+                                     ;;Bottle Size,2102
+                                     ;;Material,2103
+                                     ;;Pieces,2104
+                                     ;;Size,2200
+                                     ;;Inset,2201
+                                     ;;P.C.D,2202
+                                     ;;Holes,2203
+                                     ;;Type,2204
+                                     ;;Country Of Origin,2205
+
+                                     ;;Garage Supplies / Tools,2206
+
+                                     ;;Season,2301
+                                     ;;Tire Type,2302
+
+
+INSERT_UPDATE ClassAttributeAssignment;$class;$attribute;position;$unit;attributeType(code[default=string]);multiValued[default=false];range[default=false];localized[default=true]
+;9000;Model,2000;0;;
+;9000;Front,2001;0;;
+;9000;Rear,2002;0;;
+;9000;Media,2003;0;;
+;9000;GPS,2004;0;;
+;9000;Voltage,2005;0;;
+;9000;Power,2006;0;;
+;9000;Working Temperature,2007;0;;
+;9000;Attachment,2008;0;;
+
+;9000;Installation,2009;0;;
+;9000;Monitor,2010;0;;
+;9000;Resolution,2011;0;;
+;9000;Image Correction,2012;0;;
+;9000;G-censor,2013;0;;
+;9000;Parking Monitor,2014;0;;
+;9000;WIFI,2015;0;;
+;9000;Safety Drive,2016;0;;
+;9000;LED,2017;0;;
+;9000;Horizontal,2018;0;;
+;9000;Vertical,2019;0;;
+;9000;Backup,2020;0;;
+;9000;SD Card,2021;0;;
+;9000;24V,2022;0;;
+;9000;Installation Set,2023;0;;
+
+;9000;Color,2100;0;;
+;9000;Tissue Size,2101;0;;
+;9000;Bottle Size,2102;0;;
+;9000;Material,2103;0;;
+;9000;Pieces,2104;0;;
+;9000;Size,2200;0;;
+;9000;Inset,2201;0;;
+;9000;P.C.D,2202;0;;
+;9000;Holes,2203;0;;
+;9000;Type,2204;0;;
+;9000;Country Of Origin,2205;0;;
+
+;9000;Garage Supplies / Tools,2206;0;;
+
+;9000;Season,2301;0;;
+;9000;Tire Type,2302;0;;
+
+# Add new classification for Dec Demo - END

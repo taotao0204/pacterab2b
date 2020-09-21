@@ -1,0 +1,41 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Categories
+
+# Macros / Replacement Parameter definitions
+$productCatalog=pacterab2bProductCatalog
+$productCatalogName=pacterab2b Product Catalog
+$classificationCatalog=pacterab2bClassification
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+# Language
+$lang=ja
+
+
+# Create Categories
+UPDATE Category;code[unique=true];$catalogVersion;name[lang=$lang]
+;master;;ショップ
+#
+;11000000	;;サービス
+;50000000	;;タイヤ
+;51000000	;;ホイル
+;52000000	;;カーエレクトロニクス
+;54000000	;;オイル
+;55000000	;;バッテリー
+;56000000	;;メンテナンス
+;57000000	;;アクセサリー
+;58000000	;;カーリペアー
+;59000000	;;カースポーツ
+;60000000	;;カーレジャー
+;61000000	;;モーターサイクル
+
+
+
+#################################################################
+;90000000;;CAR NAVI
+;90001000;;ALPINE
+;90002000;;CARRZERIA
+
+###################################################################

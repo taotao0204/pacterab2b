@@ -1,0 +1,20 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import the Solr CronJob Trigger configuration for the Product Catalog
+#
+
+INSERT_UPDATE SolrIndexerCronJob; code[unique = true]; job(code); singleExecutable; sessionLanguage(isocode); active; facetSearchConfig(name); indexerOperation(code)
+                                ;full-pacterab2bIndex-cronJob ; solrIndexerJob ; false ; en ; true ; pacterab2bIndex; full
+                                ;update-pacterab2bIndex-cronJob ; solrIndexerJob ; false ; en ; true ; pacterab2bIndex; update
+
+
+
+INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;year;relative;active;maxAcceptableDelay
+
+# Run the full-pacterab2bIndex-cronJob at 3:05 AM every day
+;full-pacterab2bIndex-cronJob;0;5;3;-1;-1;-1;false;false;-1
+
+# Run the update-pacterab2bIndex-cronJob every 1 minutes
+;update-pacterab2bIndex-cronJob;0;1;-1;-1;-1;-1;true;false;-1

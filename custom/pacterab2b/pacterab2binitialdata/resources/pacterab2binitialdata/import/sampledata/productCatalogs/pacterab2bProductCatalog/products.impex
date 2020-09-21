@@ -1,0 +1,128 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Products
+
+# Macros / Replacement Parameter definitions
+$productCatalog=pacterab2bProductCatalog
+$productCatalogName=pacterab2b Product Catalog
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='approved']
+
+$lang=en
+$thumbnail=thumbnail(code, $catalogVersion)
+$picture=picture(code, $catalogVersion)
+$thumbnails=thumbnails(code, $catalogVersion)
+$detail=detail(code, $catalogVersion)
+$normal=normal(code, $catalogVersion)
+$others=others(code, $catalogVersion)
+$data_sheet=data_sheet(code, $catalogVersion)
+$medias=medias(code, $catalogVersion)
+$galleryImages=galleryImages(qualifier, $catalogVersion)
+$siteResource=jar:com.pactera.initialdata.setup.InitialDataSystemSetup&/pacterab2binitialdata/import/sampledata/productCatalogs/$productCatalog
+$s3BucketResource=https://lambda-s3-poc.s3.amazonaws.com/img
+$taxGroup=Europe1PriceFactory_PTG(code)[default=jp-vat-full]
+
+
+
+INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];$catalogVersion;folder(qualifier)
+                   ;300Wx300H;/300Wx300H/packaging.png;$siteResource/product/packaging.png;;;images
+                   ;96Wx96H;/96Wx96H/packaging.png;$siteResource/product/packaging.png;;;images
+                   ;65Wx65H;/65Wx65H/packaging.png;$siteResource/product/packaging.png;;;images
+                   ;30Wx30H;/30Wx30H/packaging.png;$siteResource/product/packaging.png;;;images
+                   ;515Wx515H;/515Wx515H/packaging.png;$siteResource/product/packaging.png;;;images
+
+
+
+INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$catalogVersion
+# AB7-1939 Change installation Fee Artical ID
+                            ;00795085;/515Wx515H/packaging.png,/300Wx300H/packaging.png,/96Wx96H/packaging.png,/65Wx65H/packaging.png,/30Wx30H/packaging.png;
+
+# Insert Products
+INSERT_UPDATE Product;code[unique=true];$supercategories;unit(code);name[lang=$lang];name[lang=ja];$catalogVersion;$approved;$taxGroup;varianttype(code);
+# AB7-1939 Change installation Fee Artical ID
+                        ;00795085;;pieces;Packing Fee;梱包費用;;;;;;;;;true;FALSE;
+
+UPDATE Product;code[unique=true];$picture;$thumbnail;$detail;$others;$normal;$thumbnails;$galleryImages;$catalogVersion
+# AB7-1939 Change installation Fee Artical ID
+                 ;00795085;/300Wx300H/packaging.png;/96Wx96H/packaging.png;;/515Wx515H/packaging.png;/96Wx96H/packaging.png;/96Wx96H/packaging.png;00795085;
+
+# uketoriSyudan 0 - Store Recipt, 1 - Home Receipt, 2 both
+
+INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price;minqtd;unitFactor;net
+# AB7-1939 Change installation Fee Artical ID
+                      ;00795085;pieces;JPY;1000;1;1;true
+
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
+# AB7-1939 Change installation Fee Artical ID
+                        ;0;114114;forceInStock;0;0;0;0;00795085;0
+
+UPDATE Product;code[unique=true];$catalogVersion;stockLevels(productCode,warehouse(code));vendors(code)
+# AB7-1939 Change installation Fee Artical ID
+              ;00795085;;00795085:114114;
+
+
+
+UPDATE Product;code[unique=true];$catalogVersion;stockLevels(productCode,warehouse(code));vendors(code)
+# Engine Oilxia ↓
+              ;00612390;;00612390:114114;
+              ;00424340;;00424340:114114;
+              ;00583147;;00583147:114114;
+              ;00583149;;00583149:114114;
+              ;00436689;;00436689:114114;
+              ;00306126;;00306126:114114;
+              ;00407165;;00407165:114114;
+              ;00594400;;00594400:114114;
+              ;00526928;;00526928:114114;
+              ;00463293;;00463293:114114;
+              ;00592054;;00592054:114114;
+              ;00592053;;00592053:114114;
+              ;00416223;;00416223:114114;
+              ;00463300;;00463300:114114;
+              ;00612865;;00612865:114114;
+              ;00421105;;00421105:114114;
+              ;00594414;;00594414:114114;
+              ;00594418;;00594418:114114;
+              ;01281519;;01281519:114114;
+              ;00583150;;00583150:114114;
+              ;00306130;;00306130:114114;
+## Oil Filter ↓
+              ;00368543;;00368543:114114;
+              ;00596401;;00596401:114114;
+              ;00596314;;00596314:114114;
+              ;00251308;;00251308:114114;
+## Battery
+              ;00483828;;00483828:114114;
+              ;00575960;;00575960:114114;
+              ;00483800;;00483800:114114;
+              ;00483802;;00483802:114114;
+              ;01240269;;01240269:114114;
+              ;01240279;;01240279:114114;
+              ;01240289;;01240289:114114;
+              ;00622210;;00622210:114114;
+              ;00483818;;00483818:114114;
+              ;00483808;;00483808:114114;
+              ;01253098;;01253098:114114;
+## Air Filter
+              ;00251414;;00251414:114114;
+## Suspension
+              ;01312383;;01240279:114114;
+              ;01271251;;01240289:114114;
+              ;01227124;;00622210:114114;
+              ;01414255;;00483818:114114;
+              ;01245892;;00483808:114114;
+              ;01262330;;01253098:114114;
+## Muffler
+              ;01025653;;01025653:114114;
+              ;01025652;;01025652:114114;
+              ;01260144;;01260144:114114;
+              ;01263363;;01263363:114114;
+              ;01412532;;01412532:114114;
+## Air Cond Filter
+              ;01177151;;01177151:114114;
+              ;00551450;;00551450:114114;
+

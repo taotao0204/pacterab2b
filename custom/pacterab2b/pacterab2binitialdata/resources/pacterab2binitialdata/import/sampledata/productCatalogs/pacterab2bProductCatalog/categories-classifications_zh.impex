@@ -1,0 +1,218 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Category Classifications
+
+# Macros / Replacement Parameter definitions
+$productCatalog=pacterab2bProductCatalog
+$productCatalogName=pacterab2b Product Catalog
+$classificationCatalog=pacterab2bClassification
+
+$classCatalogVersion=catalogversion(catalog(id[default='$classificationCatalog']),version[default='1.0'])[unique=true,default='$classificationCatalog:1.0']
+$classSystemVersion=systemVersion(catalog(id[default='$classificationCatalog']),version[default='1.0'])[unique=true]
+
+# Language
+$lang=zh
+
+
+
+
+# Create Categories
+UPDATE ClassificationClass;code[unique=true];$classCatalogVersion;name[lang=$lang]
+
+
+
+# Insert Classification Attributes
+INSERT_UPDATE ClassificationAttribute;code[unique=true];$classSystemVersion;name[lang=$lang]
+                                     ;Brand,1000;;ブランド
+                                     ;Series,1001;;シリーズ
+                                     ;Monitor age,1002;;ディスプレイ
+                                     ;Manufacturer,1003;;メーカー
+                                     ;Bluetooth,1004;;ブルートゥース
+                                     ;Camera,1006;;カメラ
+
+
+# Add new classification for Dec Demo
+INSERT_UPDATE ClassificationAttribute;$classSystemVersion;code[unique=true];name[lang=$lang]
+#                                    #all category
+                                     ;;jan_cd;JANコード
+
+#;;ec_daibri_mei;EC大分類名称
+#;;ec_chubri_mei;EC中分類名称
+#;;ec_shobri_mei;EC小分類名称
+                                     ;;ec_daibri_mei;メインカテゴリー
+                                     ;;ec_chubri_mei;サブカテゴリー
+                                     ;;ec_shobri_mei;詳細カテゴリー
+                                     ;;cdt;コンディション
+                                     ;;mkr_brand;メーカー・ブランド
+                                     ;;product_type;タイプ
+
+                                     ;;v_fragrance;香り
+                                     ;;v_clr;カラー
+                                     ;;v_size;サイズ
+                                     ;;kouchin_komikomi;工賃コミコミ
+
+
+                                     ;;hole_su;ホール数
+                                     ;;pcd;ＰＣＤ
+                                     ;;ktrg_clr_mei;カタログ色名
+##                                    #other than tires and wheels start
+                                     ;;tnpn_siz_jyr;単品サイズ（重量）
+                                     ;;tnpn_siz_oky;単品サイズ（奥行）
+                                     ;;tnpn_siz_ykh;単品サイズ（横幅）
+                                     ;;tnpn_siz_hig;単品サイズ（高さ）
+##                                    #other than tires and wheels end
+#wheel start
+                                     ;;wheel_mkr_brand_wheel;メーカー・ブランド
+                                     ;;tire_nikei_wheel;ホイールインチ
+                                     ;;rim_haba_wheel;リム幅
+                                     ;;inset_wheel;インセット
+
+#wheel end
+
+
+                                     ;;ec_szn_shohin_kbn_tire;季節商品区分
+                                     ;;ec_tire_sbt_tire;タイヤ種別
+                                     ;;tire_haba_tire;タイヤ幅
+                                     ;;tire_hnpi_rt_tire;タイヤ扁平率
+                                     ;;tire_nikei_tire;タイヤインチ
+                                     ;;load_indx_tire;ロードインデックス
+                                     ;;skd_kigo_tire;速度記号
+                                     ;;krgri_teik_keisu_tire;転がり抵抗係数
+                                     ;;wetgrip_sino_tire;ウエットグリップ性能
+                                     ;;oil_nendo_engine_oil;オイル粘度
+                                     ;;oil_sebn_kbn_engine_oil;オイル成分区分
+                                     ;;capa_engine_oil;荷姿・容量
+                                     ;;clean_diesel_taio_engine_oil;クリーンディーゼル乗用車対応
+                                     ;;api_kikaku_engine_oil;API規格
+
+
+
+                                     ;;car_navi_monitor_size_car_navigation;【カーナビ】モニターサイズ
+                                     ;;tv_tuner_car_navigation;TVチューナー
+                                     ;;bluetooth_car_navigation;Bluetooth
+                                     ;;ipod_iphone_taio_car_navigation;iPod/iPhone対応
+                                     ;;android_auto_taio_car_navigation;アンドロイドオート対応
+                                     ;;apple_car_play_taio_car_navigation;アップルカープレイ対応
+                                     ;;blu_ray_disk_taiou_car_navigation;Blu-ray動画再生
+                                     ;;dvd_douga_model_car_navigation;DVD動画再生
+                                     ;;cd_recording_taiou_car_navigation;CD録音
+                                     ;;muryo_tizu_kousin_car_navigation;無料地図更新
+                                     ;;vics_wide_car_navigation;VICS WIDE
+                                     ;;gyro_sensor_3d_car_navigation;３Dジャイロ
+                                     ;;etc_20_taio_car_navigation;ETC2.0対応
+                                     ;;navi_tv_2gamen_hyouji_car_navigation;ナビ/TV 2画面表示
+                                     ;;rear_seat_dokuritsu_av_taio_car_navigation;後席独立AVソース対応
+                                     ;;high_res_taio_car_navigation;ハイレゾ対応
+                                     ;;time_alignment_car_navigation;タイムアライメント
+                                     ;;usb_setsuzoku_car_navigation;USB接続
+                                     ;;hdmi_io_taio_car_navigation;HDMI入/出力対応
+                                     ;;steering_remocon_sousa_car_navigation;ステアリングリモコン操作
+                                     ;;wifi_car_navigation;Wifi
+                                     ;;map_furikku_pinchi_car_navigation;地図フリック/ピンチ
+                                     ;;naizou_denchi_car_navigation;内蔵電池
+                                     ;;v_taio_24_car_navigation;24V対応
+                                     ;;densou_youhin_knrn_diy_repairpaint;電装用品関連
+                                     ;;hosyu_youhin_knrn_diy_repairpaint;補修用品関連
+                                     ;;haisendome_tape_knrn_diy_repairpaint;配線止め・テープ関連
+                                     ;;air_con_knrn_diy_repairpaint;エアコン関連
+                                     ;;paint_youhin_knrn_diy_repairpaint;ペイント用品関連
+                                     ;;car_monitor_size_car_monitor;【車載モニター】モニターサイズ
+                                     ;;syasai_mntr_torituke_type_car_monitor;取付タイプ
+                                     ;;car_monitor_clr_car_monitor;カラー
+                                     ;;ekisyou_gashitsu_car_monitor;液晶画質
+                                     ;;ar_corting_taio_car_monitor;ARコーティング対応
+                                     ;;plasma_cluster_car_monitor;プラズマクラスター
+                                     ;;led_light_car_monitor;LEDライト
+                                     ;;hdmi_io_taio_car_monitor;HDMI入/出力対応
+                                     ;;rca_ip_car_monitor;RCA入力
+                                     ;;arta_goods_sports_goods;ARTAグッズ
+                                     ;;v_yoryo_setto_suu_sports_goods;容量・セット数
+                                     ;;drv_rcdr_camera_type_drive_recorder;【ドライブレコーダー】カメラタイプ
+                                     ;;drv_rcdr_torituke_type_drive_recorder;取付タイプ
+                                     ;;drv_rcdr_monitor_size_drive_recorder;モニターサイズ
+                                     ;;gashitsu_full_hd_over_drive_recorder;画質：フルHD以上
+                                     ;;gazou_hosei_hdr_wdr_drive_recorder;画像補正：HDR/WDR機能
+                                     ;;g_sensor_drive_recorder;Gセンサー
+                                     ;;gps_drive_recorder;GPS
+                                     ;;tyuusya_kanshi_taiou_drive_recorder;駐車監視機能
+                                     ;;wifi_drive_recorder;Wifi
+                                     ;;azn_unten_shien_kinou_drive_recorder;安全運転支援機能
+                                     ;;kougu_knrn_emergencysafety_garage;工具関連
+                                     ;;seibi_youhin_knrn_emergencysafety_garage;整備用品関連
+                                     ;;azn_youhin_knrn_emergencysafety_garage;安全用品関連
+                                     ;;tire_oukyu_knrn_emergencysafety_garage;タイヤ応急関連
+                                     ;;base_carrier_base_carrier;ベースキャリア
+                                     ;;cho_sokumen_nagasa_battery;長側面の長さ
+                                     ;;iss_taio_battery;アイドリングストップ(ISS)車対応
+                                     ;;kbn_kigo_battery;区分記号
+                                     ;;nirinsha_battery_battery;二輪車用バッテリー
+                                     ;;sino_rank_battery;性能ランク
+                                     ;;tanshi_ichi_battery;端子の位置
+                                     ;;led_singouki_taio_drive_recorder;LED信号機対応
+                                     ;;suihei_gakaku_108_over_drive_recorder;水平画角108°以上
+                                     ;;suityoku_gakaku_60_over_drive_recorder;垂直画角60°以上
+                                     ;;bkup_dngn_drive_recorder;バックアップ電源
+                                     ;;fuzoku_sd_card_drive_recorder;付属SDカード
+                                     ;;v_taio_24_drive_recorder;24V対応
+                                     ;;bucket_type_sports_seat;バケットタイプ
+                                     ;;v_setti_basyo_type_sports_seat;設置場所・タイプ
+                                     ;;bycycle_motorcycle_bicycle_motorcycle;自転車・バイク
+                                     ;;main_unit_type_car_audio;メインユニットタイプ
+                                     ;;bluetooth_car_audio;Bluetooth
+                                     ;;etc_type_etc_vehicle_unit;ETCタイプ
+                                     ;;car_navi_rendou_etc_vehicle_unit;カーナビ連動
+                                     ;;new_security_taio_etc_vehicle_unit;新セキュリティ対応
+                                     ;;v_body_clr_car_shampoo;ボディカラー
+                                     ;;v_yoryo_setto_suu_car_shampoo;容量・セット数
+                                     ;;car_tlv_monitor_size_car_television;【車載テレビ】モニターサイズ
+                                     ;;v_body_clr_car_wax;ボディカラー
+                                     ;;v_yoryo_setto_suu_car_wax;タイプ
+                                     ;;carrier_attachment_carrier_attachment;キャリアアタッチメント
+                                     ;;speaker_size_coaxial_loudspeaker;サイズ
+
+                                     ;;rdr_tnck_camera_type_radar_detector;【レーダー探知機】カメラタイプ
+                                     ;;rdr_tnck_monitor_size_radar_detector;モニターサイズ
+                                     ;;gps_radar_detector;GPS
+                                     ;;g_sensor_radar_detector;Gセンサー
+                                     ;;jairo_sensor_taio_radar_detector;ジャイロセンサー対応
+                                     ;;zone30_taio_radar_detector;ゾーン30対応
+                                     ;;odbii_taio_radar_detector;OBDII対応
+                                     ;;data_upd_muryou_taio_radar_detector;データ更新無料サービス対応
+                                     ;;hikari_obisu_rcv_taio_radar_detector;光オービス受信対応
+                                     ;;engine_oil_knrn_engine_oil_option;エンジンオイル関連
+                                     ;;filter_brakepad_car_mkr_cd_filter_brakepad;カーメーカー
+                                     ;;drone_drone_related;
+                                     ;;mounting_kit_mkr_cd_mounting_kit;メーカー・ブランド
+                                     ;;haisen_kit_mounting_kit;配線キット
+                                     ;;mounting_kit_mounting_kit;取付キット
+                                     ;;dosu_bulb_light;度数
+                                     ;;harogen_hosyu_bulb_knrn_bulb_light;ハロゲン・補修バルブ関連
+                                     ;;led_knrn_bulb_light;LED関連
+                                     ;;hid_knrn_bulb_light;HID関連
+                                     ;;hojyo_headlamp_knrn_bulb_light;補助・ヘッドランプ関連
+                                     ;;drone_drone;
+                                     ;;indoor_indoor;インドア
+                                     ;;v_yoryo_setto_suu_indoor;容量・セット数
+                                     ;;keyholder_cover_car_mkr_cd_keyholder_cover;カーメーカー
+
+                                     ;;mark_type_beginner_sign;マーク種類
+
+                                     ;;nut_form_wheel_nut_adapter;形状
+                                     ;;outdoor_leisure_outdoor;アウトドア・レジャー
+
+                                     ;;rain_wiper_brade_type_wiper;雨用ワイパーブレードタイプ
+                                     ;;rain_wiper_spare_gm_type_wiper;雨用ワイパー替えゴムタイプ
+                                     ;;snow_wiper_brade_type_wiper;雪用ワイパーブレードタイプ
+                                     ;;snow_wiper_spare_gm_type_wiper;雪用ワイパー替えゴムタイプ
+
+                                     ;;speaker_size_separate_speaker;サイズ
+                                     ;;tijo_digital_tuner_terrestrial_digital_tuner;地デジチューナー
+                                     ;;tv_kit_television_kit;TVキット
+
+                                     ;;wheel_cover_clr_wheel_cover;カラー
+
+                                     ;;wheel_cover_inch_wheel_cover;インチ
+                                     ;;winter_car_care_goods_winter_car_supplies;冬季カーケアグッズ
+
+ 

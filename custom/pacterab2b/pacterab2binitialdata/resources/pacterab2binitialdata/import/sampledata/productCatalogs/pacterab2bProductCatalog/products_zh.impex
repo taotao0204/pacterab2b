@@ -1,0 +1,134 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Product Localisations
+ 
+# Macros / Replacement Parameter definitions
+$productCatalog=pacterab2bProductCatalog
+$productCatalogName=pacterab2b Product Catalog
+$classificationCatalog=pacterab2bClassification
+$approved=approvalstatus(code)[default='approved']
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+$lang=zh
+
+
+UPDATE Product;$catalogVersion;code[unique=true];name[lang=$lang];summary[lang=$lang];description[lang=$lang];$approved
+                 ;;1478891;ALPINE　BIG-X　X8Zシリ_ズ;ALPINE　BIG-X　X8Z　8型WXGAメモリ_ナビ;ALPINE　BIG-X　X8Z　8型WXGAメモリ_ナビ
+                 ;;1478889;ALPINE　BIG-X　X8Zシリ_ズ;【ヴェゼル/ヴェゼル ハイブリッド_用】ALPINE　BIG-X　X8Z-VZ　8型WXGAメモリ_ナビ;【ヴェゼル/ヴェゼル ハイブリッド_用】ALPINE　BIG-X　X8Z-VZ　8型WXGAメモリ_ナビ
+                 ;;1478888;ALPINE　BIG-X　X8Zシリ_ズ;【ハイエ_ス(ワイドボディ)_用】ALPINE　BIG-X　X8Z-HIW　8型WXGAメモリ_ナビ;【ハイエ_ス(ワイドボディ)_用】ALPINE　BIG-X　X8Z-HIW　8型WXGAメモリ_ナビ
+                 ;;1478887;ALPINE　BIG-X　X8Zシリ_ズ;【ハイエ_ス(__ボディ)/ス_パ_GL_用】ALPINE　BIG-X　X8Z-HI2　8型WXGAメモリ_ナビ;【ハイエ_ス(__ボディ)/ス_パ_GL_用】ALPINE　BIG-X　X8Z-HI2　8型WXGAメモリ_ナビ
+                 ;;1478886;ALPINE　BIG-X　X8Zシリ_ズ;【ハイエ_ス(__ボディ)_用】ALPINE　BIG-X　X8Z-HI　8型WXGAメモリ_ナビ;【ハイエ_ス(__ボディ)_用】ALPINE　BIG-X　X8Z-HI　8型WXGAメモリ_ナビ
+                 ;;1478890;ALPINE　BIG-X　X8Zシリ_ズ;【レジアスエ_ス(__ボディ)ス_パ_GL_用】ALPINE　BIG-X　X8Z-RE2　8型WXGAメモリ_ナビ;【レジアスエ_ス(__ボディ)ス_パ_GL_用】ALPINE　BIG-X　X8Z-RE2　8型WXGAメモリ_ナビ
+                 ;;1478881;ALPINE　BIG-X　X9Zシリ_ズ;【アルファ_ド(30系)_用】ALPINE　BIG-X　X9Z-AL　9型WXGAメモリ_ナビ;【アルファ_ド(30系)_用】ALPINE　BIG-X　X9Z-AL　9型WXGAメモリ_ナビ
+                 ;;1478880;ALPINE　BIG-X　X9Zシリ_ズ;【ヴェルファイア(30系)_用】ALPINE　BIG-X　X9Z-VE　9型WXGAメモリ_ナビ;【ヴェルファイア(30系)_用】ALPINE　BIG-X　X9Z-VE　9型WXGAメモリ_ナビ
+                 ;;1478871;ALPINE　BIG-X　X9Zシリ_ズ;【ヴォクシ_(80系)_用】ALPINE　BIG-X　X9Z-VO　9型WXGAメモリ_ナビ;【ヴォクシ_(80系)_用】ALPINE　BIG-X　X9Z-VO　9型WXGAメモリ_ナビ
+                 ;;1478873;ALPINE　BIG-X　X9Zシリ_ズ;【エスクァイア_用】ALPINE　BIG-X　X9Z-EQ　11型WXGAメモリ_ナビ;【エスクァイア_用】ALPINE　BIG-X　X9Z-EQ　11型WXGAメモリ_ナビ
+                 ;;1478882;ALPINE　BIG-X　X9Zシリ_ズ;【エスティマ(MC後)_用】ALPINE　BIG-X　プレミアム　X9Z-ES2　9型WXGAメモリ_ナビ;【エスティマ(MC後)_用】ALPINE　BIG-X　プレミアム　X9Z-ES2　9型WXGAメモリ_ナビ
+                 ;;1478864;ALPINE　BIG-X　X9Zシリ_ズ;【オデッセイ_用】ALPINE　BIG-X　プレミアム　EX9Z-OD　9型WXGAメモリ_ナビ;【オデッセイ_用】ALPINE　BIG-X　プレミアム　EX9Z-OD　9型WXGAメモリ_ナビ
+                 ;;1478878;ALPINE　BIG-X　X9ZAシリ_ズ;【セレナ(C27)_用】ALPINE　BIG-X　プレミアム　X9ZA-SE　9型WXGAメモリ_ナビ;【セレナ(C27)_用】ALPINE　BIG-X　プレミアム　X9ZA-SE　9型WXGAメモリ_ナビ
+                 ;;1478877;ALPINE　BIG-X　X9ZAシリ_ズ;【タンク/ル_ミ__用】ALPINE　BIG-X　プレミアム　X9ZA-TR-NR　9型WXGAメモリ_ナビ(ナビレディ__);【タンク/ル_ミ__用】ALPINE　BIG-X　プレミアム　X9ZA-TR-NR　9型WXGAメモリ_ナビ(ナビレディ__)
+                 ;;1478876;ALPINE　BIG-X　X9ZAシリ_ズ;【タンク/ル_ミ__用】ALPINE　BIG-X　プレミアム　X9ZA-TR-PM　9型WXGAメモリ_ナビ(パノラミックビュ___);【タンク/ル_ミ__用】ALPINE　BIG-X　プレミアム　X9ZA-TR-PM　9型WXGAメモリ_ナビ(パノラミックビュ___)
+                 ;;1478875;ALPINE　BIG-X　X9Zシリ_ズ;【タンク/ル_ミ__用】ALPINE　BIG-X　プレミアム　X9Z-TR-NR　9型WXGAメモリ_ナビ(ナビレディ__);【タンク/ル_ミ__用】ALPINE　BIG-X　プレミアム　X9Z-TR-NR　9型WXGAメモリ_ナビ(ナビレディ__)
+                 ;;1478874;ALPINE　BIG-X　X9Zシリ_ズ;【タンク/ル_ミ__用】ALPINE　BIG-X　プレミアム　X9Z-TR-PM　9型WXGAメモリ_ナビ(パノラミックビュ___);【タンク/ル_ミ__用】ALPINE　BIG-X　プレミアム　X9Z-TR-PM　9型WXGAメモリ_ナビ(パノラミックビュ___)
+                 ;;1478872;ALPINE　BIG-X　X9Zシリ_ズ;【ノア(80系)_用】ALPINE　BIG-X　X9Z-NO　11型WXGAメモリ_ナビ;【ノア(80系)_用】ALPINE　BIG-X　X9Z-NO　11型WXGAメモリ_ナビ
+                 ;;1478885;ALPINE　BIG-X　X9Zシリ_ズ;【ハリア_(MC後)_用】ALPINE　BIG-X　X9Z-HA2　9型WXGAメモリ_ナビ;【ハリア_(MC後)_用】ALPINE　BIG-X　X9Z-HA2　9型WXGAメモリ_ナビ
+                 ;;1478867;ALPINE　BIG-X　X9Zシリ_ズ;【プリウス　G's_用】ALPINE　BIG-X　プレミアム　EX9Z-PR30-PB　9型WXGAメモリ_ナビ;【プリウス　G's_用】ALPINE　BIG-X　プレミアム　EX9Z-PR30-PB　9型WXGAメモリ_ナビ
+                 ;;1478866;ALPINE　BIG-X　X9Zシリ_ズ;【プリウス(30系)_用】ALPINE　BIG-X　プレミアム　EX9Z-PR30　9型WXGAメモリ_ナビ;【プリウス(30系)_用】ALPINE　BIG-X　プレミアム　EX9Z-PR30　9型WXGAメモリ_ナビ
+                 ;;1478879;ALPINE　BIG-X　X9Zシリ_ズ;【プリウス/プリウスPHV_用】ALPINE　BIG-X　プレミアム　X9Z-PR　9型WXGAメモリ_ナビ;【プリウス/プリウスPHV_用】ALPINE　BIG-X　プレミアム　X9Z-PR　9型WXGAメモリ_ナビ
+                 ;;1478863;ALPINE　BIG-X　X9Zシリ_ズ;【プリウスアルファ　G's_用】ALPINE　BIG-X　プレミアム　EX9Z-PRA2　9型WXGAメモリ_ナビ;【プリウスアルファ　G's_用】ALPINE　BIG-X　プレミアム　EX9Z-PRA2　9型WXGAメモリ_ナビ
+                 ;;1478868;ALPINE　BIG-X　X9Zシリ_ズ;【プリウスアルファ(MC前)】ALPINE　BIG-X　プレミアム　EX9Z-PRA　9型WXGAメモリ_ナビ;【プリウスアルファ(MC前)】ALPINE　BIG-X　プレミアム　EX9Z-PRA　9型WXGAメモリ_ナビ
+                 ;;1478883;ALPINE　BIG-X　X9Zシリ_ズ;【レガシィ アウトバック_用】ALPINE　BIG-X　プレミアム　X9Z-OUT　9型WXGAメモリ_ナビ;【レガシィ アウトバック_用】ALPINE　BIG-X　プレミアム　X9Z-OUT　9型WXGAメモリ_ナビ
+                 ;;1478884;ALPINE　BIG-X　X9Zシリ_ズ;ALPINE　BIG-X　X9Z　9型WXGAメモリ_ナビ;ALPINE　BIG-X　X9Z　9型WXGAメモリ_ナビ
+                 ;;1501234;ALPINE　BIG-X　X9Zシリ_ズ;ALPINE　BIGXシリ_ズ　 X9Z-CM 　9型カ_ナビ　カムリ_用;ALPINE　BIGXシリ_ズ　 X9Z-CM 　9型カ_ナビ　カムリ_用
+                 ;;1501248;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　 XF11Z-ES2　11型カ_ナビ　エスティマ_用;ALPINE　フロ_ティングビッグX11　 XF11Z-ES2　11型カ_ナビ　エスティマ_用
+                 ;;1501246;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　 XF11Z-PR-NR　11型カ_ナビ　プリウス_用;ALPINE　フロ_ティングビッグX11　 XF11Z-PR-NR　11型カ_ナビ　プリウス_用
+                 ;;1501253;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z　11型カ_ナビ;ALPINE　フロ_ティングビッグX11　XF11Z　11型カ_ナビ
+                 ;;1501247;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-CHR-NR　11型カ_ナビ　C-HR_用;ALPINE　フロ_ティングビッグX11　XF11Z-CHR-NR　11型カ_ナビ　C-HR_用
+                 ;;1501237;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-HI-NR　11型カ_ナビ　バックカメラ__　ハイエ_ス_用;ALPINE　フロ_ティングビッグX11　XF11Z-HI-NR　11型カ_ナビ　バックカメラ__　ハイエ_ス_用
+                 ;;1501245;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-LP2　11型カ_ナビ　ランドクル_ザ__プラド_用;ALPINE　フロ_ティングビッグX11　XF11Z-LP2　11型カ_ナビ　ランドクル_ザ__プラド_用
+                 ;;1501251;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-NB2-NR　11型カ_ナビ　N-BOX_用;ALPINE　フロ_ティングビッグX11　XF11Z-NB2-NR　11型カ_ナビ　N-BOX_用
+                 ;;1501241;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-RE-NR　11型カ_ナビ　バックカメラ__　レジアスエ_ス_用;ALPINE　フロ_ティングビッグX11　XF11Z-RE-NR　11型カ_ナビ　バックカメラ__　レジアスエ_ス_用
+                 ;;1501252;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-SI-NR　11型カ_ナビ　シエンタ_用;ALPINE　フロ_ティングビッグX11　XF11Z-SI-NR　11型カ_ナビ　シエンタ_用
+                 ;;1501249;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-VZ　11型カ_ナビ　ヴェゼル_用;ALPINE　フロ_ティングビッグX11　XF11Z-VZ　11型カ_ナビ　ヴェゼル_用
+                 ;;1501250;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-XT　11型カ_ナビ　エクストレイル_用;ALPINE　フロ_ティングビッグX11　XF11Z-XT　11型カ_ナビ　エクストレイル_用
+                 ;;1478862;ALPINE　BIG-X　EX9Zシリ_ズ;【ハリア_G's_用】ALPINE　BIG-X　プレミアム　EX9Z-HA　9型WXGAメモリ_ナビ;【ハリア_G's_用】ALPINE　BIG-X　プレミアム　EX9Z-HA　9型WXGAメモリ_ナビ
+                 ;;1478869;ALPINE　BIG-X　EX9Zシリ_ズ;【ジ_プ_ラングラ__用】ALPINE　BIG-X　プレミアム　EX9Z-WRA　9型WXGAメモリ_ナビ;【ジ_プ_ラングラ__用】ALPINE　BIG-X　プレミアム　EX9Z-WRA　9型WXGAメモリ_ナビ
+                 ;;1481998;ALPINE　BIG-X　EX10Zシリ_ズ;ALPINE　BIGXシリ_ズ　EX10Z-HA2　フルセグ10型カ_ナビ　ハリア__用;ALPINE　BIGXシリ_ズ　EX10Z-HA2　フルセグ10型カ_ナビ　ハリア__用
+                 ;;1478859;ALPINE　BIG-X　EX10Zシリ_ズ;ALPINE　EX10Z-ST2　BIGXプレミアムシリ_ズ　フルセグ10型WXGAカ_ナビ　ステップワゴン/ステップワゴンスパ_ダ_用;ALPINE　EX10Z-ST2　BIGXプレミアムシリ_ズ　フルセグ10型WXGAカ_ナビ　ステップワゴン/ステップワゴンスパ_ダ_用
+                 ;;1478861;ALPINE　BIG-X　X9Zシリ_ズ;ALPINE　X9Z-CHR　BIGXプレミアムシリ_ズ　フルセグ9型WXGAカ_ナビ　C-HR/C-HRハイブリッド_用;ALPINE　X9Z-CHR　BIGXプレミアムシリ_ズ　フルセグ9型WXGAカ_ナビ　C-HR/C-HRハイブリッド_用
+                 ;;1478860;ALPINE　BIG-X　X9Zシリ_ズ;ALPINE　X9Z-CHR-NR　BIGXプレミアムシリ_ズ　フルセグ9型WXGAカ_ナビ　メ_カ_オプションバックカメラ__　C-HR/C-HRハイブリッド_用;ALPINE　X9Z-CHR-NR　BIGXプレミアムシリ_ズ　フルセグ9型WXGAカ_ナビ　メ_カ_オプションバックカメラ__　C-HR/C-HRハイブリッド_用
+                 ;;1478870;ALPINE　BIG-X　EX9Zシリ_ズ;【ジ_プ_ラングラ__用】ALPINE　BIG-X　プレミアム　EX9Z-WRA-C2　9型WXGAメモリ_ナビ(バックビュ_カメラ同_);【ジ_プ_ラングラ__用】ALPINE　BIG-X　プレミアム　EX9Z-WRA-C2　9型WXGAメモリ_ナビ(バックビュ_カメラ同_)
+                 ;;1501235;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　BIGX11　 EX11Z-SE　11型カ_ナビ　ニッサン　セレナ_用（インテリジェント アラウンドビュ_モニタ___）;ALPINE　BIGX11　 EX11Z-SE　11型カ_ナビ　ニッサン　セレナ_用（インテリジェント アラウンドビュ_モニタ___）
+                 ;;1478856;ALPINE　BIG-X　EX10Zシリ_ズ;ALPINE　EX10Z-AV20　BIGXプレミアムシリ_ズ　フルセグ10型WXGAカ_ナビ　アルファ_ド(20系)/ヴェルファイア(20系)_用;ALPINE　EX10Z-AV20　BIGXプレミアムシリ_ズ　フルセグ10型WXGAカ_ナビ　アルファ_ド(20系)/ヴェルファイア(20系)_用
+                 ;;1478858;ALPINE　BIG-X　EX10Zシリ_ズ;"ALPINE　EX10Z-AV20-GO　BIGXプレミアムシリ_ズ　フルセグ10型WXGAカ_ナビ　アルファ_ド特_仕__""type　GOLD""""TYPE　GOLDII""/ヴェルファイア特_仕__""Golden　Eyes""""GOLDEN　EYESII""_用";"ALPINE　EX10Z-AV20-GO　BIGXプレミアムシリ_ズ　フルセグ10型WXGAカ_ナビ　アルファ_ド特_仕__""type　GOLD""""TYPE　GOLDII""/ヴェルファイア特_仕__""Golden　Eyes""""GOLDEN　EYESII""_用"
+                 ;;1478857;ALPINE　BIG-X　EX10Zシリ_ズ;ALPINE　EX10Z-AVH20　BIGXプレミアムシリ_ズ　フルセグ10型WXGAカ_ナビ　アルファ_ドハイブリッド(20系)/ヴェルファイアハイブリッド(20系)_用;ALPINE　EX10Z-AVH20　BIGXプレミアムシリ_ズ　フルセグ10型WXGAカ_ナビ　アルファ_ドハイブリッド(20系)/ヴェルファイアハイブリッド(20系)_用
+                 ;;1478852;ALPINE　BIG-X　EX11Zシリ_ズ;"ALPINE　EX11Z-AL　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　_用ビルトインカ_アロマ付属　アルファ_ド(30系)/アルファ_ドハイブリッド(30系)/アルファ_ド特_仕__""TYPE　BLACK""_用";"ALPINE　EX11Z-AL　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　_用ビルトインカ_アロマ付属　アルファ_ド(30系)/アルファ_ドハイブリッド(30系)/アルファ_ド特_仕__""TYPE　BLACK""_用"
+                 ;;1478855;ALPINE　BIG-X　EX11Zシリ_ズ;"ALPINE　EX11Z-EQ　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　エスクァイア/エスクァイアハイブリッド/エスクァイア特_仕__Gi""Black-Tailored""/エスクァイアハイブリッド特_仕__Gi""Black-Tailored""_用 ";"ALPINE　EX11Z-EQ　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　エスクァイア/エスクァイアハイブリッド/エスクァイア特_仕__Gi""Black-Tailored""/エスクァイアハイブリッド特_仕__Gi""Black-Tailored""_用 "
+                 ;;1478854;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-NO　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　ノア(80系)/ノアSi(80系)/ノアハイブリッド(80系)/ノアハイブリッドSi(80系)/ノアSi“G's”/ノアW×B(HV含む)_用;ALPINE　EX11Z-NO　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　ノア(80系)/ノアSi(80系)/ノアハイブリッド(80系)/ノアハイブリッドSi(80系)/ノアSi“G's”/ノアW×B(HV含む)_用
+                 ;;1478851;ALPINE　BIG-X　EX11Zシリ_ズ;"ALPINE　EX11Z-VE　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　_用ビルトインカ_アロマ付属　ヴェルファイア(30系)/ヴェルファイアハイブリッド(30系)/ヴェルファイア特_仕__""Golden　Eyes""_用";"ALPINE　EX11Z-VE　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　_用ビルトインカ_アロマ付属　ヴェルファイア(30系)/ヴェルファイアハイブリッド(30系)/ヴェルファイア特_仕__""Golden　Eyes""_用"
+                 ;;1478853;ALPINE　BIG-X　EX11Zシリ_ズ;"ALPINE　EX11Z-VO　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　ヴォクシ_(80系)/ヴォクシ_ハイブリッド(80系)/ヴォクシ_ZS(80系)/ヴォクシ_特_仕__ZS""煌""(80系)/ヴォクシ_G's_用";"ALPINE　EX11Z-VO　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　ヴォクシ_(80系)/ヴォクシ_ハイブリッド(80系)/ヴォクシ_ZS(80系)/ヴォクシ_特_仕__ZS""煌""(80系)/ヴォクシ_G's_用"
+                 ;;1501236;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　BIGX11　 EX11Z-SE-AM　11型カ_ナビ　ニッサン　セレナ_用（インテリジェント アラウンドビュ_モニタ_付_）;ALPINE　BIGX11　 EX11Z-SE-AM　11型カ_ナビ　ニッサン　セレナ_用（インテリジェント アラウンドビュ_モニタ_付_）
+                 ;;1478850;ALPINE　BIG-X　EX11Zシリ_ズ;"ALPINE　EX11Z-AL-LED　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　カ_モ_ションイルミ装_　_用ビルトインカ_アロマ付属　アルファ_ド(30系)/アルファ_ドハイブリッド(30系)/アルファ_ド特_仕__""TYPE　BLACK""_用";"ALPINE　EX11Z-AL-LED　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　カ_モ_ションイルミ装_　_用ビルトインカ_アロマ付属　アルファ_ド(30系)/アルファ_ドハイブリッド(30系)/アルファ_ド特_仕__""TYPE　BLACK""_用"
+                 ;;1478849;ALPINE　BIG-X　EX11Zシリ_ズ;"ALPINE　EX11Z-VE-LED　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　カ_モ_ションイルミ装_　_用ビルトインカ_アロマ付属　ヴェルファイア(30系)/ヴェルファイアハイブリッド(30系)/ヴェルファイア特_仕__""Golden　Eyes""_用";"ALPINE　EX11Z-VE-LED　BIGX11シリ_ズ　フルセグ11型WXGAカ_ナビ　カ_モ_ションイルミ装_　_用ビルトインカ_アロマ付属　ヴェルファイア(30系)/ヴェルファイアハイブリッド(30系)/ヴェルファイア特_仕__""Golden　Eyes""_用"
+                 ;;1501239;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-HI-SF3N　11型カ_ナビ　3カメラ_セ_フティパッケ_ジ　バックカメラ色：ブラック　ハイエ_ス_用;ALPINE　フロ_ティングビッグX11　XF11Z-HI-SF3N　11型カ_ナビ　3カメラ_セ_フティパッケ_ジ　バックカメラ色：ブラック　ハイエ_ス_用
+                 ;;1501238;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-HI-SF3N-NR　11型カ_ナビ　3カメラ_セ_フティパッケ_ジ　バックカメラ__　ハイエ_ス_用;ALPINE　フロ_ティングビッグX11　XF11Z-HI-SF3N-NR　11型カ_ナビ　3カメラ_セ_フティパッケ_ジ　バックカメラ__　ハイエ_ス_用
+                 ;;1501240;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-HI-SF3N-W　11型カ_ナビ　3カメラ_セ_フティパッケ_ジ　バックカメラ色：ホワイト　ハイエ_ス_用;ALPINE　フロ_ティングビッグX11　XF11Z-HI-SF3N-W　11型カ_ナビ　3カメラ_セ_フティパッケ_ジ　バックカメラ色：ホワイト　ハイエ_ス_用
+                 ;;1501243;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-RE-SF3N　11型カ_ナビ　3カメラ_セ_フティパッケ_ジ　バックカメラ色：ブラック　レジアスエ_ス_用;ALPINE　フロ_ティングビッグX11　XF11Z-RE-SF3N　11型カ_ナビ　3カメラ_セ_フティパッケ_ジ　バックカメラ色：ブラック　レジアスエ_ス_用
+                 ;;1501242;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-RE-SF3N-NR　11型カ_ナビ　3カメラ_セ_フティパッケ_ジ　バックカメラ__　レジアスエ_ス_用;ALPINE　フロ_ティングビッグX11　XF11Z-RE-SF3N-NR　11型カ_ナビ　3カメラ_セ_フティパッケ_ジ　バックカメラ__　レジアスエ_ス_用
+                 ;;1501244;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　フロ_ティングビッグX11　XF11Z-RE-SF3N-W　11型カ_ナビ　3カメラ_セ_フティパッケ_ジ　バックカメラ色：ホワイト　レジアスエ_ス_用;ALPINE　フロ_ティングビッグX11　XF11Z-RE-SF3N-W　11型カ_ナビ　3カメラ_セ_フティパッケ_ジ　バックカメラ色：ホワイト　レジアスエ_ス_用
+                 ;;1524850;ALPINE　BIG-X　EX11Zシリ_ズ;11型カ_ナビ　ビックX11　EX11Z-SE-E-AM　日_　セレナ　e_POWER_用;11型カ_ナビ　ビックX11　EX11Z-SE-E-AM　日_　セレナ　e_POWER_用
+                 ;;1538235;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　CX-5_用11型　フロ_ティングビッグX　11　XF11Z-CX5　マツダ;ALPINE　CX-5_用11型　フロ_ティングビッグX　11　XF11Z-CX5　マツダ
+                 ;;1538236;ALPINE　BIG-X　XF11Zシリ_ズ;ALPINE　CX-8_用11型　フロ_ティングビッグX　11　XF11Z-CX8　マツダ;ALPINE　CX-8_用11型　フロ_ティングビッグX　11　XF11Z-CX8　マツダ
+                 ;;1478847;ALPINE　BIG-X　EX10Zシリ_ズ;ALPINE　PKG-R-EX10Z-AV20　10型リプレイスセット　バックビュ_カメラ付属(ブラック)　アルファ_ド/ヴェルファイア20系　メ_カ_オプションナビ付__用;ALPINE　PKG-R-EX10Z-AV20　10型リプレイスセット　バックビュ_カメラ付属(ブラック)　アルファ_ド/ヴェルファイア20系　メ_カ_オプションナビ付__用
+                 ;;1498135;ALPINE　BIG-X　EX10Zシリ_ズ;ALPINE　EX10Z-HA2-SF3　10型画面BIGX　3カメラ_セ_フティパッケ_ジ　フロントカメラ:フロントグリル取付タイプ　バックカメラ:ブラック　トヨタ　ハリア__用;ALPINE　EX10Z-HA2-SF3　10型画面BIGX　3カメラ_セ_フティパッケ_ジ　フロントカメラ:フロントグリル取付タイプ　バックカメラ:ブラック　トヨタ　ハリア__用
+                 ;;1498136;ALPINE　BIG-X　EX10Zシリ_ズ;ALPINE　EX10Z-HA2-SF3-W　10型画面BIGX　3カメラ_セ_フティパッケ_ジ　フロントカメラ:フロントグリル取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　ハリア__用;ALPINE　EX10Z-HA2-SF3-W　10型画面BIGX　3カメラ_セ_フティパッケ_ジ　フロントカメラ:フロントグリル取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　ハリア__用
+                 ;;1493411;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-AL-SF3　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:グリル取付タイプ　バックカメラ:ブラック　トヨタ　アルファ_ド_用;ALPINE　EX11Z-AL-SF3　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:グリル取付タイプ　バックカメラ:ブラック　トヨタ　アルファ_ド_用
+                 ;;1493413;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-AL-SF3B　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:グリル取付タイプ　バックカメラ:ブラック　トヨタ　アルファ_ド_用;ALPINE　EX11Z-AL-SF3B　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:グリル取付タイプ　バックカメラ:ブラック　トヨタ　アルファ_ド_用
+                 ;;1493414;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-AL-SF3B-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:グリル取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　アルファ_ド_用;ALPINE　EX11Z-AL-SF3B-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:グリル取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　アルファ_ド_用
+                 ;;1493415;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-AL-SF3N　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:ブラック　トヨタ　アルファ_ド_用;ALPINE　EX11Z-AL-SF3N　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:ブラック　トヨタ　アルファ_ド_用
+                 ;;1493416;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-AL-SF3N-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　アルファ_ド_用;ALPINE　EX11Z-AL-SF3N-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　アルファ_ド_用
+                 ;;1493412;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-AL-SF3-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:グリル取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　アルファ_ド_用;ALPINE　EX11Z-AL-SF3-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:グリル取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　アルファ_ド_用
+                 ;;1493421;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-EQ-SF3N　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:ブラック　トヨタ　エスクァイア_用;ALPINE　EX11Z-EQ-SF3N　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:ブラック　トヨタ　エスクァイア_用
+                 ;;1493419;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-NO-SF3N　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:ブラック　トヨタ　ノア_用;ALPINE　EX11Z-NO-SF3N　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:ブラック　トヨタ　ノア_用
+                 ;;1493420;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-NO-SF3N-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　ノア_用;ALPINE　EX11Z-NO-SF3N-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　ノア_用
+                 ;;1493407;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-VE-SF3　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:グリル取付タイプ　バックカメラ:ブラック　トヨタ　ヴェルファイア_用;ALPINE　EX11Z-VE-SF3　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:グリル取付タイプ　バックカメラ:ブラック　トヨタ　ヴェルファイア_用
+                 ;;1493409;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-VE-SF3N　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:ブラック　トヨタ　ヴェルファイア_用;ALPINE　EX11Z-VE-SF3N　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:ブラック　トヨタ　ヴェルファイア_用
+                 ;;1493410;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-VE-SF3N-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　ヴェルファイア_用;ALPINE　EX11Z-VE-SF3N-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　ヴェルファイア_用
+                 ;;1493408;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-VE-SF3-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:グリル取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　ヴェルファイア_用;ALPINE　EX11Z-VE-SF3-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:グリル取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　ヴェルファイア_用
+                 ;;1493417;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-VO-SF3N　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:ブラック　トヨタ　ヴォクシ__用;ALPINE　EX11Z-VO-SF3N　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:ブラック　トヨタ　ヴォクシ__用
+                 ;;1493418;ALPINE　BIG-X　EX11Zシリ_ズ;ALPINE　EX11Z-VO-SF3N-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　ヴォクシ__用;ALPINE　EX11Z-VO-SF3N-W　BIGX11　3カメラ_セ_フティパッケ_ジ　フロントカメラ:ナンバ_プレ_ト取付タイプ　バックカメラ:パ_ルホワイト　トヨタ　ヴォクシ__用
+                 ;;1478848;ALPINE　BIG-X　EX10Zシリ_ズ;ALPINE　PKG-R-EX10Z-AV20-W　10型リプレイスセット　バックビュ_カメラ付属(パ_ルホワイト)　アルファ_ド/ヴェルファイア20系　メ_カ_オプションナビ付__用;ALPINE　PKG-R-EX10Z-AV20-W　10型リプレイスセット　バックビュ_カメラ付属(パ_ルホワイト)　アルファ_ド/ヴェルファイア20系　メ_カ_オプションナビ付__用
+                 ;;1493422;ALPINE　BIG-X　EX11Zシリ_ズ;______ EX11Z-EQ-SF3N-W;______ EX11Z-EQ-SF3N-W
+                 ;;1547730;ECLIPSE AVNシリ_ズ;ECLIPSE　AVN-R9　メモリ_ナビゲ_ション;ECLIPSE　AVN-R9　メモリ_ナビゲ_ション
+                 ;;1547729;ECLIPSE AVNシリ_ズ;ECLIPSE　AVN-R9W　メモリ_ナビゲ_ション;ECLIPSE　AVN-R9W　メモリ_ナビゲ_ション
+                 ;;1546714;carrozzeria _ナビシリ_ズ;carrozzeria　_ナビ　AVIC-RW302　7V型ワイドVGAワンセグTV/DVD-V/CD/SD/チュ_ナ__DSP AV一体型メモリ_ナビゲ_ション;carrozzeria　_ナビ　AVIC-RW302　7V型ワイドVGAワンセグTV/DVD-V/CD/SD/チュ_ナ__DSP AV一体型メモリ_ナビゲ_ション
+                 ;;1546715;carrozzeria _ナビシリ_ズ;carrozzeria　_ナビ　AVIC-RZ302　7V型ワイドVGAワンセグTV/DVD-V/CD/SD/チュ_ナ__DSP AV一体型メモリ_ナビゲ_ション;carrozzeria　_ナビ　AVIC-RZ302　7V型ワイドVGAワンセグTV/DVD-V/CD/SD/チュ_ナ__DSP AV一体型メモリ_ナビゲ_ション
+                 ;;1493616;carrozzeria _ナビシリ_ズ;carrozzeria　_ナビ　AVIC-RW900-R　16GBフルセグ内_7V型メモリ_ナビ;carrozzeria　_ナビ　AVIC-RW900-R　16GBフルセグ内_7V型メモリ_ナビ
+                 ;;1522000;carrozzeria サイバ_ナビシリ_ズ;carrozzeria　AVIC-CL902　8型XGAメモリ-32GB　AV一体型ナビゲ_ション;carrozzeria　AVIC-CL902　8型XGAメモリ-32GB　AV一体型ナビゲ_ション
+                 ;;1521999;carrozzeria サイバ_ナビシリ_ズ;carrozzeria　AVIC-CL902-M　8型XGAメモリ-32GB　AV一体型ナビゲ_ション（マルチドライブアシストユニット付）;carrozzeria　AVIC-CL902-M　8型XGAメモリ-32GB　AV一体型ナビゲ_ション（マルチドライブアシストユニット付）
+                 ;;1522010;carrozzeria サイバ_ナビシリ_ズ;carrozzeria　AVIC-CE902ES　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　トヨタ　エスクァイア;carrozzeria　AVIC-CE902ES　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　トヨタ　エスクァイア
+                 ;;1522009;carrozzeria サイバ_ナビシリ_ズ;carrozzeria　AVIC-CE902NO　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　トヨタ　ノア;carrozzeria　AVIC-CE902NO　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　トヨタ　ノア
+                 ;;1522005;carrozzeria サイバ_ナビシリ_ズ;carrozzeria　AVIC-CE902SE　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　日_　セレナ;carrozzeria　AVIC-CE902SE　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　日_　セレナ
+                 ;;1522011;carrozzeria サイバ_ナビシリ_ズ;carrozzeria　AVIC-CE902ST　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　ホンダ　ステップワゴン;carrozzeria　AVIC-CE902ST　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　ホンダ　ステップワゴン
+                 ;;1522008;carrozzeria サイバ_ナビシリ_ズ;carrozzeria　AVIC-CE902VO　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　トヨタ　ヴォクシ_;carrozzeria　AVIC-CE902VO　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　トヨタ　ヴォクシ_
+                 ;;1522006;carrozzeria サイバ_ナビシリ_ズ;carrozzeria　AVIC-CE902AL　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　トヨタ　アルファ_ド;carrozzeria　AVIC-CE902AL　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　トヨタ　アルファ_ド
+                 ;;1522007;carrozzeria サイバ_ナビシリ_ズ;carrozzeria　AVIC-CE902VE　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　トヨタ　ヴェルファイア;carrozzeria　AVIC-CE902VE　10V型ワイドXGA地上デジタル_AV一体型メモリ_ナビゲ_ション　トヨタ　ヴェルファイア
+
+#
+INSERT_UPDATE Product;$catalogVersion;code[unique=true];name[lang=$lang];summary[lang=$lang];description[lang=$lang];$approved;
+                        ;;g9501700110334;オートバックス AUTOBACS Maxrun EVERROAD 145/80R13 75S （タイヤ1本）;オートバックス AUTOBACS Maxrun EVERROAD 145/80R13 75S （タイヤ1本）;オートバックス AUTOBACS Maxrun EVERROAD 145/80R13 75S （タイヤ1本;;
+                        ;;00400092;クムホ KUMHO ecoSENSE SE11 185/70R14 88S （タイヤ1本）;クムホ KUMHO ecoSENSE SE11 185/70R14 88S （タイヤ1本）;クムホ KUMHO ecoSENSE SE11 185/70R14 88S （タイヤ1本）;;
+                        ;;00437548;ミシュラン MICHELIN ENERGY SAVER+ 185/70R14 88T （タイヤ1本）;ミシュラン MICHELIN ENERGY SAVER+ 185/70R14 88T （タイヤ1本）;ミシュラン MICHELIN ENERGY SAVER+ 185/70R14 88T （タイヤ1本）;;
+                        ;;00400098;VITOUR FORMULA X 165/55R15（タイヤ1本）;VITOUR FORMULA X 165/55R15（タイヤ1本）;VITOUR FORMULA X 165/55R15（タイヤ1本）;;
+                        ;;g9501700110573;ミシュラン MICHELIN ENERGY SAVER 165/55R15 75V （タイヤ1本）;ミシュラン MICHELIN ENERGY SAVER 165/55R15 75V （タイヤ1本）;ミシュラン MICHELIN ENERGY SAVER 165/55R15 75V （タイヤ1本）;;
+                        ;;00031458;ピレリ PIRELLI Cinturato P1 VERDE 165/55R15 75V （タイヤ1本）;ピレリ PIRELLI Cinturato P1 VERDE 165/55R15 75V （タイヤ1本）;ピレリ PIRELLI Cinturato P1 VERDE 165/55R15 75V （タイヤ1本）;;
+                        ;;00121111;オートバックス　North　Trek　N3i　155/65R14　75Q　タイヤ・ホイール4本セット;オートバックス　North　Trek　N3i　155/65R14　75Q　タイヤ・ホイール4本セット;オートバックス　North　Trek　N3i　155/65R14　75Q　タイヤ・ホイール4本セット;;
+                        ;;g9501810019324;【14インtireチ　スタッドレス】155/65R14　オートバックス　North Trek N3i　＆　LEBEN LH　(タイヤホイール4本セット);【14インチ　スタッドレス】155/65R14　オートバックス　North Trek N3i　＆　LEBEN LH　(タイヤホイール4本セット);【14インチ　スタッドレス】155/65R14　オートバックス　North Trek N3i　＆　LEBEN LH　(タイヤホイール4本セット);;
+                        ;;00157916;P ICEA+ 225/65R17 102Q　タイヤ・ホイール4本セット;P ICEA+ 225/65R17 102Q　タイヤ・ホイール4本セット;P ICEA+ 225/65R17 102Q　タイヤ・ホイール4本セット;;
+                        ;;g9501700017738;エクストレイル（T32型）、CX-5、エスクード等用【17インチ冬タイヤ】ピレリ　225/65R17 102Q（お得なタイヤ・ホイール4本セット）【タイヤ2017年製】;エクストレイル（T32型）、CX-5、エスクード等用【17インチ冬タイヤ】ピレリ　225/65R17 102Q（お得なタイヤ・ホイール4本セット）【タイヤ2017年製】;エクストレイル（T32型）、CX-5、エスクード等用【17インチ冬タイヤ】ピレリ　225/65R17 102Q（お得なタイヤ・ホイール4本セット）【タイヤ2017年製】;;
+                        ;;01163090;AUTOBACS QUALITY ●AQ. スクープ　0W20/SN/4L　鉱物油;AUTOBACS QUALITY ●AQ. スクープ　0W20/SN/4L　鉱物油;AUTOBACS QUALITY ●AQ. スクープ　0W20/SN/4L　鉱物油;;
+                        ;;01163093;AUTOBACS QUALITY ●AVANTE　5W30/SN/4L　部分合成油;AUTOBACS QUALITY ●AVANTE　5W30/SN/4L　部分合成油;AUTOBACS QUALITY ●AVANTE　5W30/SN/4L　部分合成油;;
+                        ;;g4957902026060;DENSO　車載用プラズマクラスターイオン発生機;DENSO　車載用プラズマクラスターイオン発生機;DENSO　車載用プラズマクラスターイオン発生機;;
+

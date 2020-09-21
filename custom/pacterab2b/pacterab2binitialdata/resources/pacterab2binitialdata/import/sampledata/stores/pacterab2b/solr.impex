@@ -1,0 +1,1039 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for SOLR Configuration
+
+# Macros / Replacement Parameter definitions
+$prefix=pacterab2b
+$classificationCatalog=pacterab2bClassification
+$contentCatalog=pacterab2ContentCatalog
+$catalogVersions=catalogVersions(catalog(id),version);
+$solrIndexedType=$prefixProductType
+$classSystemVersion=systemVersion(catalog(id[default='$classificationCatalog']),version[default='1.0'])
+$classCatalogVersion=catalogVersion(catalog(id[default='$classificationCatalog']),version[default='1.0'])
+$classAttribute=classificationAttribute(code,$classSystemVersion)
+$classClass=classificationClass(code,$classCatalogVersion)
+$classAttributeAssignment=classAttributeAssignment($classClass,$classAttribute,$classSystemVersion)
+$contentCatalogVersion=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalogName]),CatalogVersion.version[default=Staged])[default=$contentCatalogName:Staged]
+$productCatalog=pacterab2bProductCatalog
+$productCatalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+
+$serverConfigName=$prefixSolrServerConfig
+$indexConfigName=$prefixSolrIndexConfig
+$searchConfigName=$prefixPageSize
+$facetSearchConfigName=$prefixIndex
+$facetSearchConfigDescription=pactera Solr Index
+$indexBaseSite=$prefix
+$indexLanguages=en,ja
+$indexCurrencies=JPY
+$priceRangeJPY=$prefixPriceRangeJPY
+$priceRangeUSD=$prefixPriceRangeUSD
+$searchIndexNamePrefix=$prefix
+
+INSERT_UPDATE SolrIndexedType;identifier[unique=true];type(code);variant;sorts(&sortRefID)
+                             ;$solrIndexedType;Product;false;sortRef1,sortRef2,sortRef3,sortRef4,sortRef5,sortRef6,sortRef7,sortRef8
+
+INSERT_UPDATE SolrFacetSearchConfig;name[unique=true];description;indexNamePrefix;languages(isocode);currencies(isocode);solrServerConfig(name);solrSearchConfig(description);solrIndexConfig(name);solrIndexedTypes(identifier);enabledLanguageFallbackMechanism;$catalogVersions
+                                   ;$facetSearchConfigName;$facetSearchConfigDescription;$searchIndexNamePrefix;$indexLanguages;$indexCurrencies;Default;Default;Default;$solrIndexedType;true;$productCatalog:Online,$productCatalog:Staged
+
+UPDATE BaseSite;uid[unique=true];solrFacetSearchConfiguration(name);
+               ;$indexBaseSite;$facetSearchConfigName;10,20,30,40
+
+INSERT_UPDATE SolrSearchQueryTemplate ; name[unique=true] ; indexedType(identifier)[unique=true] ; ftsQueryBuilder             ; group ; groupProperty(name, solrIndexedType(identifier))[unique=true] ; enableHighlighting[default=true]
+                                      ; DEFAULT           ; $solrIndexedType                     ; defaultFreeTextQueryBuilder ; true  ; code:$solrIndexedType                              ;
+
+# Define price range set
+INSERT_UPDATE SolrValueRangeSet;name[unique=true];qualifier;type;solrValueRanges(&rangeValueRefID)
+                               ;$priceRangeJPY;JPY;double;rangeRefJPY1,rangeRefJPY2,rangeRefJPY3,rangeRefJPY4,rangeRefJPY5,rangeRefJPY6,rangeRefJPY7,rangeRefJPY8,rangeRefJPY9,rangeRefJPY10,rangeRefJPY11,rangeRefJPY12,rangeRefJPY13,rangeRefJPY14,rangeRefJPY15,rangeRefJPY16,rangeRefJPY17,rangeRefJPY18,rangeRefJPY19,rangeRefJPY20,rangeRefJPY21,rangeRefJPY22,rangeRefJPY23,rangeRefJPY24,rangeRefJPY25,rangeRefJPY26,rangeRefJPY27,rangeRefJPY28
+
+# Define price ranges
+INSERT_UPDATE SolrValueRange;&rangeValueRefID;solrValueRangeSet(name)[unique=true];name[unique=true];from;to
+
+                            ;rangeRefJPY1;$priceRangeJPY;0円~999円;0;999
+                            ;rangeRefJPY2;$priceRangeJPY;1,000円~1,999円;1000;1999
+                            ;rangeRefJPY3;$priceRangeJPY;2,000円~2,999円;2000;2999
+                            ;rangeRefJPY4;$priceRangeJPY;3,000円~3,999円;3000;3999
+                            ;rangeRefJPY5;$priceRangeJPY;4,000円~4,999円;4000;4999
+                            ;rangeRefJPY6;$priceRangeJPY;5,000円~5,999円;5000;5999
+                            ;rangeRefJPY7;$priceRangeJPY;6,000円~6,999円;6000;6999
+                            ;rangeRefJPY8;$priceRangeJPY;7,000円~7,999円;7000;7999
+                            ;rangeRefJPY9;$priceRangeJPY;8,000円~8,999円;8000;8999
+                            ;rangeRefJPY10;$priceRangeJPY;9,000円~9,999円;9000;9999
+                            ;rangeRefJPY11;$priceRangeJPY;10,000円~19,999円;10000;19999
+                            ;rangeRefJPY12;$priceRangeJPY;20,000円~29,999円;20000;29999
+                            ;rangeRefJPY13;$priceRangeJPY;30,000円~39,999円;30000;39999
+                            ;rangeRefJPY14;$priceRangeJPY;40,000円~49,999円;40000;49999
+                            ;rangeRefJPY15;$priceRangeJPY;50,000円~59,999円;50000;59999
+                            ;rangeRefJPY16;$priceRangeJPY;60,000円~69,999円;60000;69999
+                            ;rangeRefJPY17;$priceRangeJPY;70,000円~79,999円;70000;79999
+                            ;rangeRefJPY18;$priceRangeJPY;80,000円~89,999円;80000;89999
+                            ;rangeRefJPY19;$priceRangeJPY;90,000円~99,999円;90000;99999
+                            ;rangeRefJPY20;$priceRangeJPY;100,000円~199,999円;100000;199999
+                            ;rangeRefJPY21;$priceRangeJPY;200,000円~299,999円;200000;299999
+                            ;rangeRefJPY22;$priceRangeJPY;300,000円~399,999円;300000;399999
+                            ;rangeRefJPY23;$priceRangeJPY;400,000円~499,999円;400000;499999
+                            ;rangeRefJPY24;$priceRangeJPY;500,000円~599,999円;500000;599999
+                            ;rangeRefJPY25;$priceRangeJPY;600,000円~699,999円;600000;699999
+                            ;rangeRefJPY26;$priceRangeJPY;700,000円~799,999円;700000;799999
+                            ;rangeRefJPY27;$priceRangeJPY;800,000円~899,999円;800000;899999
+                            ;rangeRefJPY28;$priceRangeJPY;900,000円~999,999円;900000;999999
+
+# Non-facet properties
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;valueProviderParameter;ftsPhraseQuery[default=false];ftsPhraseQueryBoost;ftsQuery[default=false];ftsQueryBoost;ftsFuzzyQuery[default=false];ftsFuzzyQueryBoost;ftsWildcardQuery[default=false];ftsWildcardQueryType(code)[default=POSTFIX];ftsWildcardQueryBoost;ftsWildcardQueryMinTermLength
+                                 ;$solrIndexedType; code                   ;string ;            ;    ;    ;    ;true;true;springELValueProvider;code;    ;   ;true;90 ;    ;  ;true;POSTFIX;75;3
+                                 ;$solrIndexedType; name                   ;text   ;sortabletext;    ;true;    ;true;true;springELValueProvider;getName(#lang);true;100;true;50 ;true;20;    ;   ;  ;
+                                 ;$solrIndexedType; summary                ;text   ;            ;    ;true;    ;    ;    ;;    ;true;10 ;true;    ;true;    ;   ;  ;
+#                                 ;$solrIndexedType; manufacturerName       ;text   ;            ;    ;    ;    ;true;true;;;true;80 ;true;40 ;true;20;    ;   ;  ;
+#                                 ;$solrIndexedType; manufacturerAID        ;string ;            ;    ;    ;    ;    ;    ;;;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType; ean                    ;text ;  sortabletext;    ;    ;    ;true;true;springELValueProvider;ean;    ;   ;true;30;    ;  ;true;POSTFIX;50;6
+                                 ;$solrIndexedType; priceValue             ;double ;            ;true;    ;    ;    ;    ;productPriceValueProvider;
+#                                 ;$solrIndexedType; keywords               ;text   ;            ;    ;true;    ;true;true;productKeywordsValueProvider;;true;40 ;true;20 ;true;10;    ;   ;  ;
+                                 ;$solrIndexedType; reviewAvgRating        ;double ;            ;    ;true;    ;    ;    ;productReviewAverageRatingValueProvider;
+                                 ;$solrIndexedType; numberOfReviews        ;long ;            ;    ;true;    ;    ;    ;productNumberOfReviewsValueProvider;
+                                 ;$solrIndexedType; img-515Wx515H          ;string ;            ;    ;    ;    ;    ;    ;image515ValueProvider;
+                                 ;$solrIndexedType; img-300Wx300H          ;string ;            ;    ;    ;    ;    ;    ;image300ValueProvider;
+                                 ;$solrIndexedType; img-96Wx96H            ;string ;            ;    ;    ;    ;    ;    ;image96ValueProvider;
+                                 ;$solrIndexedType; img-65Wx65H            ;string ;            ;    ;    ;    ;    ;    ;image65ValueProvider;
+                                 ;$solrIndexedType; img-30Wx30H            ;string ;            ;    ;    ;    ;    ;    ;image30ValueProvider;
+                                 ;$solrIndexedType; url                    ;string ;            ;    ;true;    ;    ;    ;productUrlValueProvider;
+#                                 ;$solrIndexedType; primaryPromotionCode   ;string ;            ;    ;    ;    ;    ;    ;promotionCodeValueProvider;
+#                                 ;$solrIndexedType; primaryPromotionBanner ;string ;            ;    ;    ;    ;    ;    ;promotionImageValueProvider;
+                                 ;$solrIndexedType; stockLevelStatus       ;string ;            ;    ;    ;    ;    ;    ;productStockLevelStatusValueProvider;
+                                 ;$solrIndexedType; isNewRelease           ;boolean;            ;    ;    ;    ;    ;    ;      ;
+                                 ;$solrIndexedType; isRecommend            ;boolean;            ;    ;    ;    ;    ;    ;      ;
+                                 ;$solrIndexedType; isSpecialPrice       ;boolean;            ;    ;    ;    ;    ;    ;      ;
+                                 ;$solrIndexedType; isClearance          ;boolean;            ;    ;    ;    ;    ;           ;
+                                 ;$solrIndexedType; isNewProduct           ;boolean;            ;    ;    ;    ;    ;    ;      ;
+                                 ;$solrIndexedType; isReservation           ;boolean;            ;    ;    ;    ;    ;    ;      ;
+                                 ;$solrIndexedType; isMoutingPossible           ;boolean;            ;    ;    ;    ;    ;    ;      ;
+                                 ;$solrIndexedType; approvalStatus       ;string ;            ;    ;    ;    ;    ;    ;solrEnumValueResolver;
+#                                 ;$solrIndexedType; ec_daibri_mei           ;text;sortabletext;    ;true;    ;    ;    ;;    ;true; ;true;    ;true;    ;   ;  ;
+#                                 ;$solrIndexedType; ec_chubri_mei           ;text;sortabletext;    ;true;    ;    ;    ;;    ;true; ;true;    ;true;    ;   ;  ;
+#                                 ;$solrIndexedType; ec_shobri_mei           ;text;sortabletext;    ;true;    ;    ;    ;;    ;true; ;true;    ;true;    ;   ;  ;
+
+# Category fields
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);localized[default=false];multiValue[default=true];categoryField[default=true];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;ftsPhraseQuery[default=false];ftsPhraseQueryBoost;ftsQuery[default=false];ftsQueryBoost;ftsFuzzyQuery[default=false];ftsFuzzyQueryBoost
+                                 ;$solrIndexedType; categoryName     ;text   ;true;;;;;$prefixCategoryNameValueProvider;true;40;true;20;true;10
+# Category facets
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);multiValue[default=true];facet[default=true];facetType(code);facetSort(code);priority;visible;categoryField[default=true];fieldValueProvider;facetDisplayNameProvider;topValuesProvider
+                                 ;$solrIndexedType; allCategories    ;string;;;Refine        ;Alpha;-9999;false;;categoryCodeValueProvider;
+                                 ;$solrIndexedType; categoryPath     ;string;;;Refine        ;Alpha;-9999;false;false;categoryPathValueProvider;
+                                 ;$solrIndexedType; category         ;string;;;Refine        ;Alpha; 6000;true;;$prefixCategoryCodeValueProvider;categoryFacetDisplayNameProvider;defaultTopValuesProvider
+
+# Other facet properties
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];facet[default=true];facetType(code);facetSort(code);priority;visible;useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;valueProviderParameter;facetDisplayNameProvider;customFacetSortProvider;topValuesProvider;rangeSets(name)
+                                 ;$solrIndexedType; price            ;double ;    ;true ;     ;     ;     ;MultiSelectOr ;Alpha ; 11000;true;     ;     ;productPriceValueProvider    ;1.1;;;defaultTopValuesProvider;$priceRangeJPY
+                                 ;$solrIndexedType; style            ;string ; ;     ;true;    ; ;MultiSelectOr ;Alpha ;-1   ;false;    ;    ;optionalModelPropertyFieldValueProvider;;                                             ;                             ;
+                                 ;$solrIndexedType; swatchColors     ;string ; ;     ;    ;true; ;MultiSelectOr ;Alpha ; 2500;true;    ;    ;colorFacetValueProvider                ;;colorFacetDisplayNameProvider                ;                             ;
+                                 ;$solrIndexedType; size             ;string ; ;     ;true;    ; ;MultiSelectOr ;Custom; 2000;true;    ;    ;optionalModelPropertyFieldValueProvider;;                                             ;sizeAttributeSortProvider    ;
+                                 ;$solrIndexedType; allPromotions    ;string ;    ;     ;     ;true ;     ;MultiSelectOr ;Alpha ; 0   ;false;     ;     ;promotionCodeValueProvider  ;;promotionFacetDisplayNameProvider;                         ;
+                                 ;$solrIndexedType; availableInStores;string ;    ;     ;     ;true ;     ;MultiSelectOr ;Custom;10000;true;     ;     ;productStoreStockValueProvider;;$prefixPointOfServiceFacetDisplayNameProvider;distanceAttributeSortProvider
+
+# Create the queries that will be used to extract data for Solr
+INSERT_UPDATE SolrIndexerQuery;solrIndexedType(identifier)[unique=true];identifier[unique=true];type(code);injectCurrentDate[default=true];injectCurrentTime[default=true];injectLastIndexTime[default=true];query;user(uid)
+                              ;$solrIndexedType;$solrIndexedType-fullQuery;full;;;false;"SELECT {PK} FROM {Product} ";anonymous
+                              ;$solrIndexedType;$solrIndexedType-updateQuery;update;;;;"SELECT {p:PK} FROM {Product AS p LEFT JOIN CustomerReview AS cr ON {cr:product}={p:PK}} WHERE ({p:modifiedtime} >= ?lastIndexTime OR {cr:modifiedtime} >= ?lastIndexTime) ";admin
+# Define the available sorts
+INSERT_UPDATE SolrSort;&sortRefID;indexedType(identifier)[unique=true];code[unique=true];useBoost
+                      ;sortRef1;$solrIndexedType;relevance;true
+                      ;sortRef2;$solrIndexedType;newArrival;true
+                      ;sortRef3;$solrIndexedType;recommend;true
+                      ;sortRef4;$solrIndexedType;topRated;true
+                      ;sortRef5;$solrIndexedType;name-asc;false
+                      ;sortRef6;$solrIndexedType;name-desc;false
+                      ;sortRef7;$solrIndexedType;price-asc;false
+                      ;sortRef8;$solrIndexedType;price-desc;false
+
+# Define the sort fields
+INSERT_UPDATE SolrSortField;sort(indexedType(identifier),code)[unique=true];fieldName[unique=true];ascending[unique=true]
+                           ;$solrIndexedType:relevance;score;false
+                           ;$solrIndexedType:newArrival;isNewProduct;false
+                           ;$solrIndexedType:recommend;isRecommend;false
+#                           ;$solrIndexedType:topRated;reviewAvgRating;false
+                           ;$solrIndexedType:topRated;numberOfReviews;false
+                           ;$solrIndexedType:name-asc;name;true
+                           ;$solrIndexedType:name-desc;name;false
+                           ;$solrIndexedType:price-asc;priceValue;true
+                           ;$solrIndexedType:price-desc;priceValue;false
+                           ;$solrIndexedType:moutingPossible;isMoutingPossible;false
+
+#INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];facet[default=false];facetType(code);facetSort(code);priority;visible;fieldValueProvider;customFacetSortProvider;rangeSets(name);$classAttributeAssignment
+#                                 ;ab7ProductType;Brand,1000;string;; ;    ; ;true;MultiSelectOr;Custom;1000;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Brand,1000::::;
+#                                 ;ab7ProductType;Series,1001;string;; ;    ; ;true;MultiSelectOr;Custom;1000;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Series,1001::::;
+#                                 ;ab7ProductType;Monitor age,1002;string;; ;    ; ;true;MultiSelectOr;Custom;80;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Monitor age,1002::::;
+#                                 ;ab7ProductType;Manufacturer,1003;string;; ;    ; ;true;MultiSelectOr;Custom;98;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Manufacturer,1003::::;
+#                                 ;ab7ProductType;Bluetooth,1004;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Bluetooth,1004::::;
+#                                 ;ab7ProductType;Camera,1006;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Camera,1006::::;
+
+
+#INSERT_UPDATE SolrSearchQueryProperty;indexedProperty(name, solrIndexedType(identifier))[unique=true];facet[default=true];facetType(code);priority;facetDisplayNameProvider;facetSortProvider;facetTopValuesProvider;includeInResponse[default=true];searchQueryTemplate(name, indexedType(identifier))[unique=true][default=DEFAULT:$solrIndexedType]
+#                                     ;Brand,1000:$solrIndexedType         ;  ;MultiSelectOr ;1000; ; ;;;
+#                                     ;Series,1001:$solrIndexedType        ;  ;Refine          ;1000; ;                       ;;;
+#                                     ;Monitor age,1002:$solrIndexedType ;  ;MultiSelectOr ;80; ;
+#                                     ;Manufacturer,1003:$solrIndexedType ;  ;Refine ;98; ;
+#                                     ;Bluetooth,1004:$solrIndexedType;  ;MultiSelectOr ;90; ; ;;;
+#                                     ;Camera,1006:$solrIndexedType;  ;MultiSelectOr ;90; ; ;;;
+
+INSERT_UPDATE SolrSearchQueryProperty;indexedProperty(name, solrIndexedType(identifier))[unique=true];facet[default=true];facetType(code);priority;facetDisplayNameProvider;facetSortProvider;facetTopValuesProvider;includeInResponse[default=true];searchQueryTemplate(name, indexedType(identifier))[unique=true][default=DEFAULT:$solrIndexedType]
+                                     ;price:$solrIndexedType										 ;					 ;MultiSelectOr	 ;9999999	  ;						   						;				 			  ;defaultTopValuesProvider	;;
+
+INSERT_UPDATE SolrSearchQueryProperty ; indexedProperty(name, solrIndexedType(identifier))[unique=true] ; searchQueryTemplate(name, indexedType(identifier))[unique=true][default=DEFAULT:$solrIndexedType] ; facet ; ftsPhraseQuery[default=false] ; ftsPhraseQueryBoost ; ftsQuery[default=false] ; ftsQueryBoost ; ftsFuzzyQuery[default=false] ; ftsFuzzyQueryBoost ; ftsWildcardQuery[default=false] ; ftsWildcardQueryType(code)[default=POSTFIX] ; ftsWildcardQueryBoost ; ftsWildcardQueryMinTermLength ; includeInResponse[default=true] ; useForHighlighting[default=false]
+#                                      ; itemtype:$solrIndexedType                                       ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+                                      ; code:$solrIndexedType                                           ;                                                                                                   ;       ; TRUE                          ; 90                  ;                         ;               ; TRUE                         ;                    ;                                 ; POSTFIX                                     ; 45                    ; 3                             ;                                 ;
+                                      ; name:$solrIndexedType                                           ;                                                                                                   ;       ; TRUE                          ; 100                 ; TRUE                    ; 50            ; TRUE                         ; 25                 ;                                 ;                                             ;                       ;                               ;                                 ; true
+                                      ; description:$solrIndexedType                                    ;                                                                                                   ;       ; TRUE                          ; 50                  ; TRUE                    ;               ; TRUE                         ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+                                      ; summary:$solrIndexedType                                        ;                                                                                                   ;       ; TRUE                          ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ; true
+#                                      ; manufacturerName:$solrIndexedType                               ;                                                                                                   ;       ; TRUE                          ; 80                  ; TRUE                    ; 40            ; TRUE                         ; 20                 ;                                 ;                                             ;                       ;                               ;                                 ;
+#                                      ; manufacturerAID:$solrIndexedType                                ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+                                      ; ean:$solrIndexedType                                            ;                                                                                                   ;       ; TRUE                          ; 100                 ;                         ;               ; TRUE                         ;                    ;                                 ; POSTFIX                                     ; 50                    ; 3                             ;                                 ;
+                                      ; priceValue:$solrIndexedType                                     ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+#                                      ; keywords:$solrIndexedType                                       ;                                                                                                   ;       ; TRUE                          ; 40                  ; TRUE                    ; 20            ; TRUE                         ; 10                 ;                                 ;                                             ;                       ;                               ;                                 ;
+                                      ; reviewAvgRating:$solrIndexedType                                ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+                                      ; numberOfReviews:$solrIndexedType                                ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+                                      ; img-515Wx515H:$solrIndexedType                                  ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+                                      ; img-300Wx300H:$solrIndexedType                                  ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+                                      ; img-96Wx96H:$solrIndexedType                                    ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+                                      ; img-65Wx65H:$solrIndexedType                                    ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+                                      ; img-30Wx30H:$solrIndexedType                                    ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+                                      ; url:$solrIndexedType                                            ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+#                                      ; primaryPromotionCode:$solrIndexedType                           ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+#                                      ; primaryPromotionBanner:$solrIndexedType                         ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+                                      ; stockLevelStatus:$solrIndexedType                               ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+#                                      ; inStockFlag:$solrIndexedType                                    ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+#                                      ; pickupAvailableFlag:$solrIndexedType                            ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+#                                      ; configurable:$solrIndexedType                                   ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+#                                      ; baseProductCode:$solrIndexedType                                ;                                                                                                   ;       ;                               ;                     ;                         ;               ;                              ;                    ;                                 ;                                             ;                       ;                               ;                                 ;
+
+                                      ; mkr_brand_solr:$solrIndexedType                                           ;                                                                                                   ;       ; TRUE                          ; 100                 ; TRUE                    ; 50            ; TRUE                         ; 25                 ;                                 ;                                             ;                       ;                               ;                                 ; true
+                                      ; ec_shobri_mei_solr:$solrIndexedType                                           ;                                                                                                   ;       ; TRUE                          ; 100                 ; TRUE                    ; 50            ; TRUE                         ; 25                 ;                                 ;                                             ;                       ;                               ;                                 ; true
+
+
+######################################## accroding to pim data import to db manually###################################################################
+
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];facet[default=false];facetType(code);facetSort(code);priority;visible;fieldValueProvider;customFacetSortProvider;rangeSets(name);$classAttributeAssignment;
+#;ab7ProductType;jan_cd;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::jan_cd::::;
+
+                                 ;ab7ProductType;ec_daibri_mei;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::ec_daibri_mei::::;
+                                 ;ab7ProductType;ec_chubri_mei;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::ec_chubri_mei::::;
+                                 ;ab7ProductType;ec_shobri_mei;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::ec_shobri_mei::::;
+                                 ;ab7ProductType;cdt;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::cdt::::;
+                                 ;ab7ProductType;mkr_brand;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::mkr_brand::::;
+                                 ;ab7ProductType;product_type;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::product_type::::;
+
+                                 ;ab7ProductType;v_fragrance;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::v_fragrance::::;
+                                 ;ab7ProductType;v_clr;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::v_clr::::;
+                                 ;ab7ProductType;v_size;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::v_size::::;
+                                 ;ab7ProductType;kouchin_komikomi;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::kouchin_komikomi::::;
+
+
+
+#;ab7ProductType;hole_su;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::hole_su::::;
+#;ab7ProductType;pcd;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::pcd::::;
+#;ab7ProductType;ktrg_clr_mei;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::ktrg_clr_mei::::;
+
+#;ab7ProductType;tnpn_siz_jyr;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;900001:::tnpn_siz_jyr::::;
+#;ab7ProductType;tnpn_siz_oky;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;900001:::tnpn_siz_oky::::;
+#;ab7ProductType;tnpn_siz_ykh;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;900001:::tnpn_siz_ykh::::;
+#;ab7ProductType;tnpn_siz_hig;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;900001:::tnpn_siz_hig::::;
+#wheel start
+                                 ;ab7ProductType;wheel_mkr_brand_wheel;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000003:::wheel_mkr_brand_wheel::::;
+                                 ;ab7ProductType;tire_nikei_wheel;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000003:::tire_nikei_wheel::::;
+                                 ;ab7ProductType;rim_haba_wheel;string;; ;    ; ;true;Refine;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000003:::rim_haba_wheel::::;
+                                 ;ab7ProductType;inset_wheel;string;; ;    ; ;true;Refine;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000003:::inset_wheel::::;
+#wheel end
+
+
+                                 ;ab7ProductType;ec_szn_shohin_kbn_tire;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000001:::ec_szn_shohin_kbn_tire::::;
+                                 ;ab7ProductType;ec_tire_sbt_tire;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000001:::ec_tire_sbt_tire::::;
+                                 ;ab7ProductType;tire_haba_tire;string;; ;    ; ;true;Refine;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000001:::tire_haba_tire::::;
+                                 ;ab7ProductType;tire_hnpi_rt_tire;string;; ;    ; ;true;Refine;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000001:::tire_hnpi_rt_tire::::;
+                                 ;ab7ProductType;tire_nikei_tire;string;; ;    ; ;true;Refine;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000001:::tire_nikei_tire::::;
+                                 ;ab7ProductType;load_indx_tire;string;; ;    ; ;true;Refine;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000001:::load_indx_tire::::;
+                                 ;ab7ProductType;skd_kigo_tire;string;; ;    ; ;true;Refine;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000001:::skd_kigo_tire::::;
+                                 ;ab7ProductType;krgri_teik_keisu_tire;string;; ;    ; ;true;Refine;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000001:::krgri_teik_keisu_tire::::;
+                                 ;ab7ProductType;wetgrip_sino_tire;string;; ;    ; ;true;Refine;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000001:::wetgrip_sino_tire::::;
+                                 ;ab7ProductType;oil_nendo_engine_oil;string;; ;    ; ;true;Refine;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000300:::oil_nendo_engine_oil::::;
+                                 ;ab7ProductType;oil_sebn_kbn_engine_oil;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000300:::oil_sebn_kbn_engine_oil::::;
+                                 ;ab7ProductType;capa_engine_oil;string;; ;    ; ;true;Refine;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000300:::capa_engine_oil::::;
+                                 ;ab7ProductType;clean_diesel_taio_engine_oil;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000300:::clean_diesel_taio_engine_oil::::;
+#;ab7ProductType;api_kikaku_engine_oil;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000300:::api_kikaku_engine_oil::::;
+
+                                 ;ab7ProductType;car_navi_monitor_size_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::car_navi_monitor_size_car_navigation::::;
+#;ab7ProductType;tv_tuner_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::tv_tuner_car_navigation::::;
+#;ab7ProductType;bluetooth_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::bluetooth_car_navigation::::;
+#;ab7ProductType;ipod_iphone_taio_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::ipod_iphone_taio_car_navigation::::;
+#;ab7ProductType;android_auto_taio_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::android_auto_taio_car_navigation::::;
+#;ab7ProductType;apple_car_play_taio_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::apple_car_play_taio_car_navigation::::;
+#;ab7ProductType;blu_ray_disk_taiou_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::blu_ray_disk_taiou_car_navigation::::;
+#;ab7ProductType;dvd_douga_model_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::dvd_douga_model_car_navigation::::;
+#;ab7ProductType;cd_recording_taiou_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::cd_recording_taiou_car_navigation::::;
+#;ab7ProductType;muryo_tizu_kousin_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::muryo_tizu_kousin_car_navigation::::;
+#;ab7ProductType;vics_wide_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::vics_wide_car_navigation::::;
+#;ab7ProductType;gyro_sensor_3d_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::gyro_sensor_3d_car_navigation::::;
+#;ab7ProductType;etc_20_taio_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::etc_20_taio_car_navigation::::;
+#;ab7ProductType;navi_tv_2gamen_hyouji_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::navi_tv_2gamen_hyouji_car_navigation::::;
+#;ab7ProductType;rear_seat_dokuritsu_av_taio_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::rear_seat_dokuritsu_av_taio_car_navigation::::;
+#;ab7ProductType;high_res_taio_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::high_res_taio_car_navigation::::;
+#;ab7ProductType;time_alignment_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::time_alignment_car_navigation::::;
+#;ab7ProductType;usb_setsuzoku_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::usb_setsuzoku_car_navigation::::;
+#;ab7ProductType;hdmi_io_taio_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::hdmi_io_taio_car_navigation::::;
+#;ab7ProductType;steering_remocon_sousa_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::steering_remocon_sousa_car_navigation::::;
+#;ab7ProductType;wifi_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::wifi_car_navigation::::;
+#;ab7ProductType;map_furikku_pinchi_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::map_furikku_pinchi_car_navigation::::;
+#;ab7ProductType;naizou_denchi_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::naizou_denchi_car_navigation::::;
+#;ab7ProductType;v_taio_24_car_navigation;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000100:::v_taio_24_car_navigation::::;
+                                 ;ab7ProductType;densou_youhin_knrn_diy_repairpaint;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000307:::densou_youhin_knrn_diy_repairpaint::::;
+                                 ;ab7ProductType;hosyu_youhin_knrn_diy_repairpaint;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000307:::hosyu_youhin_knrn_diy_repairpaint::::;
+                                 ;ab7ProductType;haisendome_tape_knrn_diy_repairpaint;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000307:::haisendome_tape_knrn_diy_repairpaint::::;
+                                 ;ab7ProductType;air_con_knrn_diy_repairpaint;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000307:::air_con_knrn_diy_repairpaint::::;
+                                 ;ab7ProductType;paint_youhin_knrn_diy_repairpaint;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000307:::paint_youhin_knrn_diy_repairpaint::::;
+                                 ;ab7ProductType;car_monitor_size_car_monitor;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000117:::car_monitor_size_car_monitor::::;
+
+                                 ;ab7ProductType;syasai_mntr_torituke_type_car_monitor;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000117:::syasai_mntr_torituke_type_car_monitor::::;
+#;ab7ProductType;car_monitor_clr_car_monitor;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000117:::car_monitor_clr_car_monitor::::;
+
+
+#;ab7ProductType;ekisyou_gashitsu_car_monitor;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000117:::ekisyou_gashitsu_car_monitor::::;
+#;ab7ProductType;ar_corting_taio_car_monitor;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000117:::ar_corting_taio_car_monitor::::;
+#;ab7ProductType;plasma_cluster_car_monitor;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000117:::plasma_cluster_car_monitor::::;
+#;ab7ProductType;led_light_car_monitor;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000117:::led_light_car_monitor::::;
+#;ab7ProductType;hdmi_io_taio_car_monitor;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000117:::hdmi_io_taio_car_monitor::::;
+#;ab7ProductType;rca_ip_car_monitor;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000117:::rca_ip_car_monitor::::;
+                                 ;ab7ProductType;arta_goods_sports_goods;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000509:::arta_goods_sports_goods::::;
+#;ab7ProductType;v_yoryo_setto_suu_sports_goods;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000509:::v_yoryo_setto_suu_sports_goods::::;
+
+                                 ;ab7ProductType;drv_rcdr_camera_type_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::drv_rcdr_camera_type_drive_recorder::::;
+#;ab7ProductType;drv_rcdr_torituke_type_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::drv_rcdr_torituke_type_drive_recorder::::;
+
+#;ab7ProductType;drv_rcdr_monitor_size_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::drv_rcdr_monitor_size_drive_recorder::::;
+                                 ;ab7ProductType;gashitsu_full_hd_over_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::gashitsu_full_hd_over_drive_recorder::::;
+                                 ;ab7ProductType;gazou_hosei_hdr_wdr_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::gazou_hosei_hdr_wdr_drive_recorder::::;
+                                 ;ab7ProductType;g_sensor_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::g_sensor_drive_recorder::::;
+                                 ;ab7ProductType;gps_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::gps_drive_recorder::::;
+                                 ;ab7ProductType;tyuusya_kanshi_taiou_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::tyuusya_kanshi_taiou_drive_recorder::::;
+#;ab7ProductType;wifi_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::wifi_drive_recorder::::;
+                                 ;ab7ProductType;azn_unten_shien_kinou_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::azn_unten_shien_kinou_drive_recorder::::;
+                                 ;ab7ProductType;kougu_knrn_emergencysafety_garage;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000308:::kougu_knrn_emergencysafety_garage::::;
+                                 ;ab7ProductType;seibi_youhin_knrn_emergencysafety_garage;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000308:::seibi_youhin_knrn_emergencysafety_garage::::;
+                                 ;ab7ProductType;azn_youhin_knrn_emergencysafety_garage;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000308:::azn_youhin_knrn_emergencysafety_garage::::;
+                                 ;ab7ProductType;tire_oukyu_knrn_emergencysafety_garage;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000308:::tire_oukyu_knrn_emergencysafety_garage::::;
+                                 ;ab7ProductType;base_carrier_base_carrier;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000502:::base_carrier_base_carrier::::;
+#;ab7ProductType;cho_sokumen_nagasa_battery;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000302:::cho_sokumen_nagasa_battery::::;
+                                 ;ab7ProductType;iss_taio_battery;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000302:::iss_taio_battery::::;
+#;ab7ProductType;kbn_kigo_battery;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000302:::kbn_kigo_battery::::;
+                                 ;ab7ProductType;nirinsha_battery_battery;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000302:::nirinsha_battery_battery::::;
+#;ab7ProductType;sino_rank_battery;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000302:::sino_rank_battery::::;
+#;ab7ProductType;tanshi_ichi_battery;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000302:::tanshi_ichi_battery::::;
+#;ab7ProductType;led_singouki_taio_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::led_singouki_taio_drive_recorder::::;
+#;ab7ProductType;suihei_gakaku_108_over_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::suihei_gakaku_108_over_drive_recorder::::;
+#;ab7ProductType;suityoku_gakaku_60_over_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::suityoku_gakaku_60_over_drive_recorder::::;
+#;ab7ProductType;bkup_dngn_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::bkup_dngn_drive_recorder::::;
+#;ab7ProductType;fuzoku_sd_card_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::fuzoku_sd_card_drive_recorder::::;
+#;ab7ProductType;v_taio_24_drive_recorder;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000102:::v_taio_24_drive_recorder::::;
+                                 ;ab7ProductType;bucket_type_sports_seat;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000200:::bucket_type_sports_seat::::;
+
+
+#;ab7ProductType;v_setti_basyo_type_sports_seat;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000200:::v_setti_basyo_type_sports_seat::::;
+
+                                 ;ab7ProductType;bycycle_motorcycle_bicycle_motorcycle;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000510:::bycycle_motorcycle_bicycle_motorcycle::::;
+
+
+                                 ;ab7ProductType;main_unit_type_car_audio;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000108:::main_unit_type_car_audio::::;
+
+#;ab7ProductType;bluetooth_car_audio;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000108:::bluetooth_car_audio::::;
+
+
+                                 ;ab7ProductType;etc_type_etc_vehicle_unit;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000106:::etc_type_etc_vehicle_unit::::;
+
+#;ab7ProductType;car_navi_rendou_etc_vehicle_unit;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000106:::car_navi_rendou_etc_vehicle_unit::::;
+#;ab7ProductType;new_security_taio_etc_vehicle_unit;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000106:::new_security_taio_etc_vehicle_unit::::;
+#;ab7ProductType;v_body_clr_car_shampoo;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000400:::v_body_clr_car_shampoo::::;
+#;ab7ProductType;v_yoryo_setto_suu_car_shampoo;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000400:::v_yoryo_setto_suu_car_shampoo::::;
+                                 ;ab7ProductType;car_tlv_monitor_size_car_television;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000118:::car_tlv_monitor_size_car_television::::;
+#;ab7ProductType;v_body_clr_car_wax;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000401:::v_body_clr_car_wax::::;
+#;ab7ProductType;v_yoryo_setto_suu_car_wax;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000401:::v_yoryo_setto_suu_car_wax::::;
+                                 ;ab7ProductType;carrier_attachment_carrier_attachment;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000504:::carrier_attachment_carrier_attachment::::;
+                                 ;ab7ProductType;speaker_size_coaxial_loudspeaker;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000109:::speaker_size_coaxial_loudspeaker::::;
+
+
+                                 ;ab7ProductType;rdr_tnck_camera_type_radar_detector;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000104:::rdr_tnck_camera_type_radar_detector::::;
+
+
+                                 ;ab7ProductType;rdr_tnck_monitor_size_radar_detector;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000104:::rdr_tnck_monitor_size_radar_detector::::;
+#;ab7ProductType;gps_radar_detector;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000104:::gps_radar_detector::::;
+#;ab7ProductType;g_sensor_radar_detector;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000104:::g_sensor_radar_detector::::;
+#;ab7ProductType;jairo_sensor_taio_radar_detector;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000104:::jairo_sensor_taio_radar_detector::::;
+#;ab7ProductType;zone30_taio_radar_detector;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000104:::zone30_taio_radar_detector::::;
+#;ab7ProductType;odbii_taio_radar_detector;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000104:::odbii_taio_radar_detector::::;
+#;ab7ProductType;data_upd_muryou_taio_radar_detector;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000104:::data_upd_muryou_taio_radar_detector::::;
+#;ab7ProductType;hikari_obisu_rcv_taio_radar_detector;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000104:::hikari_obisu_rcv_taio_radar_detector::::;
+                                 ;ab7ProductType;engine_oil_knrn_engine_oil_option;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000301:::engine_oil_knrn_engine_oil_option::::;
+                                 ;ab7ProductType;filter_brakepad_car_mkr_cd_filter_brakepad;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000306:::filter_brakepad_car_mkr_cd_filter_brakepad::::;
+                                 ;ab7ProductType;drone_drone_related;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000501:::drone_drone_related::::;
+                                 ;ab7ProductType;mounting_kit_mkr_cd_mounting_kit;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000128:::mounting_kit_mkr_cd_mounting_kit::::;
+                                 ;ab7ProductType;haisen_kit_mounting_kit;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000128:::haisen_kit_mounting_kit::::;
+                                 ;ab7ProductType;mounting_kit_mounting_kit;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000128:::mounting_kit_mounting_kit::::;
+                                 ;ab7ProductType;dosu_bulb_light;string;; ;    ; ;true;Refine;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000304:::dosu_bulb_light::::;
+                                 ;ab7ProductType;harogen_hosyu_bulb_knrn_bulb_light;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000304:::harogen_hosyu_bulb_knrn_bulb_light::::;
+                                 ;ab7ProductType;led_knrn_bulb_light;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000304:::led_knrn_bulb_light::::;
+                                 ;ab7ProductType;hid_knrn_bulb_light;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000304:::hid_knrn_bulb_light::::;
+                                 ;ab7ProductType;hojyo_headlamp_knrn_bulb_light;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000304:::hojyo_headlamp_knrn_bulb_light::::;
+                                 ;ab7ProductType;drone_drone;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000500:::drone_drone::::;
+                                 ;ab7ProductType;indoor_indoor;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000508:::indoor_indoor::::;
+#;ab7ProductType;v_yoryo_setto_suu_indoor;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000508:::v_yoryo_setto_suu_indoor::::;
+                                 ;ab7ProductType;keyholder_cover_car_mkr_cd_keyholder_cover;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000418:::keyholder_cover_car_mkr_cd_keyholder_cover::::;
+
+
+                                 ;ab7ProductType;mark_type_beginner_sign;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000423:::mark_type_beginner_sign::::;
+
+
+                                 ;ab7ProductType;nut_form_wheel_nut_adapter;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000005:::nut_form_wheel_nut_adapter::::;
+                                 ;ab7ProductType;outdoor_leisure_outdoor;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000507:::outdoor_leisure_outdoor::::;
+
+
+                                 ;ab7ProductType;rain_wiper_brade_type_wiper;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000305:::rain_wiper_brade_type_wiper::::;
+                                 ;ab7ProductType;rain_wiper_spare_gm_type_wiper;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000305:::rain_wiper_spare_gm_type_wiper::::;
+                                 ;ab7ProductType;snow_wiper_brade_type_wiper;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000305:::snow_wiper_brade_type_wiper::::;
+                                 ;ab7ProductType;snow_wiper_spare_gm_type_wiper;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000305:::snow_wiper_spare_gm_type_wiper::::;
+
+
+
+                                 ;ab7ProductType;speaker_size_separate_speaker;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000110:::speaker_size_separate_speaker::::;
+                                 ;ab7ProductType;tijo_digital_tuner_terrestrial_digital_tuner;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000120:::tijo_digital_tuner_terrestrial_digital_tuner::::;
+                                 ;ab7ProductType;tv_kit_television_kit;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000119:::tv_kit_television_kit::::;
+
+                                 ;ab7ProductType;wheel_cover_clr_wheel_cover;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000006:::wheel_cover_clr_wheel_cover::::;
+
+
+                                 ;ab7ProductType;wheel_cover_inch_wheel_cover;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000006:::wheel_cover_inch_wheel_cover::::;
+                                 ;ab7ProductType;winter_car_care_goods_winter_car_supplies;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000409:::winter_car_care_goods_winter_car_supplies::::;
+
+
+                                 ;ab7ProductType;mkr_brand_solr;text;sortabletext; ;    ; ;false;;;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::mkr_brand::::;
+                                 ;ab7ProductType;ec_shobri_mei_solr;text;sortabletext; ;    ; ;false;;;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::ec_shobri_mei::::;
+
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];displayName[lang=ja];displayName[lang=en]
+#                                ;ab7ProductType;jan_cd;JANコード;Jan code;
+
+#;ab7ProductType;ec_daibri_mei;EC大分類名称;EC Major classification name;
+#;ab7ProductType;ec_chubri_mei;EC中分類名称;EC Medium classification name;
+#;ab7ProductType;ec_shobri_mei;EC小分類名称;EC small classification name;
+
+                                 ;ab7ProductType;ec_daibri_mei;メインカテゴリー;EC Major classification name;
+                                 ;ab7ProductType;ec_chubri_mei;サブカテゴリー;EC Medium classification name;
+                                 ;ab7ProductType;ec_shobri_mei;詳細カテゴリー;EC small classification name;
+                                 ;ab7ProductType;cdt;商品の状態;product condition;
+
+                                 ;ab7ProductType;mkr_brand;メーカー名;manifacture・brand;
+                                 ;ab7ProductType;product_type;タイプ;type;
+
+                                 ;ab7ProductType;v_fragrance;香り;fragrance;
+                                 ;ab7ProductType;v_clr;カラー;color;
+                                 ;ab7ProductType;v_size;サイズ;size;
+                                 ;ab7ProductType;kouchin_komikomi;工賃コミコミ;kouchin komikomi;
+
+
+
+#;ab7ProductType;hole_su;ホール数;Number of holes;
+#;ab7ProductType;pcd;ＰＣＤ;pcd;
+#;ab7ProductType;ktrg_clr_mei;カタログ色名;catalog color name;
+
+
+#                                ;ab7ProductType;tnpn_siz_jyr;単品サイズ（重量）;single size(heavy weight);
+#                                ;ab7ProductType;tnpn_siz_oky;単品サイズ（奥行）;single size (depth);
+#                                ;ab7ProductType;tnpn_siz_ykh;単品サイズ（横幅）;single size (width);
+#                                ;ab7ProductType;tnpn_siz_hig;単品サイズ（高さ）;single size (height);
+#wheel start
+                                 ;ab7ProductType;wheel_mkr_brand_wheel;メーカー・ブランド;;
+                                 ;ab7ProductType;tire_nikei_wheel;ホイールインチ;tire Inner diameter;
+                                 ;ab7ProductType;rim_haba_wheel;リム幅;rim width;
+                                 ;ab7ProductType;inset_wheel;インセット;inset;
+#wheel end
+                                 ;ab7ProductType;ec_szn_shohin_kbn_tire;季節商品区分;seasonal product division;
+                                 ;ab7ProductType;ec_tire_sbt_tire;タイヤ種別;tire type;
+                                 ;ab7ProductType;tire_haba_tire;タイヤ幅;tire width;
+                                 ;ab7ProductType;tire_hnpi_rt_tire;タイヤ扁平率;tire flatness;
+                                 ;ab7ProductType;tire_nikei_tire;タイヤインチ;tire Inner diameter;
+                                 ;ab7ProductType;load_indx_tire;ロードインデックス;Load index;
+                                 ;ab7ProductType;skd_kigo_tire;速度記号;Speed ​​symbol;
+                                 ;ab7ProductType;krgri_teik_keisu_tire;転がり抵抗係数;Rolling resistance coefficient;
+                                 ;ab7ProductType;wetgrip_sino_tire;ウエットグリップ性能;Wet grip performance;
+                                 ;ab7ProductType;oil_nendo_engine_oil;オイル粘度;oil viscosity;
+                                 ;ab7ProductType;oil_sebn_kbn_engine_oil;オイル成分区分;oil Component classification;
+                                 ;ab7ProductType;capa_engine_oil;荷姿・容量;packing・capacity;
+                                 ;ab7ProductType;clean_diesel_taio_engine_oil;クリーンディーゼル乗用車対応;;
+#;ab7ProductType;api_kikaku_engine_oil;API規格;;
+
+                                 ;ab7ProductType;car_navi_monitor_size_car_navigation;【カーナビ】モニターサイズ;monitor size;
+#;ab7ProductType;tv_tuner_car_navigation;TVチューナー;TV tunner;
+#;ab7ProductType;bluetooth_car_navigation;Bluetooth;Bluetooth;
+#;ab7ProductType;ipod_iphone_taio_car_navigation;iPod/iPhone対応;for iPod/iPhone;
+#;ab7ProductType;android_auto_taio_car_navigation;アンドロイドオート対応;Android auto Correspondence;
+#;ab7ProductType;apple_car_play_taio_car_navigation;アップルカープレイ対応;Apple car play Correspondence;
+#;ab7ProductType;blu_ray_disk_taiou_car_navigation;Blu-ray動画再生;Blu-ray video play;
+#;ab7ProductType;dvd_douga_model_car_navigation;DVD動画再生;DVD video play;
+#;ab7ProductType;cd_recording_taiou_car_navigation;CD録音;CD recording;
+#;ab7ProductType;muryo_tizu_kousin_car_navigation;無料地図更新;free map updates;
+#;ab7ProductType;vics_wide_car_navigation;VICS WIDE;VICS WIDE;
+#;ab7ProductType;gyro_sensor_3d_car_navigation;３Dジャイロ;3D gyro;
+#;ab7ProductType;etc_20_taio_car_navigation;ETC2.0対応;ETC2.0 Correspondence;
+#;ab7ProductType;navi_tv_2gamen_hyouji_car_navigation;ナビ/TV 2画面表示;Navi/TV2 Screen display;
+#;ab7ProductType;rear_seat_dokuritsu_av_taio_car_navigation;後席独立AVソース対応;Rear seat AV Source correspondense;
+#;ab7ProductType;high_res_taio_car_navigation;ハイレゾ対応;high resolution Correspondence;
+#;ab7ProductType;time_alignment_car_navigation;タイムアライメント;Time alignment;
+#;ab7ProductType;usb_setsuzoku_car_navigation;USB接続;USB Connection;
+#;ab7ProductType;hdmi_io_taio_car_navigation;HDMI入/出力対応;HDMI/Output support;
+#;ab7ProductType;steering_remocon_sousa_car_navigation;ステアリングリモコン操作;Steering Remote controller operation;
+#;ab7ProductType;wifi_car_navigation;Wifi;Wifi;
+#;ab7ProductType;map_furikku_pinchi_car_navigation;地図フリック/ピンチ;map flick/pinch;
+#;ab7ProductType;naizou_denchi_car_navigation;内蔵電池;Built-in battery;
+#;ab7ProductType;v_taio_24_car_navigation;24V対応;24 Correspondence;
+                                 ;ab7ProductType;densou_youhin_knrn_diy_repairpaint;電装用品関連;;
+                                 ;ab7ProductType;hosyu_youhin_knrn_diy_repairpaint;補修用品関連;;
+                                 ;ab7ProductType;haisendome_tape_knrn_diy_repairpaint;配線止め・テープ関連;;
+                                 ;ab7ProductType;air_con_knrn_diy_repairpaint;エアコン関連;;
+                                 ;ab7ProductType;paint_youhin_knrn_diy_repairpaint;ペイント用品関連;;
+                                 ;ab7ProductType;car_monitor_size_car_monitor;【車載モニター】モニターサイズ;monitor size;
+
+                                 ;ab7ProductType;syasai_mntr_torituke_type_car_monitor;取付タイプ;installation type;
+#;ab7ProductType;car_monitor_clr_car_monitor;カラー;color;
+
+
+#;ab7ProductType;ekisyou_gashitsu_car_monitor;液晶画質;LCD quality;
+#;ab7ProductType;ar_corting_taio_car_monitor;ARコーティング対応;AR coding correspondense;
+#;ab7ProductType;plasma_cluster_car_monitor;プラズマクラスター;plasma cluster;
+#;ab7ProductType;led_light_car_monitor;LEDライト;LED light;
+#;ab7ProductType;hdmi_io_taio_car_monitor;HDMI入/出力対応;HDMI/Output support;
+#;ab7ProductType;rca_ip_car_monitor;RCA入力;RCA input;
+                                 ;ab7ProductType;arta_goods_sports_goods;ARTAグッズ;ARTA items;
+#;ab7ProductType;v_yoryo_setto_suu_sports_goods;容量・セット数;sports goods;
+
+                                 ;ab7ProductType;drv_rcdr_camera_type_drive_recorder;【ドライブレコーダー】カメラタイプ;camera type;
+#;ab7ProductType;drv_rcdr_torituke_type_drive_recorder;取付タイプ;installation type;
+
+#;ab7ProductType;drv_rcdr_monitor_size_drive_recorder;モニターサイズ;monitor size;
+                                 ;ab7ProductType;gashitsu_full_hd_over_drive_recorder;画質：フルHD以上;resolution  : more than full HD;
+                                 ;ab7ProductType;gazou_hosei_hdr_wdr_drive_recorder;画像補正：HDR/WDR機能;Image correction:HDR/WDR function;
+                                 ;ab7ProductType;g_sensor_drive_recorder;Gセンサー;G sensor;
+                                 ;ab7ProductType;gps_drive_recorder;GPS;GPS;
+                                 ;ab7ProductType;tyuusya_kanshi_taiou_drive_recorder;駐車監視機能;Parking monitoring function;
+#;ab7ProductType;wifi_drive_recorder;Wifi;Wifi;
+                                 ;ab7ProductType;azn_unten_shien_kinou_drive_recorder;安全運転支援機能;safty drive surpport function;
+                                 ;ab7ProductType;kougu_knrn_emergencysafety_garage;工具関連;;
+                                 ;ab7ProductType;seibi_youhin_knrn_emergencysafety_garage;整備用品関連;;
+                                 ;ab7ProductType;azn_youhin_knrn_emergencysafety_garage;安全用品関連;;
+                                 ;ab7ProductType;tire_oukyu_knrn_emergencysafety_garage;タイヤ応急関連;;
+                                 ;ab7ProductType;base_carrier_base_carrier;ベースキャリア;base  carrier;
+#;ab7ProductType;cho_sokumen_nagasa_battery;長側面の長さ;;
+                                 ;ab7ProductType;iss_taio_battery;アイドリングストップ(ISS)車対応;;
+#;ab7ProductType;kbn_kigo_battery;区分記号;;
+                                 ;ab7ProductType;nirinsha_battery_battery;二輪車用バッテリー;;
+#;ab7ProductType;sino_rank_battery;性能ランク;;
+#;ab7ProductType;tanshi_ichi_battery;端子の位置;;
+#;ab7ProductType;led_singouki_taio_drive_recorder;LED信号機対応;LED traffic lights correspondense;
+#;ab7ProductType;suihei_gakaku_108_over_drive_recorder;水平画角108°以上;Horizontal angle of view over 108°;
+#;ab7ProductType;suityoku_gakaku_60_over_drive_recorder;垂直画角60°以上;Vertical angle of view over 60°;
+#;ab7ProductType;bkup_dngn_drive_recorder;バックアップ電源;backup power source;
+#;ab7ProductType;fuzoku_sd_card_drive_recorder;付属SDカード;Attached SD card;
+#;ab7ProductType;v_taio_24_drive_recorder;24V対応;24 Correspondence;
+                                 ;ab7ProductType;bucket_type_sports_seat;バケットタイプ;;
+
+#;ab7ProductType;v_setti_basyo_type_sports_seat;設置場所・タイプ;;
+
+                                 ;ab7ProductType;bycycle_motorcycle_bicycle_motorcycle;自転車・バイク;bicycle・mortor cycle;
+
+                                 ;ab7ProductType;main_unit_type_car_audio;メインユニットタイプ;main unit type;
+
+#;ab7ProductType;bluetooth_car_audio;Bluetooth;bluetooth;
+
+
+                                 ;ab7ProductType;etc_type_etc_vehicle_unit;ETCタイプ;ETC type;
+
+#;ab7ProductType;car_navi_rendou_etc_vehicle_unit;カーナビ連動;car navi Interlocking;
+#;ab7ProductType;new_security_taio_etc_vehicle_unit;新セキュリティ対応;new seccurity correspondense;
+#;ab7ProductType;v_body_clr_car_shampoo;ボディカラー;　body color;
+#;ab7ProductType;v_yoryo_setto_suu_car_shampoo;容量・セット数;;
+                                 ;ab7ProductType;car_tlv_monitor_size_car_television;【車載テレビ】モニターサイズ;monitor size;
+#;ab7ProductType;v_body_clr_car_wax;ボディカラー;　body color;
+#;ab7ProductType;v_yoryo_setto_suu_car_wax;タイプ;;
+                                 ;ab7ProductType;carrier_attachment_carrier_attachment;キャリアアタッチメント; carrier attachment;
+                                 ;ab7ProductType;speaker_size_coaxial_loudspeaker;サイズ;サイズ;
+
+
+                                 ;ab7ProductType;rdr_tnck_camera_type_radar_detector;【レーダー探知機】カメラタイプ;camera type;
+
+                                 ;ab7ProductType;rdr_tnck_monitor_size_radar_detector;モニターサイズ;monitor size;
+#;ab7ProductType;gps_radar_detector;GPS;GPS;
+#;ab7ProductType;g_sensor_radar_detector;Gセンサー;g_sensor;
+#;ab7ProductType;jairo_sensor_taio_radar_detector;ジャイロセンサー対応;gyro sensor correspondense;
+#;ab7ProductType;zone30_taio_radar_detector;ゾーン30対応;zone 30correspondense;
+#;ab7ProductType;odbii_taio_radar_detector;OBDII対応;OBDII correspondense;
+#;ab7ProductType;data_upd_muryou_taio_radar_detector;データ更新無料サービス対応;free data update service correspondense;
+#;ab7ProductType;hikari_obisu_rcv_taio_radar_detector;光オービス受信対応;light Orbis receive correspondense;
+                                 ;ab7ProductType;engine_oil_knrn_engine_oil_option;エンジンオイル関連;;
+                                 ;ab7ProductType;filter_brakepad_car_mkr_cd_filter_brakepad;カーメーカー;;
+                                 ;ab7ProductType;drone_drone_related;ドローン;;
+                                 ;ab7ProductType;mounting_kit_mkr_cd_mounting_kit;メーカー・ブランド;manifacture・brand;
+                                 ;ab7ProductType;haisen_kit_mounting_kit;配線キット;Wiring kit;
+                                 ;ab7ProductType;mounting_kit_mounting_kit;取付キット;installation kit;
+                                 ;ab7ProductType;dosu_bulb_light;度数;frequency;
+                                 ;ab7ProductType;harogen_hosyu_bulb_knrn_bulb_light;ハロゲン・補修バルブ関連;;
+                                 ;ab7ProductType;led_knrn_bulb_light;LED関連;;
+                                 ;ab7ProductType;hid_knrn_bulb_light;HID関連;;
+                                 ;ab7ProductType;hojyo_headlamp_knrn_bulb_light;補助・ヘッドランプ関連;;
+                                 ;ab7ProductType;drone_drone;ドローン;;
+                                 ;ab7ProductType;indoor_indoor;インドア;indoor;
+#;ab7ProductType;v_yoryo_setto_suu_indoor;容量・セット数;;
+                                 ;ab7ProductType;keyholder_cover_car_mkr_cd_keyholder_cover;カーメーカー;car manufacture;
+
+                                 ;ab7ProductType;mark_type_beginner_sign;マーク種類;mark type;
+
+                                 ;ab7ProductType;nut_form_wheel_nut_adapter;形状;shape;
+                                 ;ab7ProductType;outdoor_leisure_outdoor;アウトドア・レジャー;outdoor/leisure;
+
+                                 ;ab7ProductType;rain_wiper_brade_type_wiper;雨用ワイパーブレードタイプ;;
+                                 ;ab7ProductType;rain_wiper_spare_gm_type_wiper;雨用ワイパー替えゴムタイプ;;
+                                 ;ab7ProductType;snow_wiper_brade_type_wiper;雪用ワイパーブレードタイプ;;
+                                 ;ab7ProductType;snow_wiper_spare_gm_type_wiper;雪用ワイパー替えゴムタイプ;;
+
+
+                                 ;ab7ProductType;speaker_size_separate_speaker;サイズ;size;
+                                 ;ab7ProductType;tijo_digital_tuner_terrestrial_digital_tuner;地デジチューナー;Terrestrial digital tuner;
+                                 ;ab7ProductType;tv_kit_television_kit;TVキット;TV kit;
+
+
+                                 ;ab7ProductType;wheel_cover_clr_wheel_cover;カラー;color;
+
+                                 ;ab7ProductType;wheel_cover_inch_wheel_cover;インチ;inch;
+                                 ;ab7ProductType;winter_car_care_goods_winter_car_supplies;冬季カーケアグッズ;;
+
+
+INSERT_UPDATE SolrSearchQueryProperty;indexedProperty(name, solrIndexedType(identifier))[unique=true];facet[default=true];facetType(code);priority;facetDisplayNameProvider;facetSortProvider;facetTopValuesProvider;includeInResponse[default=true];searchQueryTemplate(name, indexedType(identifier))[unique=true][default=DEFAULT:$solrIndexedType]
+#                                ;jan_cd:$solrIndexedType;  ;MultiSelectOr ;1001000; ; ;;;
+
+                                     ;ec_daibri_mei:$solrIndexedType;  ;MultiSelectOr ;90001000; ; ;;;
+                                     ;ec_chubri_mei:$solrIndexedType;  ;MultiSelectOr ;9000900; ; ;;;
+                                     ;ec_shobri_mei:$solrIndexedType;  ;MultiSelectOr ;9000800; ; ;;;
+                                     ;cdt:$solrIndexedType;  ;MultiSelectOr ;9000700; ; ;;;
+
+                                     ;mkr_brand:$solrIndexedType;  ;MultiSelectOr ;9000600; ; ;;;
+                                     ;product_type:$solrIndexedType;  ;MultiSelectOr ;9000500; ; ;;;
+
+
+                                     ;v_clr:$solrIndexedType;  ;MultiSelectOr ;9000400; ; ;;;
+                                     ;v_fragrance:$solrIndexedType;  ;MultiSelectOr ;9000300; ; ;;;
+                                     ;v_size:$solrIndexedType;  ;MultiSelectOr ;9000200; ; ;;;
+                                     ;kouchin_komikomi:$solrIndexedType;  ;MultiSelectOr ;9000100; ; ;;;
+
+
+#;hole_su:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;pcd:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;ktrg_clr_mei:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+
+#                                ;tnpn_siz_jyr:$solrIndexedType;  ;MultiSelectOr ;1001000; ; ;;;
+#                                ;tnpn_siz_oky:$solrIndexedType;  ;MultiSelectOr ;1001000; ; ;;;
+#                                ;tnpn_siz_ykh:$solrIndexedType;  ;MultiSelectOr ;1001000; ; ;;;
+#                                ;tnpn_siz_hig:$solrIndexedType;  ;MultiSelectOr ;1001000; ; ;;;
+#wheel start
+                                     ;wheel_mkr_brand_wheel:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;tire_nikei_wheel:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+                                     ;rim_haba_wheel:$solrIndexedType;  ;Refine ;1000200; ; ;;;
+                                     ;inset_wheel:$solrIndexedType;  ;Refine ;1000100; ; ;;;
+#wheel end
+
+                                     ;ec_szn_shohin_kbn_tire:$solrIndexedType;  ;MultiSelectOr ;1000900; ; ;;;
+                                     ;ec_tire_sbt_tire:$solrIndexedType;  ;MultiSelectOr ;1000800; ; ;;;
+                                     ;tire_haba_tire:$solrIndexedType;  ;Refine ;1000700; ; ;;;
+                                     ;tire_hnpi_rt_tire:$solrIndexedType;  ;Refine ;1000600; ; ;;;
+                                     ;tire_nikei_tire:$solrIndexedType;  ;Refine ;1000500; ; ;;;
+                                     ;load_indx_tire:$solrIndexedType;  ;Refine ;1000400; ; ;;;
+                                     ;skd_kigo_tire:$solrIndexedType;  ;Refine ;1000300; ; ;;;
+                                     ;krgri_teik_keisu_tire:$solrIndexedType;  ;Refine ;1000200; ; ;;;
+                                     ;wetgrip_sino_tire:$solrIndexedType;  ;Refine ;1000100; ; ;;;
+                                     ;oil_nendo_engine_oil:$solrIndexedType;  ;Refine ;1000500; ; ;;;
+                                     ;oil_sebn_kbn_engine_oil:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;capa_engine_oil:$solrIndexedType;  ;Refine ;1000300; ; ;;;
+                                     ;clean_diesel_taio_engine_oil:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+#;api_kikaku_engine_oil:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+
+
+                                     ;car_navi_monitor_size_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1002400; ; ;;;
+#;tv_tuner_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1002300; ; ;;;
+#;bluetooth_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1002200; ; ;;;
+#;ipod_iphone_taio_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1002100; ; ;;;
+#;android_auto_taio_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1002000; ; ;;;
+#;apple_car_play_taio_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1001900; ; ;;;
+#;blu_ray_disk_taiou_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1001800; ; ;;;
+#;dvd_douga_model_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1001700; ; ;;;
+#;cd_recording_taiou_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1001600; ; ;;;
+#;muryo_tizu_kousin_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1001500; ; ;;;
+#;vics_wide_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1001400; ; ;;;
+#;gyro_sensor_3d_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1001300; ; ;;;
+#;etc_20_taio_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1001200; ; ;;;
+#;navi_tv_2gamen_hyouji_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1001100; ; ;;;
+#;rear_seat_dokuritsu_av_taio_car_navigation:$solrIndexedType;  ;MultiSelectOr ;10001000; ; ;;;
+#;high_res_taio_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1000900; ; ;;;
+#;time_alignment_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1000800; ; ;;;
+#;usb_setsuzoku_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1000700; ; ;;;
+#;hdmi_io_taio_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1000600; ; ;;;
+#;steering_remocon_sousa_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1000500; ; ;;;
+#;wifi_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;map_furikku_pinchi_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+#;naizou_denchi_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+#;v_taio_24_car_navigation:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+                                     ;densou_youhin_knrn_diy_repairpaint:$solrIndexedType;  ;MultiSelectOr ;1000500; ; ;;;
+                                     ;hosyu_youhin_knrn_diy_repairpaint:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;haisendome_tape_knrn_diy_repairpaint:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+                                     ;air_con_knrn_diy_repairpaint:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+                                     ;paint_youhin_knrn_diy_repairpaint:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+                                     ;car_monitor_size_car_monitor:$solrIndexedType;  ;MultiSelectOr ;1000900; ; ;;;
+
+                                     ;syasai_mntr_torituke_type_car_monitor:$solrIndexedType;  ;MultiSelectOr ;1000800; ; ;;;
+#;car_monitor_clr_car_monitor:$solrIndexedType;  ;MultiSelectOr ;1000700; ; ;;;
+
+#;ekisyou_gashitsu_car_monitor:$solrIndexedType;  ;MultiSelectOr ;1000600; ; ;;;
+#;ar_corting_taio_car_monitor:$solrIndexedType;  ;MultiSelectOr ;1000500; ; ;;;
+#;plasma_cluster_car_monitor:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;led_light_car_monitor:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+#;hdmi_io_taio_car_monitor:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+#;rca_ip_car_monitor:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+                                     ;arta_goods_sports_goods:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+
+#;v_yoryo_setto_suu_sports_goods:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+
+                                     ;drv_rcdr_monitor_size_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1001000; ; ;;;
+                                     ;drv_rcdr_camera_type_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000900; ; ;;;
+#;drv_rcdr_torituke_type_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000800; ; ;;;
+                                     ;gashitsu_full_hd_over_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000700; ; ;;;
+                                     ;gazou_hosei_hdr_wdr_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000600; ; ;;;
+                                     ;g_sensor_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000500; ; ;;;
+                                     ;gps_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;tyuusya_kanshi_taiou_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+#;wifi_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+                                     ;azn_unten_shien_kinou_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+                                     ;kougu_knrn_emergencysafety_garage:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;seibi_youhin_knrn_emergencysafety_garage:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+                                     ;azn_youhin_knrn_emergencysafety_garage:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+                                     ;tire_oukyu_knrn_emergencysafety_garage:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+                                     ;base_carrier_base_carrier:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+#;cho_sokumen_nagasa_battery:$solrIndexedType;  ;MultiSelectOr ;1000600; ; ;;;
+                                     ;iss_taio_battery:$solrIndexedType;  ;MultiSelectOr ;1000500; ; ;;;
+#;kbn_kigo_battery:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;nirinsha_battery_battery:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+#;sino_rank_battery:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+#;tanshi_ichi_battery:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+#;led_singouki_taio_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+#;suihei_gakaku_108_over_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;suityoku_gakaku_60_over_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;bkup_dngn_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;fuzoku_sd_card_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;v_taio_24_drive_recorder:$solrIndexedType;  ;MultiSelectOr ;100000; ; ;;;
+
+                                     ;bucket_type_sports_seat:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+
+#;v_setti_basyo_type_sports_seat:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+
+                                     ;bycycle_motorcycle_bicycle_motorcycle:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+
+                                     ;main_unit_type_car_audio:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+
+#;bluetooth_car_audio:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+
+                                     ;etc_type_etc_vehicle_unit:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+
+#;car_navi_rendou_etc_vehicle_unit:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+#;new_security_taio_etc_vehicle_unit:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+#;v_body_clr_car_shampoo:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;v_yoryo_setto_suu_car_shampoo:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;car_tlv_monitor_size_car_television:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+#;v_body_clr_car_wax:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;v_yoryo_setto_suu_car_wax:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;carrier_attachment_carrier_attachment:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;speaker_size_coaxial_loudspeaker:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+
+
+
+                                     ;rdr_tnck_camera_type_radar_detector:$solrIndexedType;  ;MultiSelectOr ;1000500; ; ;;;
+
+                                     ;rdr_tnck_monitor_size_radar_detector:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;gps_radar_detector:$solrIndexedType;  ;Multideadening_baffleSelectOr ;1000400; ; ;;;
+#;g_sensor_radar_detector:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;jairo_sensor_taio_radar_detector:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;zone30_taio_radar_detector:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;odbii_taio_radar_detector:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;data_upd_muryou_taio_radar_detector:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+#;hikari_obisu_rcv_taio_radar_detector:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;engine_oil_knrn_engine_oil_option:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;filter_brakepad_car_mkr_cd_filter_brakepad:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;drone_drone_related:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;mounting_kit_mkr_cd_mounting_kit:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+                                     ;haisen_kit_mounting_kit:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+                                     ;mounting_kit_mounting_kit:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+                                     ;dosu_bulb_light:$solrIndexedType;  ;Refine ;1000500; ; ;;;
+                                     ;harogen_hosyu_bulb_knrn_bulb_light:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;led_knrn_bulb_light:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+                                     ;hid_knrn_bulb_light:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+                                     ;hojyo_headlamp_knrn_bulb_light:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+                                     ;drone_drone:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+
+                                     ;indoor_indoor:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+
+#;v_yoryo_setto_suu_indoor:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+                                     ;keyholder_cover_car_mkr_cd_keyholder_cover:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+
+                                     ;mark_type_beginner_sign:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+
+                                     ;nut_form_wheel_nut_adapter:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;outdoor_leisure_outdoor:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+
+
+                                     ;rain_wiper_brade_type_wiper:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;rain_wiper_spare_gm_type_wiper:$solrIndexedType;  ;MultiSelectOr ;1000300; ; ;;;
+                                     ;snow_wiper_brade_type_wiper:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+                                     ;snow_wiper_spare_gm_type_wiper:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+
+
+                                     ;speaker_size_separate_speaker:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;tijo_digital_tuner_terrestrial_digital_tuner:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+                                     ;tv_kit_television_kit:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+
+                                     ;wheel_cover_clr_wheel_cover:$solrIndexedType;  ;MultiSelectOr ;1000200; ; ;;;
+
+                                     ;wheel_cover_inch_wheel_cover:$solrIndexedType;  ;MultiSelectOr ;1000100; ; ;;;
+                                     ;winter_car_care_goods_winter_car_supplies:$solrIndexedType;  ;MultiSelectOr ;1000400; ; ;;;
+
+# Add new classification for Dec Demo
+#INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];displayName[lang=ja];displayName[lang=en]
+#                                 ;ab7ProductType;Series,1001;シリーズ;シリーズ
+#                                 ;ab7ProductType;Manufacturer,1003;メーカー;メーカー
+#                                 ;ab7ProductType;Camera,1006;カメラ;カメラ
+
+#INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];displayName[lang=ja];displayName[lang=en];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];facet[default=false];facetType(code);facetSort(code);priority;visible;fieldValueProvider;customFacetSortProvider;rangeSets(name);$classAttributeAssignment
+#                                 ;ab7ProductType;GPS,2004;GPS・Gセンサー;GPS・Gセンサー;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::GPS,2004::::;
+#                                 ;ab7ProductType;Installation,2009;取付タイプ;取付タイプ;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Installation,2009::::;
+#                                 ;ab7ProductType;Monitor,2010;モニターサイズ;モニターサイズ;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Monitor,2010::::;
+#                                 ;ab7ProductType;Resolution,2011;画質;画質;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Resolution,2011::::;
+#                                 ;ab7ProductType;Image Correction,2012;画像補正;画像補正;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Image Correction,2012::::;
+#                                 ;ab7ProductType;G-censor,2013;Gセンサー;Gセンサー;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::G-censor,2013::::;
+#                                 ;ab7ProductType;Parking Monitor,2014;駐車監視機能;駐車監視機能;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Parking Monitor,2014::::;
+#                                 ;ab7ProductType;WIFI,2015;WIFI対応;WIFI対応;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::WIFI,2015::::;
+#                                 ;ab7ProductType;Safety Drive,2016;安全運転支援機能;安全運転支援機能;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Safety Drive,2016::::;
+#                                 ;ab7ProductType;LED,2017;LED信号機対応;LED信号機対応;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::LED,2017::::;
+#                                 ;ab7ProductType;Horizontal,2018;水平画角108°以上;水平画角108°以上;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Horizontal,2018::::;
+#                                 ;ab7ProductType;Vertical,2019;垂直画角60°以上;垂直画角60°以上;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Vertical,2019::::;
+#                                 ;ab7ProductType;Backup,2020;バックアップ電源;バックアップ電源;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Backup,2020::::;
+#                                 ;ab7ProductType;SD Card,2021;付属SDカード;付属SDカード;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::SD Card,2021::::;
+#                                 ;ab7ProductType;24V,2022;24V対応;24V対応;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::24V,2022::::;
+#                                 ;ab7ProductType;Installation Set,2023;工賃コミコミセット対象;工賃コミコミセット対象;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Installation Set,2023::::;
+#
+#                                 ;ab7ProductType;Garage Supplies / Tools,2206;工具関連;工具関連;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Garage Supplies / Tools,2206::::;
+#
+#                                 ;ab7ProductType;Season,2301;季節区分;季節区分;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Season,2301::::;
+#                                 ;ab7ProductType;Tire Type,2302;タイヤ種別;タイヤ種別;string;; ;    ; ;true;MultiSelectOr;Custom;90;true;commerceClassificationPropertyValueProvider;numericFacetSortProviderDesc;;9000:::Tire Type,2302::::;
+#
+#INSERT_UPDATE SolrSearchQueryProperty;indexedProperty(name, solrIndexedType(identifier))[unique=true];facet[default=true];facetType(code);priority;facetDisplayNameProvider;facetSortProvider;facetTopValuesProvider;includeInResponse[default=true];searchQueryTemplate(name, indexedType(identifier))[unique=true][default=DEFAULT:$solrIndexedType]
+#                                     ;GPS,2004:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;Installation,2009:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;Monitor,2010:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;Resolution,2011:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;Image Correction,2012:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;G-censor,2013:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;Parking Monitor,2014:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;WIFI,2015:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;Safety Drive,2016:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;LED,2017:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;Horizontal,2018:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;Vertical,2019:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;Backup,2020:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;SD Card,2021:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;24V,2022:$solrIndexedType;  ;Refine ;97; ; ;;;
+#                                     ;Installation Set,2023:$solrIndexedType;  ;Refine ;97; ; ;;;
+#
+#                                     ;Garage Supplies / Tools,2206:$solrIndexedType;  ;Refine ;97; ; ;;;
+#
+#                                     ;Season,2301:$solrIndexedType;  ;MultiSelectOr ;97; ; ;;;
+#                                     ;Tire Type,2302:$solrIndexedType;  ;Refine ;97; ; ;;;
+
+
+#;;GPS,2004;GPS・Gセンサー
+#;;Installation,2009;取付タイプ
+#;;Monitor,2010;モニターサイズ
+#;;Resolution,2011;画質
+#;;Image Correction,2012;画像補正
+#;;G-censor,2013;Gセンサー
+#;;Parking Monitor,2014;駐車監視機能
+#;;WIFI,2015;WIFI対応
+#;;Safety Drive,2016;安全運転支援機能
+#;;LED,2017;LED信号機対応
+#;;Horizontal,2018;水平画角108°以上
+#;;Vertical,2019;垂直画角60°以上
+#;;Backup,2020;バックアップ電源
+#;;SD Card,2021;付属SDカード
+#;;24V,2022;24V対応
+#;;Installation Set,2023;工賃コミコミセット対象
+
+#;;Garage Supplies / Tools,2206;工具関連
+
+#;;Season,2301;季節区分
+#;;Tire Type,2302;タイヤ種別
+
+
+# Add new classification for Dec Demo - END
+
+INSERT_UPDATE SolrSynonymConfig;synonymFrom[unique=true];synonymTo[unique=true];language(isocode)[default=ja];facetSearchConfig(name)[default=$facetSearchConfigName]
+                               ;オイルフィルター;オイルエレメント;;
+                               ;クーラント;クーラント液;;
+                               ;クーラント;冷却水;;
+                               ;コンパウンド;研磨剤;;
+                               ;ジャッキ;フロアジャッキ;;
+                               ;シャンプー;カーシャンプー;;
+                               ;スパークプラグ;エンジンプラグ;;
+                               ;スパークプラグ;プラグ;;
+                               ;スパークプラグ;点火プラグ;;
+                               ;タイヤチェーン;チェーン;;
+                               ;タイヤチェーン;金属チェーン;;
+                               ;タイヤチェーン;非金属チェーン;;
+                               ;タイヤワックス;タイヤクリーナー;;
+                               ;タッチペン;補修ペイント;;
+                               ;チェーン;タイヤチェーン;;
+                               ;チェーン;金属チェーン;;
+                               ;チェーン;非金属チェーン;;
+                               ;ナンバー灯;ナンバーランプ;;
+                               ;バッテリー;バッテリー液;;
+                               ;プラグ;エンジンプラグ;;
+                               ;プラグ;スパークプラグ;;
+                               ;プラグ;点火プラグ;;
+                               ;ポリッシャー;ポリッシュ;;
+                               ;空気入れ;エアーコンプレッサー;;
+                               ;発煙筒;発炎筒;;
+                               ;冷却水;クーラント液;;
+                               ;冷却水;クーラント液;;
+                               ;Bluetooth;ブルートゥース;;
+                               ;TVキット;テレナビキット;;
+                               ;TVキット;テレビキット;;
+                               ;ウーファー;ウーハー;;
+                               ;エンジンスターター;エンスタ;;
+                               ;エンジンスターター;スターター;;
+                               ;オーディオ;1DIN;;
+                               ;オーディオ;2DIN;;
+                               ;オーディオ;デッキ;;
+                               ;オートクルーズ;クルーズコントローラー;;
+                               ;オートクルーズ;クルコン;;
+                               ;カーナビ;AVN;;
+                               ;カーナビ;ナビゲーション;;
+                               ;グローブ;手袋;;
+                               ;コーナーセンサー;コーナーガイドセンサー;;
+                               ;コーナーセンサー;パーキングセンサー;;
+                               ;コーナーセンサー;バックセンサー;;
+                               ;サブウーファー;サブウーハー;;
+                               ;サブウーファー;チューンナップウーハー;;
+                               ;サブウーファー;チューンナップウーファー;;
+                               ;スイッチ;ボタン;;
+                               ;スイッチ;切り替え;;
+                               ;スターター;エンジンスターター;;
+                               ;スターター;エンスタ;;
+                               ;スタッドレス;冬タイヤ;;
+                               ;スタッドレスタイヤ;スタッドレス;;
+                               ;スタッドレスタイヤ;冬タイヤ;;
+                               ;ステアリング;ハンドル;;
+                               ;スロットルコントローラー;スロコン;;
+                               ;タコメーター;GOLILLA;;
+                               ;テレビ;TV;;
+                               ;テレビキット;TVキット;;
+                               ;テレビキット;テレナビキット;;
+                               ;ドライブレコーダー;ドラレコ;;
+                               ;ドラレコ;ドライブレコーダー;;
+                               ;ナビ;AVN;;
+                               ;ハーネス;コード;;
+                               ;ハーネス;配線;;
+                               ;バックカメラ;リアカメラ;;
+                               ;バックカメラ;車載カメラ;;
+                               ;バックモニター;バックカメラ;;
+                               ;バックモニター;リアカメラ;;
+                               ;バックモニター;車載カメラ;;
+                               ;ハンドル;ステアリング;;
+                               ;フリップダウンモニター;フリップダウン;;
+                               ;フリップダウンモニター;天吊りモニター;;
+                               ;フルセグ;地デジ;;
+                               ;ブレーキパット;ブレーキパッド;;
+                               ;ホイールカバー;ホイールキャップ;;
+                               ;ホイールキャップ;ホイールカバー;;
+                               ;ホイールナット;ラグナット;;
+                               ;ホイールナット;ロックナット;;
+                               ;ポータブル;携帯;;
+                               ;ポータブルナビ;ポータブルカーナビ;;
+                               ;モニター;ディスプレイ;;
+                               ;モニター;液晶;;
+                               ;モンスタースポーツ;MS;;
+                               ;モンスタースポーツ;タジマ;;
+                               ;リアモニター;フリップダウン;;
+                               ;リアモニター;フリップダウンモニター;;
+                               ;リアモニター;後席モニター;;
+                               ;レーダー探知機;レーダー;;
+                               ;レカロ;RECARO;;
+                               ;楽ナビ;楽NAVI;;
+                               ;車高調;全長調整;;
+                               ;地デジチューナー;TVチューナー;;
+                               ;地デジチューナー;テレビチューナー;;
+                               ;アームレスト;コンソールボックス;;
+                               ;アームレスト;肘掛;;
+                               ;ウインカー;ウィンカー;;
+                               ;ウインカー;方向指示器;;
+                               ;キーカバー;キーケース;;
+                               ;キーケース;キーカバー;;
+                               ;ゴミ箱;ダストボックス;;
+                               ;サイドミラー;ドアミラー;;
+                               ;サンシェード;ブラインド;;
+                               ;サンシェード;日除け;;
+                               ;シフトノブ;ギアノブ;;
+                               ;ステアリングカバー;ハンドルカバー;;
+                               ;スマートキー;キーレスエントリー;;
+                               ;スマートキーケース;スマートキーカバー;;
+                               ;スマホ;スマートフォン;;
+                               ;スマホホルダー;スマートフォンホルダー;;
+                               ;セキュリティ;盗難防止;;
+                               ;ダストボックス;ゴミ箱;;
+                               ;デイライト;デーライト;;
+                               ;テーブル;トレイ;;
+                               ;ドアガード;ドアプロテクター;;
+                               ;ドアガード;ドアモール;;
+                               ;ドアミラー;サイドミラー;;
+                               ;ドリンクホルダー;カップホルダー;;
+                               ;ナンバーフレーム;ナンバープレートフレーム;;
+                               ;バリアスコート;VAC;;
+                               ;バルブ;電球;;
+                               ;バルブ;弁;;
+                               ;ハンドルカバー;ステアリングカバー;;
+                               ;ハンドルロック;ステアリングロック;;
+                               ;フォグランプ;フォグ;;
+                               ;フォグランプ;フォグライト;;
+                               ;ブラング;BLANG;;
+                               ;フロアマット;カーマット;;
+                               ;ポジションランプ;スモールランプ;;
+                               ;ポジションランプ;ポジション球;;
+                               ;ポジションランプ;車幅灯;;
+                               ;ボンフォーム;bonform;;
+                               ;マグネット;磁石;;
+                               ;ミッキー;ミッキーマウス;;
+                               ;ミラー;鏡;;
+                               ;ルーフキャリア;ルーフボックス;;
+                               ;ルーフキャリア;ルーフラック;;
+                               ;ルーフボックス;ルーフBOX;;
+                               ;ルームミラー;バックミラー;;
+                               ;ルームミラー;車内ミラー;;
+                               ;ルームランプ;ルームライト;;
+                               ;ルームランプ;車内灯;;
+                               ;灰皿;アッシュトレイ;;
+                               ;空気清浄機;空気清浄器;;
+                               ;座布団;クッション;;
+                               ;座布団;座蒲団;;
+                               ;傘;アンブレラ;;
+                               ;時計;クロック;;
+                               ;静電気;アース;;
+                               ;扇風機;カーファン;;
+                               ;掃除機;クリーナー;;
+                               ;日よけ;サンシェード;;
+                               ;日よけ;日除け;;
+                               ;芳香剤;香水;;
+

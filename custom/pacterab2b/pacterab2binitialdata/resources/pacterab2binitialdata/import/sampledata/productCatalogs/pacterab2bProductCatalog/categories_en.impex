@@ -1,0 +1,42 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Categories
+
+# Macros / Replacement Parameter definitions
+
+$productCatalog=pacterab2bProductCatalog
+$productCatalogName=pacterab2b Product Catalog
+$classificationCatalog=pacterab2bClassification
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+# Language
+$lang=en
+
+# Create Categories
+UPDATE Category;code[unique=true];$catalogVersion;name[lang=$lang]
+               ;master;;Shop
+                ;10000000;;Root
+                ;11000000;;Service
+                ;50000000;;Tire
+                ;51000000;;Wheel
+                ;52000000;;Car Electronics
+                ;54000000;;Oil
+                ;55000000	;;Battery
+                ;56000000 ;;	Maintenance
+                ;57000000	;; Accessory
+                ;58000000	;;Car Repair
+                ;59000000	;;Car Sports
+                ;60000000 ;;	Car Leisure
+                ;61000000 ;;	Motorcycle
+
+
+
+#################################################################
+                ;90000000;;CAR NAVI
+                ;90001000;;ALPINE
+                ;90002000;;CARRZERIA
+
+###################################################################
+
