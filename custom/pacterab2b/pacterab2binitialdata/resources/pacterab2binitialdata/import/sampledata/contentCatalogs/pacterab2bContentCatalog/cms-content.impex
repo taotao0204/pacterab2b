@@ -1,10 +1,10 @@
-# -----------------------------------------------------------------------
+
 # Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 # -----------------------------------------------------------------------
-$contentCatalog=pacterab2ContentCatalog
+$contentCatalog=pacterab2bContentCatalog
 $contentCatalogName=pacterab2b Content Catalog
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
-$productCatalog=pacterab2ProductCatalog
+$productCatalog=pacterab2bProductCatalog
 $productCatalogName=pacterab2b Product Catalog
 $productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 $picture=media(code, $contentCV);
@@ -14,23 +14,27 @@ $page=page(uid, $contentCV);
 $contentPage=contentPage(uid, $contentCV);
 $product=product(code, $productCV)
 $category=category(code, $productCV)
-$siteResource=jar:de.hybris.platform.Pacterab2store.constants.Pacterab2StoreConstants&/Pacterab2store/import/sampledata/contentCatalogs/$contentCatalog
-$productResource=jar:de.hybris.platform.Pacterab2store.constants.Pacterab2StoreConstants&/Pacterab2store/import/sampledata/productCatalogs/$productCatalog
-$jarResourceCms=jar:de.hybris.platform.Pacterab2store.constants.Pacterab2StoreConstants&/Pacterab2store/import/sampledata/cockpits/cmscockpit
+
 $addonExtensionName=b2bacceleratoraddon
 $medias=medias(code, $contentCV);
 $mediaContainer=media(qualifier, $contentCV);
 $siteUid=pactera
 
+
+
+
+$siteResource=jar:com.pactera.initialdata.setup.InitialDataSystemSetup&/pacterab2binitialdata/import/sampledata/contentCatalogs/$contentCatalog
+$productResource=jar:com.pactera.initialdata.setup.InitialDataSystemSetup&/pacterab2binitialdata/import/sampledata/contentCatalogs/$productCatalog
+$jarResourceCms_init=jar:com.pactera.initialdata.setup.InitialDataSystemSetup&/pacterab2binitialdata/import/sampledata/cockpits/cmscockpit
+
 # CMS Site Settings
 UPDATE CMSSite;uid[unique=true];defaultPreviewCategory(code, $productCV);defaultPreviewProduct(code, $productCV);theme(code)
-#              ;$siteUid;master;00795085;lambda
-
+              ;$siteUid;master;00795085;lambda
 ###### Navigation Start ######
 ## navigation is in tree structure ##
 ## level 0 ##
 INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;children(uid,$contentCV)[mode=append]
-                               ;master;;master;;
+                               ;root;;root;;
 
 ##- level 1. SiteRoot -##
 INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef
@@ -38,14 +42,14 @@ INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;pa
 
 ##-- level 2. children of SiteRoot --##
 INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef
-                               ;Pacterab2NavNode;;pacterab2b Site;SiteRootNode;;Pacterab2NavNode
+                               ;PowertoolsNavNode;;Powertools Site;SiteRootNode;;PowertoolsNavNode
 
-##--- level 3. children of Pacterab2NavNode ---##
+##--- level 3. children of powertoolsNavNode ---##
 INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef
-                               ;MyAccountNavNode;;My Account;Pacterab2NavNode;;MyAccountNavNode
-                               ;OrderToolsNavNode;;Order Tools;Pacterab2NavNode;;OrderToolsNavNode
-                               ;Pacterab2CategoryNavNode;;Categories;Pacterab2NavNode;;Pacterab2CategoryNavNode
-                               ;FooterNavNode;;Footer Pages;Pacterab2NavNode;;FooterNavNode
+                               ;MyAccountNavNode;;My Account;PowertoolsNavNode;;MyAccountNavNode
+                               ;OrderToolsNavNode;;Order Tools;PowertoolsNavNode;;OrderToolsNavNode
+                               ;PowertoolsCategoryNavNode;;Categories;PowertoolsNavNode;;PowertoolsCategoryNavNode
+                               ;FooterNavNode;;Footer Pages;PowertoolsNavNode;;FooterNavNode
 
 
 ##---- level 4. children of My Account Nav ----##
@@ -105,13 +109,13 @@ INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url
 
 ##---- level 4. children of Category Nav ----##
 INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&linkRef);&nodeRef
-                               ;PowerDrillsNavNode;;Power Drills Category;Pacterab2CategoryNavNode;;PowerDrillsNavNode
-                               ;AngleGrindersNavNode;;Angle Grinders Category;Pacterab2CategoryNavNode;;AngleGrindersNavNode
-                               ;ScrewdriversNavNode;;Screwdrivers Category;Pacterab2CategoryNavNode;;ScrewdriversNavNode
-                               ;SandersNavNode;;Sanders Category;Pacterab2CategoryNavNode;;SandersNavNode
-                               ;MeasuringLayoutToolsNavNode;;Measuring & Layout Tools Category;Pacterab2CategoryNavNode;;MeasuringLayoutToolsNavNode
-                               ;HandToolsNavNode;;Hand Tools Category;Pacterab2CategoryNavNode;;HandToolsNavNode
-                               ;SafetyNavNode;;Safety Category;Pacterab2CategoryNavNode;;SafetyNavNode
+                               ;PowerDrillsNavNode;;Power Drills Category;PowertoolsCategoryNavNode;;PowerDrillsNavNode
+                               ;AngleGrindersNavNode;;Angle Grinders Category;PowertoolsCategoryNavNode;;AngleGrindersNavNode
+                               ;ScrewdriversNavNode;;Screwdrivers Category;PowertoolsCategoryNavNode;;ScrewdriversNavNode
+                               ;SandersNavNode;;Sanders Category;PowertoolsCategoryNavNode;;SandersNavNode
+                               ;MeasuringLayoutToolsNavNode;;Measuring & Layout Tools Category;PowertoolsCategoryNavNode;;MeasuringLayoutToolsNavNode
+                               ;HandToolsNavNode;;Hand Tools Category;PowertoolsCategoryNavNode;;HandToolsNavNode
+                               ;SafetyNavNode;;Safety Category;PowertoolsCategoryNavNode;;SafetyNavNode
 ## entries of the above navigation nodes ##
 INSERT_UPDATE CMSNavigationEntry;uid[unique=true];$contentCV[unique=true];name;navigationNode(&nodeRef);item(CMSLinkComponent.uid,CMSLinkComponent.$contentCV);
                                 ;PowerDrillsNavNodeEntry;;Power Drills Navigation Node Entry;PowerDrillsNavNode;PowerDrillsCategoryLink;
@@ -249,13 +253,13 @@ INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url
 
 ## navigation bar slot ##
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid, $contentCV)
-                         ;;NavigationBarSlot;Pacterab2CategoryNavComponent,breadcrumbComponent
+                         ;;NavigationBarSlot;PowertoolsCategoryNavComponent,breadcrumbComponent
 
 INSERT_UPDATE BreadcrumbComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
                                  ;;breadcrumbComponent;Breadcrumb CMS Component;breadcrumbComponent
 
 INSERT_UPDATE CategoryNavigationComponent;$contentCV[unique=true];uid[unique=true];name;styleClass;&componentRef;navigationNode(&nodeRef);wrapAfter
-                                         ;;Pacterab2CategoryNavComponent;Category Navigation Component;;Pacterab2CategoryNavComponent;Pacterab2CategoryNavNode;10
+                                         ;;PowertoolsCategoryNavComponent;Category Navigation Component;;PowertoolsCategoryNavComponent;PowertoolsCategoryNavNode;10
 
 ## miniCart slot ##
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(&componentRef)
@@ -436,11 +440,11 @@ INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];positi
                                 ;;Section5-Homepage;Section5;;Section5Slot-Homepage
 
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
-                         ;;Section1Slot-Homepage;Section1 Slot for Homepage;true;Pacterab2HompageSplashBannerComponent,Pacterab2HompageBrandsBannerComponent
-                         ;;Section2ASlot-Homepage;Section2A Slot for Homepage;true;Pacterab2HompagePowerDrillsBannerComponent,Pacterab2HompageAngleGrindersBannerComponent
-                         ;;Section2BSlot-Homepage;Section2B Slot for Homepage;true;Pacterab2HompageScrewdriversBannerComponent,Pacterab2HompageSandersBannerComponent
-                         ;;Section3Slot-Homepage;Section3 Slot for Homepage;true;Pacterab2HomepageNewProductCarouselComponent,Pacterab2HomepageProductCarouselComponent
-                         ;;Section4Slot-Homepage;Section4 Slot for Homepage;true;Pacterab2Hompage25%BannerComponent,Pacterab2Hompage30dayBannerComponent,Pacterab2Hompage6pmBannerComponent,Pacterab2Hompage24/7BannerComponent
+                         ;;Section1Slot-Homepage;Section1 Slot for Homepage;true;PowertoolsHompageSplashBannerComponent,PowertoolsHompageBrandsBannerComponent
+                         ;;Section2ASlot-Homepage;Section2A Slot for Homepage;true;PowertoolsHompagePowerDrillsBannerComponent,PowertoolsHompageAngleGrindersBannerComponent
+                         ;;Section2BSlot-Homepage;Section2B Slot for Homepage;true;PowertoolsHompageScrewdriversBannerComponent,PowertoolsHompageSandersBannerComponent
+                         ;;Section3Slot-Homepage;Section3 Slot for Homepage;true;PowertoolsHomepageNewProductCarouselComponent,PowertoolsHomepageProductCarouselComponent
+                         ;;Section4Slot-Homepage;Section4 Slot for Homepage;true;PowertoolsHompage25%BannerComponent,PowertoolsHompage30dayBannerComponent,PowertoolsHompage6pmBannerComponent,PowertoolsHompage24/7BannerComponent
 
 ## slot 2C and 5: nothing to display ##
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(&componentRef)
@@ -449,23 +453,23 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents
 
 ## components in slot 1 ##
 INSERT_UPDATE SimpleResponsiveBannerComponent;$contentCV[unique=true];uid[unique=true];name;urlLink;&componentRef
-                                             ;;Pacterab2HompageBrandsBannerComponent;pacterab2b Homepage Brands Banner Component;/Brands/c/brands;Pacterab2HompageBrandsBannerComponent
-                                             ;;Pacterab2HompageSplashBannerComponent;pacterab2b Homepage Splash Banner Component;/Open-Catalogue/Tools/c/1355;Pacterab2HompageSplashBannerComponent
+                                             ;;PowertoolsHompageBrandsBannerComponent;Powertools Homepage Brands Banner Component;/Brands/c/brands;PowertoolsHompageBrandsBannerComponent
+                                             ;;PowertoolsHompageSplashBannerComponent;Powertools Homepage Splash Banner Component;/Open-Catalogue/Tools/c/1355;PowertoolsHompageSplashBannerComponent
 
 ## components in slot 2A ##
 INSERT_UPDATE SimpleResponsiveBannerComponent;$contentCV[unique=true];uid[unique=true];name;urlLink;&componentRef
-                                             ;;Pacterab2HompagePowerDrillsBannerComponent;pacterab2b Homepage Power Drills Banner Component;/Open-Catalogue/Tools/Power-Drills/c/1360;Pacterab2HompagePowerDrillsBannerComponent
-                                             ;;Pacterab2HompageAngleGrindersBannerComponent;pacterab2b Homepage Angle Grinders Banner Component;/Open-Catalogue/Tools/Angle-Grinders/c/1595;Pacterab2HompageAngleGrindersBannerComponent
+                                             ;;PowertoolsHompagePowerDrillsBannerComponent;Powertools Homepage Power Drills Banner Component;/Open-Catalogue/Tools/Power-Drills/c/1360;PowertoolsHompagePowerDrillsBannerComponent
+                                             ;;PowertoolsHompageAngleGrindersBannerComponent;Powertools Homepage Angle Grinders Banner Component;/Open-Catalogue/Tools/Angle-Grinders/c/1595;PowertoolsHompageAngleGrindersBannerComponent
 
 ## components in slot 2B ##
 INSERT_UPDATE SimpleResponsiveBannerComponent;$contentCV[unique=true];uid[unique=true];name;urlLink;&componentRef
-                                             ;;Pacterab2HompageScrewdriversBannerComponent;pacterab2b Homepage Screwdrivers Banner Component;/Open-Catalogue/Tools/Screwdrivers/c/1593;Pacterab2HompageScrewdriversBannerComponent
-                                             ;;Pacterab2HompageSandersBannerComponent;pacterab2b Homepage Sanders Banner Component;/Open-Catalogue/Tools/Sanders/c/1596;Pacterab2HompageSandersBannerComponent
+                                             ;;PowertoolsHompageScrewdriversBannerComponent;Powertools Homepage Screwdrivers Banner Component;/Open-Catalogue/Tools/Screwdrivers/c/1593;PowertoolsHompageScrewdriversBannerComponent
+                                             ;;PowertoolsHompageSandersBannerComponent;Powertools Homepage Sanders Banner Component;/Open-Catalogue/Tools/Sanders/c/1596;PowertoolsHompageSandersBannerComponent
 
 ## components in slot 3 ##
 INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];name;products(code,$productCV);scroll(code);popup;&componentRef
-                                      ;;Pacterab2HomepageNewProductCarouselComponent;What's New pacterab2b Homepage Product Carousel;3755219,3881018,3592865,2116279,3755204,1128762,3092788;allVisible;false;Pacterab2HomepageNewProductCarouselComponent
-                                      ;;Pacterab2HomepageProductCarouselComponent;pacterab2b Homepage Product Carousel;3755205,3755211,3756505,3793682,2221933,2116275,2116282;allVisible;false;Pacterab2HomepageProductCarouselComponent
+                                      ;;PowertoolsHomepageNewProductCarouselComponent;What's New Powertools Homepage Product Carousel;g9501700110334,00583033;allVisible;false;PowertoolsHomepageNewProductCarouselComponent
+                                      ;;PowertoolsHomepageProductCarouselComponent;Powertools Homepage Product Carousel;00400092,00437548,00400098,g9501700110573,00121111,00157916,01163090;allVisible;false;PowertoolsHomepageProductCarouselComponent
 
 ## This component is not used currently, but still import for future use ##
 INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];name;products(code,$productCV);scroll(code);popup;searchQuery;categoryCode;&componentRef
@@ -473,10 +477,10 @@ INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];
 
 ## components in slot 4 ##
 INSERT_UPDATE SimpleResponsiveBannerComponent;$contentCV[unique=true];uid[unique=true];name;urlLink;&componentRef
-                                             ;;Pacterab2Hompage25%BannerComponent;pacterab2b Homepage 25% Great Deal Banner Component;;Pacterab2Hompage25%BannerComponent
-                                             ;;Pacterab2Hompage30dayBannerComponent;pacterab2b Homepage 30 Day Banner Component;;Pacterab2Hompage30dayBannerComponent
-                                             ;;Pacterab2Hompage6pmBannerComponent;pacterab2b Homepage 6pm Banner Component;;Pacterab2Hompage6pmBannerComponent
-                                             ;;Pacterab2Hompage24/7BannerComponent;pacterab2b Homepage 24/7 Banner Component;;Pacterab2Hompage24/7BannerComponent
+                                             ;;PowertoolsHompage25%BannerComponent;Powertools Homepage 25% Great Deal Banner Component;;PowertoolsHompage25%BannerComponent
+                                             ;;PowertoolsHompage30dayBannerComponent;Powertools Homepage 30 Day Banner Component;;PowertoolsHompage30dayBannerComponent
+                                             ;;PowertoolsHompage6pmBannerComponent;Powertools Homepage 6pm Banner Component;;PowertoolsHompage6pmBannerComponent
+                                             ;;PowertoolsHompage24/7BannerComponent;Powertools Homepage 24/7 Banner Component;;PowertoolsHompage24/7BannerComponent
 ###### Homepage End ######
 
 
@@ -605,7 +609,7 @@ INSERT_UPDATE ViewStoreAction;$contentCV[unique=true];uid[unique=true];url;name;
 ###### Store Finder Page End ######
 
 
-###### FAQ Page Start ###### 
+###### FAQ Page Start ######
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='faq'];contentSlot(uid,$contentCV)[unique=true];;;
                                 ;;Section2A-FAQ;Section2A;;Section2ASlot-FAQ;;;
                                 ;;Section2B-FAQ;Section2B;;Section2BSlot-FAQ;;;
@@ -617,7 +621,7 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;c
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;
                                    ;;faqMenuParagraph;FAQ Menu Paragraph;FAQMenuParagraph;;;;
                                    ;;faqTextParagraph;FAQ Text Paragraph;FAQTextParagraph;;;;
-###### FAQ Page End ###### 
+###### FAQ Page End ######
 
 
 ###### Order Expired Page Start ######
@@ -986,40 +990,40 @@ INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@medi
                    ;;/images/theme/logo_hybris_b2b_responsive.svg;logo_hybris_b2b_responsive.svg;$siteResource/images/theme/logo_hybris_b2b_responsive.svg;image/svg+xml;hybris Accelerator;
 
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
-                   ;;addEditAddressPagePreview;text/png;AddEditAddressPage.png;$jarResourceCms/preview-images/pacterab2b/AddEditAddressPage.png
-                   ;;addressBookPagePreview;text/png;AddressBook.png;$jarResourceCms/preview-images/pacterab2b/AddressBookPage.png
-                   ;;cartPagePreview;text/png;CartPage.png;$jarResourceCms/preview-images/pacterab2b/CartPage.png
-                   ;;checkoutLoginPagePreview;text/png;CheckoutLoginPage.png;$jarResourceCms/preview-images/pacterab2b/CheckoutLoginPage.png
-                   ;;multiStepCheckoutSummaryPagePreview;text/png;MultiStepCheckoutSummaryPage.png;$jarResourceCms/preview-images/pacterab2b/MultiStepCheckoutSummaryPage.png
-                   ;;termsAndConditionsPage;text/png;TermsAndConditionsPage.png;$jarResourceCms/preview-images/pacterab2b/TermsAndConditionsPage.png;;;
-                   ;;homepagePreview;text/png;Homepage.png;$jarResourceCms/preview-images/pacterab2b/Homepage.png
-                   ;;importCSVSavedCartPagePreview;text/png;OrderHistoryPage.png;$jarResourceCms/preview-images/pacterab2b/ImportCSVSavedCartPage.png
-                   ;;loginPagePreview;text/png;LoginPage.png;$jarResourceCms/preview-images/pacterab2b/LoginPage.png
-                   ;;notFoundPagePreview;text/png;NotFoundPage.png;$jarResourceCms/preview-images/pacterab2b/NotFoundPage.png
-                   ;;orderConfirmationPagePreview;text/png;OrderConfirmationPage.png;$jarResourceCms/preview-images/pacterab2b/OrderConfirmationPage.png
-                   ;;orderDetailsPagePreview;text/png;OrderDetailsPage.png;$jarResourceCms/preview-images/pacterab2b/OrderDetailsPage.png
-                   ;;orderHistoryPagePreview;text/png;OrderHistoryPage.png;$jarResourceCms/preview-images/pacterab2b/OrderHistoryPage.png
-                   ;;paymentDetailsPagePreview;text/png;PaymentDetailsPage.png;$jarResourceCms/preview-images/pacterab2b/PaymentDetailsPage.png
-                   ;;myQuotesPagePreview;text/png;MyQuotesPage.png;$jarResourceCms/preview-images/pacterab2b/MyQuotesPage.png
-                   ;;myReplenishmentOrdersPagePreview;text/png;MyReplenishmentOrdersPage.png;$jarResourceCms/preview-images/pacterab2b/MyReplenishmentOrdersPage.png
-                   ;;productDetailsPagePreview;text/png;ProductDetailsPage.png;$jarResourceCms/preview-images/pacterab2b/ProductDetailsPage.png
-                   ;;productListPagePreview;text/png;ProductListPage.png;$jarResourceCms/preview-images/pacterab2b/ProductListPage.png
-                   ;;profilePagePreview;text/png;ProfilePage.png;$jarResourceCms/preview-images/pacterab2b/ProfilePage.png
-                   ;;searchResultsEmptyPagePreview;text/png;SearchResultsEmptyPage.png;$jarResourceCms/preview-images/pacterab2b/SearchResultsEmptyPage.png
-                   ;;searchResultsPagePreview;text/png;SearchResultsPage.png;$jarResourceCms/preview-images/pacterab2b/SearchResultsPage.png
-                   ;;storefinderPagePreview;text/png;StoreFinderPage.png;$jarResourceCms/preview-images/pacterab2b/StoreFinderPage.png
-                   ;;updateForgottenPasswordPagePreview;text/png;UpdateForgottenPasswordPage.png;$jarResourceCms/preview-images/pacterab2b/UpdateForgottenPasswordPage.png
-#;;productGridPagePreview;text/png;ProductGridPage.png;$jarResourceCms/preview-images/pacterab2b/ProductGridPage.png
-                   ;;orderApprovalDashboardPagePreview;text/png;OrderApprovalDashboardPage.png;$jarResourceCms/preview-images/pacterab2b/OrderApprovalDashboardPage.png
-                   ;;updatePasswordPagePreview;text/png;UpdatePasswordPage.png;$jarResourceCms/preview-images/pacterab2b/UpdatePasswordPage.png
-                   ;;myReplenishmentDetailsPreview;text/png;UpdatePasswordPage.png;$jarResourceCms/preview-images/pacterab2b/MyReplenishmentDetailsPage.png
-                   ;;quoteDetailPreview;text/png;UpdatePasswordPage.png;$jarResourceCms/preview-images/pacterab2b/QuoteDetailPage.png
-                   ;;updateEmailPreview;text/png;UpdatePasswordPage.png;$jarResourceCms/preview-images/pacterab2b/UpdateEmailPage.png
-                   ;;updateProfilePreview;text/png;UpdatePasswordPage.png;$jarResourceCms/preview-images/pacterab2b/UpdateProfilePage.png
-                   ;;searchAdvancedEmptyPreview;text/png;UpdatePasswordPage.png;$jarResourceCms/preview-images/pacterab2b/SearchAdvancedEmptyPage.png
-                   ;;savedCartsPagePreview;text/png;SavedCartsPage.png;$jarResourceCms/preview-images/pacterab2b/SavedCartsPage.png
-                   ;;savedCartDetailsPagePreview;text/png;SavedCartDetailsPage.png;$jarResourceCms/preview-images/pacterab2b/SavedCartDetailsPage.png
-                   ;;replenishmentConfirmationPagePreview;text/png;ReplenishmentConfirmationPage.png;$jarResourceCms/preview-images/pacterab2b/ReplenishmentConfirmationPage.png
+                   ;;addEditAddressPagePreview;text/png;AddEditAddressPage.png;$jarResourceCms_init/preview-images/pacterab2b/AddEditAddressPage.png
+                   ;;addressBookPagePreview;text/png;AddressBook.png;$jarResourceCms_init/preview-images/pacterab2b/AddressBookPage.png
+                   ;;cartPagePreview;text/png;CartPage.png;$jarResourceCms_init/preview-images/pacterab2b/CartPage.png
+                   ;;checkoutLoginPagePreview;text/png;CheckoutLoginPage.png;$jarResourceCms_init/preview-images/pacterab2b/CheckoutLoginPage.png
+                   ;;multiStepCheckoutSummaryPagePreview;text/png;MultiStepCheckoutSummaryPage.png;$jarResourceCms_init/preview-images/pacterab2b/MultiStepCheckoutSummaryPage.png
+                   ;;termsAndConditionsPage;text/png;TermsAndConditionsPage.png;$jarResourceCms_init/preview-images/pacterab2b/TermsAndConditionsPage.png;;;
+                   ;;homepagePreview;text/png;Homepage.png;$jarResourceCms_init/preview-images/pacterab2b/Homepage.png
+                   ;;importCSVSavedCartPagePreview;text/png;OrderHistoryPage.png;$jarResourceCms_init/preview-images/pacterab2b/ImportCSVSavedCartPage.png
+                   ;;loginPagePreview;text/png;LoginPage.png;$jarResourceCms_init/preview-images/pacterab2b/LoginPage.png
+                   ;;notFoundPagePreview;text/png;NotFoundPage.png;$jarResourceCms_init/preview-images/pacterab2b/NotFoundPage.png
+                   ;;orderConfirmationPagePreview;text/png;OrderConfirmationPage.png;$jarResourceCms_init/preview-images/pacterab2b/OrderConfirmationPage.png
+                   ;;orderDetailsPagePreview;text/png;OrderDetailsPage.png;$jarResourceCms_init/preview-images/pacterab2b/OrderDetailsPage.png
+                   ;;orderHistoryPagePreview;text/png;OrderHistoryPage.png;$jarResourceCms_init/preview-images/pacterab2b/OrderHistoryPage.png
+                   ;;paymentDetailsPagePreview;text/png;PaymentDetailsPage.png;$jarResourceCms_init/preview-images/pacterab2b/PaymentDetailsPage.png
+                   ;;myQuotesPagePreview;text/png;MyQuotesPage.png;$jarResourceCms_init/preview-images/pacterab2b/MyQuotesPage.png
+                   ;;myReplenishmentOrdersPagePreview;text/png;MyReplenishmentOrdersPage.png;$jarResourceCms_init/preview-images/pacterab2b/MyReplenishmentOrdersPage.png
+                   ;;productDetailsPagePreview;text/png;ProductDetailsPage.png;$jarResourceCms_init/preview-images/pacterab2b/ProductDetailsPage.png
+                   ;;productListPagePreview;text/png;ProductListPage.png;$jarResourceCms_init/preview-images/pacterab2b/ProductListPage.png
+                   ;;profilePagePreview;text/png;ProfilePage.png;$jarResourceCms_init/preview-images/pacterab2b/ProfilePage.png
+                   ;;searchResultsEmptyPagePreview;text/png;SearchResultsEmptyPage.png;$jarResourceCms_init/preview-images/pacterab2b/SearchResultsEmptyPage.png
+                   ;;searchResultsPagePreview;text/png;SearchResultsPage.png;$jarResourceCms_init/preview-images/pacterab2b/SearchResultsPage.png
+                   ;;storefinderPagePreview;text/png;StoreFinderPage.png;$jarResourceCms_init/preview-images/pacterab2b/StoreFinderPage.png
+                   ;;updateForgottenPasswordPagePreview;text/png;UpdateForgottenPasswordPage.png;$jarResourceCms_init/preview-images/pacterab2b/UpdateForgottenPasswordPage.png
+#;;productGridPagePreview;text/png;ProductGridPage.png;$jarResourceCms_init/preview-images/pacterab2b/ProductGridPage.png
+                   ;;orderApprovalDashboardPagePreview;text/png;OrderApprovalDashboardPage.png;$jarResourceCms_init/preview-images/pacterab2b/OrderApprovalDashboardPage.png
+                   ;;updatePasswordPagePreview;text/png;UpdatePasswordPage.png;$jarResourceCms_init/preview-images/pacterab2b/UpdatePasswordPage.png
+                   ;;myReplenishmentDetailsPreview;text/png;UpdatePasswordPage.png;$jarResourceCms_init/preview-images/pacterab2b/MyReplenishmentDetailsPage.png
+                   ;;quoteDetailPreview;text/png;UpdatePasswordPage.png;$jarResourceCms_init/preview-images/pacterab2b/QuoteDetailPage.png
+                   ;;updateEmailPreview;text/png;UpdatePasswordPage.png;$jarResourceCms_init/preview-images/pacterab2b/UpdateEmailPage.png
+                   ;;updateProfilePreview;text/png;UpdatePasswordPage.png;$jarResourceCms_init/preview-images/pacterab2b/UpdateProfilePage.png
+                   ;;searchAdvancedEmptyPreview;text/png;UpdatePasswordPage.png;$jarResourceCms_init/preview-images/pacterab2b/SearchAdvancedEmptyPage.png
+                   ;;savedCartsPagePreview;text/png;SavedCartsPage.png;$jarResourceCms_init/preview-images/pacterab2b/SavedCartsPage.png
+                   ;;savedCartDetailsPagePreview;text/png;SavedCartDetailsPage.png;$jarResourceCms_init/preview-images/pacterab2b/SavedCartDetailsPage.png
+                   ;;replenishmentConfirmationPagePreview;text/png;ReplenishmentConfirmationPage.png;$jarResourceCms_init/preview-images/pacterab2b/ReplenishmentConfirmationPage.png
 ###### Media End ######
 
 
@@ -1073,22 +1077,23 @@ UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $
 
 ########  Responsive Error Page (Eng) #######
 INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];realfilename;altText;mime[default='image/svg+xml'];$contentCV[unique=true];folder(qualifier)[default=images]
-                   ;mobile;Pacterab2_480x170_ErrorPage_480W.svg;$siteResource/images/banners/site/Pacterab2_1400x401_ErrorPage_EN_1400W.svg;Pacterab2_1400x401_ErrorPage_EN_1400W.svg;"Page not found";
-                   ;tablet;Pacterab2_770x221_ErrorPage_770W.svg;$siteResource/images/banners/site/Pacterab2_1400x401_ErrorPage_EN_1400W.svg;Pacterab2_1400x401_ErrorPage_EN_1400W.svg;"Page not found";
-                   ;desktop;Pacterab2_960x275_ErrorPage_960W.svg;$siteResource/images/banners/site/Pacterab2_1400x401_ErrorPage_EN_1400W.svg;Pacterab2_1400x401_ErrorPage_EN_1400W.svg;"Page not found";
-                   ;widescreen;Pacterab2_1400x401_ErrorPage_1400W.svg;$siteResource/images/banners/site/Pacterab2_1400x401_ErrorPage_EN_1400W.svg;Pacterab2_1400x401_ErrorPage_EN_1400W.svg;"Page not found";
+                   ;mobile;Powertools_480x170_ErrorPage_480W.svg;$siteResource/images/banners/site/Pacterab2_1400x401_ErrorPage_EN_1400W.svg;Powertools_1400x401_ErrorPage_EN_1400W.svg;"Page not found";
+                   ;tablet;Powertools_770x221_ErrorPage_770W.svg;$siteResource/images/banners/site/Pacterab2_1400x401_ErrorPage_EN_1400W.svg;Powertools_1400x401_ErrorPage_EN_1400W.svg;"Page not found";
+                   ;desktop;Powertools_960x275_ErrorPage_960W.svg;$siteResource/images/banners/site/Pacterab2_1400x401_ErrorPage_EN_1400W.svg;Powertools_1400x401_ErrorPage_EN_1400W.svg;"Page not found";
+                   ;widescreen;Powertools_1400x401_ErrorPage_1400W.svg;$siteResource/images/banners/site/Pacterab2_1400x401_ErrorPage_EN_1400W.svg;Powertools_1400x401_ErrorPage_EN_1400W.svg;"Page not found";
 
 INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$contentCV[unique=true]
-                            ;pacterab2b-errorpage-pagenotfound;Pacterab2_480x170_ErrorPage_480W.svg,Pacterab2_770x221_ErrorPage_770W.svg,Pacterab2_960x275_ErrorPage_960W.svg,Pacterab2_1400x401_ErrorPage_1400W.svg
+                            ;powertools-errorpage-pagenotfound;Powertools_480x170_ErrorPage_480W.svg,Powertools_770x221_ErrorPage_770W.svg,Powertools_960x275_ErrorPage_960W.svg,Powertools_1400x401_ErrorPage_1400W.svg
 
 INSERT_UPDATE SimpleResponsiveBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;$mediaContainer
-                                             ;;Pacterab2btronicsErrorpageBannerComponent;Pacterab2btronics Error Page Banner Component;Pacterab2tronicsErrorpageBannerComponent;pacterab2b-errorpage-pagenotfound
+                                             ;;PowertoolstronicsErrorpageBannerComponent;Powertoolstronics Error Page Banner Component;PowertoolstronicsErrorpageBannerComponent;powertools-errorpage-pagenotfound
 
 # Create ContentSlots
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
-                         ;;MiddleContent-Errorpage;Middle Content Slot for Error Page;true;Pacterab2tronicsErrorpageBannerComponent;;;
+                         ;;MiddleContent-Errorpage;Middle Content Slot for Error Page;true;PowertoolstronicsErrorpageBannerComponent;;;
 
 # Create Content Slots for Page
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='notFound'];contentSlot(uid,$contentCV)[unique=true]
                                 ;;MiddleContent-Errorpage;MiddleContent;;MiddleContent-Errorpage
 ######## End of Responsive Error Page #######
+

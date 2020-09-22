@@ -6,7 +6,7 @@
 # Macros / Replacement Parameter definitions
 $prefix=pacterab2b
 $classificationCatalog=pacterab2bClassification
-$contentCatalog=pacterab2ContentCatalog
+$contentCatalog=pacterab2bContentCatalog
 $catalogVersions=catalogVersions(catalog(id),version);
 $solrIndexedType=$prefixProductType
 $classSystemVersion=systemVersion(catalog(id[default='$classificationCatalog']),version[default='1.0'])

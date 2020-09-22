@@ -5,7 +5,7 @@
 # English Localisation
 
 # Macros / Replacement Parameter definitions
-$contentCatalog=pacterab2ContentCatalog
+$contentCatalog=pacterab2bContentCatalog
 
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 $picture=media(code, $contentCV);

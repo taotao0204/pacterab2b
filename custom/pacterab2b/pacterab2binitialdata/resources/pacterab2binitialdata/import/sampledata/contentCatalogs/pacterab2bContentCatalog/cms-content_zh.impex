@@ -5,11 +5,14 @@
 # ZH Localisation
 
 # Macros / Replacement Parameter definitions
-$contentCatalog=pacterab2ContentCatalog
+$contentCatalog=pacterab2bContentCatalog
 
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 $picture=media(code, $contentCV);
-$siteResource=jar:com.pactera.initialdata.setup.InitialDataSystemSetup&/pacterab2binitialdata/import/contentCatalogs/$contentCatalog
+$siteResource=jar:com.pactera.initialdata.setup.InitialDataSystemSetup&/pacterab2binitialdata/import/sampledata/contentCatalogs/$contentCatalog
+$medias=medias(code, $contentCV);
+$mediaContainer=media(qualifier, $contentCV)[lang=$lang];
+
 
 # Language
 $lang=zh
@@ -108,7 +111,7 @@ UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
 UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
                         ;;FollowUsNavNode;"关注我们"
                         ;;MyAccountNavNode;"我的账户"
-                        ;;Pacterab2NavNode;"电动工具站点"
+                        ;;PowertoolsNavNode;"pactera B2B 站点"
                         ;;SAPCommerceNavNode;"SAP Commerce Cloud"
                         ;;SAPCustomerExperienceNavNode;"SAP Customer Experience"
                         ;;SiteRootNode;"站点根目录"
@@ -148,8 +151,8 @@ UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[la
 # Pacterab2 Homepage
 
 UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];title[lang=zh]
-                               ;;Pacterab2HomepageNewProductCarouselComponent;"WHAT'S NEW"
-                               ;;Pacterab2HomepageProductCarouselComponent;"我们最畅销的产品"
+                               ;;PowertoolsHomepageNewProductCarouselComponent;"WHAT'S NEW"
+                               ;;PowertoolsHomepageProductCarouselComponent;"我们最畅销的产品"
                                ;;PremiumbuyersgroupHomepageProductCarouselComponent;"我们最畅销的产品"
 
 INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];realfilename;altText;mime[default='image/jpeg'];$contentCV[unique=true];folder(qualifier)[default=images];

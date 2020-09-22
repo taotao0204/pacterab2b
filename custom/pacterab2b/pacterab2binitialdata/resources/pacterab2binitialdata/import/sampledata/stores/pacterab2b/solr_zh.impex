@@ -8,7 +8,7 @@ $prefix=pacterab2b
 $indexedType=pacterab2bProductType
 $facetSearchConfigName=$prefixIndex
 
-$contentCatalogName=pacterab2ContentCatalog
+$contentCatalogName=pacterab2bContentCatalog
 
 $solrIndexedType=solrIndexedType(identifier[default=$indexedType])[unique=true]
 $contentCatalogVersion=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalogName]),CatalogVersion.version[default=Staged])[default=$contentCatalogName:Staged]

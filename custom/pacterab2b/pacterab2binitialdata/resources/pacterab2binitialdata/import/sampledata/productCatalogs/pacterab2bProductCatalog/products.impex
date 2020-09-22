@@ -26,103 +26,778 @@ $siteResource=jar:com.pactera.initialdata.setup.InitialDataSystemSetup&/pacterab
 $s3BucketResource=https://lambda-s3-poc.s3.amazonaws.com/img
 $taxGroup=Europe1PriceFactory_PTG(code)[default=jp-vat-full]
 
-
-
 INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];$catalogVersion;folder(qualifier)
-                   ;300Wx300H;/300Wx300H/packaging.png;$siteResource/product/packaging.png;;;images
-                   ;96Wx96H;/96Wx96H/packaging.png;$siteResource/product/packaging.png;;;images
-                   ;65Wx65H;/65Wx65H/packaging.png;$siteResource/product/packaging.png;;;images
-                   ;30Wx30H;/30Wx30H/packaging.png;$siteResource/product/packaging.png;;;images
-                   ;515Wx515H;/515Wx515H/packaging.png;$siteResource/product/packaging.png;;;images
+                   ;300Wx300H;/300Wx300H/g9501700110334.jpg;$siteResource/product/g9501700110334.jpg;;;images
+
+                   ;300Wx300H;/300Wx300H/00400092.jpg;$siteResource/product/g9501700110535.jpg;;;images
+                   ;300Wx300H;/300Wx300H/00437548.jpg;$siteResource/product/g9501700110029.jpg;;;images
+                   ;300Wx300H;/300Wx300H/00400098.jpg;$siteResource/product/g9501900000103.jpg;;;images
+                   ;300Wx300H;/300Wx300H/004000981.jpg;$siteResource/product/g95019000001031.jpg;;;images
+                   ;300Wx300H;/300Wx300H/g9501700110573.jpg;$siteResource/product/g9501700110573.jpg;;;images
+
+                   ;300Wx300H;/300Wx300H/00031458.jpg;$siteResource/product/g9501700110580.jpg;;;images
+                   ;300Wx300H;/300Wx300H/00121111.jpg;$siteResource/product/g9501750053365.jpg;;;images
+                   ;300Wx300H;/300Wx300H/001211111.jpg;$siteResource/product/g95017500533651.jpg;;;images
+                   ;300Wx300H;/300Wx300H/g9501810019324.jpg;$siteResource/product/g9501810019324.jpg;;;images
+                   ;300Wx300H;/300Wx300H/g95018100193241.jpg;$siteResource/product/g95018100193241.jpg;;;images
+                   ;300Wx300H;/300Wx300H/00157916.jpg;$siteResource/product/g9501750053513.jpg;;;images
+                   ;300Wx300H;/300Wx300H/001579161.jpg;$siteResource/product/g95017500535131.jpg;;;images
+                   ;300Wx300H;/300Wx300H/g9501700017738.jpg;$siteResource/product/g9501700017738.jpg;;;images
+                   ;300Wx300H;/300Wx300H/g95017000177381.jpg;$siteResource/product/g95017000177381.jpg;;;images
+                   ;300Wx300H;/300Wx300H/g95017000177382.jpg;$siteResource/product/g95017000177382.jpg;;;images
+                   ;300Wx300H;/300Wx300H/g95017000177383.jpg;$siteResource/product/g95017000177383.jpg;;;images
+
+                   ;300Wx300H;/300Wx300H/01163090.jpg;$siteResource/product/g4971475279320.jpg;;;images
+                   ;300Wx300H;/300Wx300H/011630901.jpg;$siteResource/product/g49714752793201.jpg;;;images
+                   ;300Wx300H;/300Wx300H/01163093.jpg;$siteResource/product/g4971475307450.jpg;;;images
+                   ;300Wx300H;/300Wx300H/g4957902026057.jpg;$siteResource/product/g4957902026057.jpg;;;images
+                   ;300Wx300H;/300Wx300H/g4957902026064.jpg;$siteResource/product/g4957902026064.jpg;;;images
+                   ;300Wx300H;/300Wx300H/g49579020260571.jpg;$siteResource/product/g49579020260571.jpg;;;images
+                   ;300Wx300H;/300Wx300H/g49579020260641.jpg;$siteResource/product/g49579020260641.jpg;;;images
+
+                   ;300Wx300H;/300Wx300H/installation-image.jpg;$siteResource/product/installation-image.jpg;;;images
+
+                   ;96Wx96H;/96Wx96H/g9501700110334.jpg;$siteResource/product//96Wx96H/g9501700110334.jpg;;;images
+                   ;96Wx96H;/96Wx96H/00400092.jpg;$siteResource/product//96Wx96H/g9501700110535.jpg;;;images
+                   ;96Wx96H;/96Wx96H/00437548.jpg;$siteResource/product//96Wx96H/g9501700110029.jpg;;;images
+                   ;96Wx96H;/96Wx96H/00400098.jpg;$siteResource/product//96Wx96H/g9501900000103.jpg;;;images
+                   ;96Wx96H;/96Wx96H/g9501700110573.jpg;$siteResource/product//96Wx96H/g9501700110573.jpg;;;images
+
+                   ;96Wx96H;/96Wx96H/00031458.jpg;$siteResource/product//96Wx96H/g9501700110580.jpg;;;images
+                   ;96Wx96H;/96Wx96H/00121111.jpg;$siteResource/product//96Wx96H/g9501750053365.jpg;;;images
+                   ;96Wx96H;/96Wx96H/g9501810019324.jpg;$siteResource/product//96Wx96H/g9501810019324.jpg;;;images
+
+                   ;96Wx96H;/96Wx96H/00157916.jpg;$siteResource/product//96Wx96H/g9501750053513.jpg;;;images
+
+                   ;96Wx96H;/96Wx96H/g9501700017738.jpg;$siteResource/product//96Wx96H/g9501700017738.jpg;;;images
+                   ;96Wx96H;/96Wx96H/01163090.jpg;$siteResource/product//96Wx96H/g4971475279320.jpg;;;images
+                   ;96Wx96H;/96Wx96H/01163093.jpg;$siteResource/product//96Wx96H/g4971475307450.jpg;;;images
+                   ;96Wx96H;/96Wx96H/g4957902026057.jpg;$siteResource/product/96Wx96H/g4957902026057.jpg;;;images
+                   ;96Wx96H;/96Wx96H/g4957902026064.jpg;$siteResource/product/96Wx96H/g4957902026064.jpg;;;images
+                   ;96Wx96H;/96Wx96H/g49579020260571.jpg;$siteResource/product/96Wx96H/g49579020260571.jpg;;;images
+                   ;96Wx96H;/96Wx96H/g49579020260641.jpg;$siteResource/product/96Wx96H/g49579020260641.jpg;;;images
+
+                   ;96Wx96H;/96Wx96H/installation-image.jpg;$siteResource/product/installation-image.jpg;;;images
+
+                   ;65Wx65H;/65Wx65H/g4957902026057.jpg;$siteResource/product/65Wx65H/g4957902026057.jpg;;;images
+                   ;65Wx65H;/65Wx65H/g4957902026064.jpg;$siteResource/product/65Wx65H/g4957902026064.jpg;;;images
+                   ;65Wx65H;/65Wx65H/g49579020260571.jpg;$siteResource/product/65Wx65H/g49579020260571.jpg;;;images
+                   ;65Wx65H;/65Wx65H/g49579020260641.jpg;$siteResource/product/65Wx65H/g49579020260641.jpg;;;images
+                   ;65Wx65H;/65Wx65H/g9501700110334.jpg;$siteResource/product/65Wx65H/g9501700110334.jpg;;;images
+                   ;65Wx65H;/65Wx65H/g9501700110573.jpg;$siteResource/product/65Wx65H/g9501700110573.jpg;;;images
+                   ;65Wx65H;/65Wx65H/g9501810019324.jpg;$siteResource/product/65Wx65H/g9501810019324.jpg;;;images
+                   ;65Wx65H;/65Wx65H/g9501700017738.jpg;$siteResource/product/65Wx65H/g9501700017738.jpg;;;images
+                   ;65Wx65H;/65Wx65H/00400098.jpg;$siteResource/product//65Wx65H/g9501900000103.jpg;;;images
+                   ;65Wx65H;/65Wx65H/00400092.jpg;$siteResource/product//65Wx65H/g9501700110535.jpg;;;images
+                   ;65Wx65H;/65Wx65H/00437548.jpg;$siteResource/product//65Wx65H/g9501700110029.jpg;;;images
+                   ;65Wx65H;/65Wx65H/00031458.jpg;$siteResource/product//65Wx65H/g9501700110580.jpg;;;images
+                   ;65Wx65H;/65Wx65H/00121111.jpg;$siteResource/product//65Wx65H/g9501750053365.jpg;;;images
+                   ;65Wx65H;/65Wx65H/00157916.jpg;$siteResource/product//65Wx65H/g9501750053513.jpg;;;images
+                   ;65Wx65H;/65Wx65H/01163090.jpg;$siteResource/product//65Wx65H/g4971475279320.jpg;;;images
+                   ;65Wx65H;/65Wx65H/01163093.jpg;$siteResource/product//65Wx65H/g4971475307450.jpg;;;images
+
+                   ;65Wx65H;/65Wx65H/installation-image.jpg;$siteResource/product/installation-image.jpg;;;images
+
+                   ;30Wx30H;/30Wx30H/g4957902026057.jpg;$siteResource/product/30Wx30H/g4957902026057.jpg;;;images
+                   ;30Wx30H;/30Wx30H/g4957902026064.jpg;$siteResource/product/30Wx30H/g4957902026064.jpg;;;images
+                   ;30Wx30H;/30Wx30H/g49579020260571.jpg;$siteResource/product/30Wx30H/g49579020260571.jpg;;;images
+                   ;30Wx30H;/30Wx30H/g49579020260641.jpg;$siteResource/product/30Wx30H/g49579020260641.jpg;;;images
+                   ;30Wx30H;/30Wx30H/g9501700110334.jpg;$siteResource/product/30Wx30H/g9501700110334.jpg;;;images
+                   ;30Wx30H;/30Wx30H/g9501700110573.jpg;$siteResource/product/30Wx30H/g9501700110573.jpg;;;images
+                   ;30Wx30H;/30Wx30H/g9501810019324.jpg;$siteResource/product/30Wx30H/g9501810019324.jpg;;;images
+                   ;30Wx30H;/30Wx30H/g9501700017738.jpg;$siteResource/product/30Wx30H/g9501700017738.jpg;;;images
+                   ;30Wx30H;/30Wx30H/00400098.jpg;$siteResource/product//30Wx30H/g9501900000103.jpg;;;images
+                   ;30Wx30H;/30Wx30H/00400092.jpg;$siteResource/product//30Wx30H/g9501700110535.jpg;;;images
+                   ;30Wx30H;/30Wx30H/00437548.jpg;$siteResource/product//30Wx30H/g9501700110029.jpg;;;images
+                   ;30Wx30H;/30Wx30H/00031458.jpg;$siteResource/product//30Wx30H/g9501700110580.jpg;;;images
+                   ;30Wx30H;/30Wx30H/00121111.jpg;$siteResource/product//30Wx30H/g9501750053365.jpg;;;images
+                   ;30Wx30H;/30Wx30H/00157916.jpg;$siteResource/product//30Wx30H/g9501750053513.jpg;;;images
+                   ;30Wx30H;/30Wx30H/01163090.jpg;$siteResource/product//30Wx30H/g4971475279320.jpg;;;images
+                   ;30Wx30H;/30Wx30H/01163093.jpg;$siteResource/product//30Wx30H/g4971475307450.jpg;;;images
+
+                   ;30Wx30H;/30Wx30H/installation-image.jpg;$siteResource/product/installation-image.jpg;;;images
+
+                   ;515Wx515H;/515Wx515H/g4957902026057.jpg;$siteResource/product/515Wx515H/g4957902026057.jpg;;;images
+                   ;515Wx515H;/515Wx515H/g4957902026064.jpg;$siteResource/product/515Wx515H/g4957902026064.jpg;;;images
+                   ;515Wx515H;/515Wx515H/g49579020260571.jpg;$siteResource/product/515Wx515H/g49579020260571.jpg;;;images
+                   ;515Wx515H;/515Wx515H/g49579020260641.jpg;$siteResource/product/515Wx515H/g49579020260641.jpg;;;images
+
+                   ;515Wx515H;/515Wx515H/installation-image.jpg;$siteResource/product/installation-image.jpg;;;images
 
 
 
 INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$catalogVersion
-# AB7-1939 Change installation Fee Artical ID
-                            ;00795085;/515Wx515H/packaging.png,/300Wx300H/packaging.png,/96Wx96H/packaging.png,/65Wx65H/packaging.png,/30Wx30H/packaging.png;
+                            ;g9501700110334;/300Wx300H/g9501700110334.jpg,/96Wx96H/g9501700110334.jpg,/65Wx65H/g9501700110334.jpg,/30Wx30H/g9501700110334.jpg;
+                            ;00400092;/300Wx300H/00400092.jpg,/96Wx96H/00400092.jpg,/65Wx65H/00400092.jpg,/30Wx30H/00400092.jpg;
+                            ;00437548;/300Wx300H/00437548.jpg,/96Wx96H/00437548.jpg,/65Wx65H/00437548.jpg,/30Wx30H/00437548.jpg;
+                            ;00400098;/300Wx300H/00400098.jpg,/96Wx96H/00400098.jpg,/65Wx65H/00400098.jpg,/30Wx30H/00400098.jpg;
+                            ;g9501700110573;/300Wx300H/g9501700110573.jpg,/96Wx96H/g9501700110573.jpg,/65Wx65H/g9501700110573.jpg,/30Wx30H/g9501700110573.jpg;
+                            ;00031458;/300Wx300H/00031458.jpg,/96Wx96H/00031458.jpg,/65Wx65H/00031458.jpg,/30Wx30H/00031458.jpg;
+                            ;00121111;/300Wx300H/00121111.jpg,/96Wx96H/00121111.jpg,/65Wx65H/00121111.jpg,/30Wx30H/00121111.jpg;
+                            ;g9501810019324;/300Wx300H/g9501810019324.jpg,/96Wx96H/g9501810019324.jpg,/65Wx65H/g9501810019324.jpg,/30Wx30H/g9501810019324.jpg;
+                            ;00157916;/300Wx300H/00157916.jpg,/96Wx96H/00157916.jpg,/65Wx65H/00157916.jpg,/30Wx30H/00157916.jpg;
+                            ;g9501700017738;/300Wx300H/g9501700017738.jpg,/96Wx96H/g9501700017738.jpg,/65Wx65H/g9501700017738.jpg,/30Wx30H/g9501700017738.jpg;
+                            ;01163090;/300Wx300H/01163090.jpg,/96Wx96H/01163090.jpg,/65Wx65H/01163090.jpg,/30Wx30H/01163090.jpg;
+                            ;01163093;/300Wx300H/01163093.jpg,/96Wx96H/01163093.jpg,/65Wx65H/01163093.jpg,/30Wx30H/01163093.jpg;
+                            ;g4957902026057;/515Wx515H/g4957902026057.jpg,/300Wx300H/g4957902026057.jpg,/96Wx96H/g4957902026057.jpg,/65Wx65H/g4957902026057.jpg,/30Wx30H/g4957902026057.jpg;
+                            ;g4957902026064;/515Wx515H/g4957902026064.jpg,/300Wx300H/g4957902026064.jpg,/96Wx96H/g4957902026064.jpg,/65Wx65H/g4957902026064.jpg,/30Wx30H/g4957902026064.jpg;
+                            ;g49579020260571;/515Wx515H/g49579020260571.jpg,/300Wx300H/g49579020260571.jpg,/96Wx96H/g49579020260571.jpg,/65Wx65H/g49579020260571.jpg,/30Wx30H/g49579020260571.jpg;
+                            ;g49579020260641;/515Wx515H/g49579020260641.jpg,/300Wx300H/g49579020260641.jpg,/96Wx96H/g49579020260641.jpg,/65Wx65H/g49579020260641.jpg,/30Wx30H/g49579020260641.jpg;
+
+                            ;00795085;/515Wx515H/installation-image.jpg,/300Wx300H/installation-image.jpg,/96Wx96H/installation-image.jpg,/65Wx65H/installation-image.jpg,/30Wx30H/installation-image.jpg;
+                            ;installation-fee;/515Wx515H/installation-image.jpg,/300Wx300H/installation-image.jpg,/96Wx96H/installation-image.jpg,/65Wx65H/installation-image.jpg,/30Wx30H/installation-image.jpg;
 
 # Insert Products
 INSERT_UPDATE Product;code[unique=true];$supercategories;unit(code);name[lang=$lang];name[lang=ja];$catalogVersion;$approved;$taxGroup;varianttype(code);
-# AB7-1939 Change installation Fee Artical ID
-                        ;00795085;;pieces;Packing Fee;梱包費用;;;;;;;;;true;FALSE;
+#                        ;g9501700110334;50000000;pieces;オートバックス AUTOBACS Maxrun EVERROAD 145/80R13 75S （タイヤ1本）;オートバックス AUTOBACS Maxrun EVERROAD 145/80R13 75S （タイヤ1本）;;;;TireSizeVariantProduct;;;;;;;;;;
+                        ;00400092;50000000;pieces;クムホ KUMHO ecoSENSE SE11 185/70R14 88S （タイヤ1本）;クムホ KUMHO ecoSENSE SE11 185/70R14 88S （タイヤ1本）;;;;;2019/10/03 00:00:00;2019/12/30 00:00:00;;;;FALSE;FALSE
+                        ;00437548;50000000;pieces;ミシュラン MICHELIN ENERGY SAVER+ 185/70R14 88T （タイヤ1本）;ミシュラン MICHELIN ENERGY SAVER+ 185/70R14 88T （タイヤ1本）;;;;;;;;;;FALSE;FALSE
+                        ;00400098;50000000;pieces;VITOUR FORMULA X 165/55R15（タイヤ1本）;VITOUR FORMULA X 165/55R15（タイヤ1本）;;;;;;;2019/10/03 00:00:00;2019/12/30 00:00:00;;FALSE;FALSE
+                        ;g9501700110573;50000000;pieces;ミシュラン MICHELIN ENERGY SAVER 165/55R15 75V （タイヤ1本）;ミシュラン MICHELIN ENERGY SAVER 165/55R15 75V （タイヤ1本）;;;;;;;;;;;
+                        ;00031458;50000000;pieces;ピレリ PIRELLI Cinturato P1 VERDE 165/55R15 75V （タイヤ1本）;ピレリ PIRELLI Cinturato P1 VERDE 165/55R15 75V （タイヤ1本）;;;;;2019/10/03 00:00:00;2019/12/30 00:00:00;2019/10/03 00:00:00;2019/12/30 00:00:00;;FALSE;
+                        ;00121111;50000000;pieces;オートバックス　North　Trek　N3i　155/65R14　75Q　タイヤ・ホイール4本セット;オートバックス　North　Trek　N3i　155/65R14　75Q　タイヤ・ホイール4本セット;;;;;;;;;;FALSE;
+                        ;g9501810019324;50000000;pieces;【14インtireチ　スタッドレス】155/65R14　オートバックス　North Trek N3i　＆　LEBEN LH　(タイヤホイール4本セット);【14インチ　スタッドレス】155/65R14　オートバックス　North Trek N3i　＆　LEBEN LH　(タイヤホイール4本セット);;
+                        ;00157916;50000000;pieces;P ICEA+ 225/65R17 102Q　タイヤ・ホイール4本セット;P ICEA+ 225/65R17 102Q　タイヤ・ホイール4本セット;;;;;;;;;;FALSE;
+                        ;g9501700017738;50000000;pieces;エクストレイル（T32型）、CX-5、エスクード等用【17インチ冬タイヤ】ピレリ　225/65R17 102Q（お得なタイヤ・ホイール4本セット）【タイヤ2017年製】;エクストレイル（T32型）、CX-5、エスクード等用【17インチ冬タイヤ】ピレリ　225/65R17 102Q（お得なタイヤ・ホイール4本セット）【タイヤ2017年製】;;
+                        ;01163090;50000000;pieces;AUTOBACS QUALITY ●AQ. スクープ　0W20/SN/4L　鉱物油;AUTOBACS QUALITY ●AQ. スクープ　0W20/SN/4L　鉱物油;;;;;2019/10/03 00:00:00;2019/12/30 00:00:00;;;;FALSE;
+                        ;01163093;50000000;pieces;AUTOBACS QUALITY ●AVANTE　5W30/SN/4L　部分合成油;AUTOBACS QUALITY ●AVANTE　5W30/SN/4L　部分合成油;;;;;;;2019/10/03 00:00:00;2019/12/30 00:00:00;;FALSE;
+#                        ;g4957902026060;50000000;pieces;DENSO　車載用プラズマクラスターイオン発生機;DENSO　車載用プラズマクラスターイオン発生機;;;;CarElectronicsColorVariantProduct;;;;;;FALSE;;
+
+
+                        ;00795085;50000000;pieces;AB7 wheel-installation-fee Installation Fee;AB7 wheel-installation-fee Installation Fee;;;;;;;;;true;FALSE;
+                        ;installation-fee;50000000;pieces;Installation/Packing Fee;Installation/Packing Fee;;;;;;;;;true;FALSE;
+
+
+
 
 UPDATE Product;code[unique=true];$picture;$thumbnail;$detail;$others;$normal;$thumbnails;$galleryImages;$catalogVersion
-# AB7-1939 Change installation Fee Artical ID
-                 ;00795085;/300Wx300H/packaging.png;/96Wx96H/packaging.png;;/515Wx515H/packaging.png;/96Wx96H/packaging.png;/96Wx96H/packaging.png;00795085;
+                 ;g9501700110334;/300Wx300H/g9501700110334.jpg;/96Wx96H/g9501700110334.jpg;;/96Wx96H/g9501700110334.jpg;/96Wx96H/g9501700110334.jpg;/96Wx96H/g9501700110334.jpg;g9501700110334;
+                 ;00400092;/300Wx300H/00400092.jpg;/96Wx96H/00400092.jpg;;/96Wx96H/00400092.jpg;/96Wx96H/00400092.jpg;/96Wx96H/00400092.jpg;00400092;
+                 ;00437548;/300Wx300H/00437548.jpg;/96Wx96H/00437548.jpg;;/96Wx96H/00437548.jpg;/96Wx96H/00437548.jpg;/96Wx96H/00437548.jpg;00437548;
+                 ;00400098;/300Wx300H/00400098.jpg;/96Wx96H/00400098.jpg;;/96Wx96H/00400098.jpg;/96Wx96H/00400098.jpg;/96Wx96H/00400098.jpg;00400098;
+                 ;g9501700110573;/300Wx300H/g9501700110573.jpg;/96Wx96H/g9501700110573.jpg;;/96Wx96H/g9501700110573.jpg;/96Wx96H/g9501700110573.jpg;/96Wx96H/g9501700110573.jpg;g9501700110573;
+                 ;00031458;/300Wx300H/00031458.jpg;/96Wx96H/00031458.jpg;;/96Wx96H/00031458.jpg;/96Wx96H/00031458.jpg;/96Wx96H/00031458.jpg;00031458;
+                 ;00121111;/300Wx300H/00121111.jpg;/96Wx96H/00121111.jpg;;/96Wx96H/00121111.jpg;/96Wx96H/00121111.jpg;/96Wx96H/00121111.jpg;00121111;
+                 ;g9501810019324;/300Wx300H/g9501810019324.jpg;/96Wx96H/g9501810019324.jpg;;/96Wx96H/g9501810019324.jpg;/96Wx96H/g9501810019324.jpg;/96Wx96H/g9501810019324.jpg;g9501810019324;
+                 ;00157916;/300Wx300H/00157916.jpg;/96Wx96H/00157916.jpg;;/96Wx96H/00157916.jpg;/96Wx96H/00157916.jpg;/96Wx96H/00157916.jpg;00157916;
+                 ;g9501700017738;/300Wx300H/g9501700017738.jpg;/96Wx96H/g9501700017738.jpg;;/96Wx96H/g9501700017738.jpg;/96Wx96H/g9501700017738.jpg;/96Wx96H/g9501700017738.jpg;g9501700017738;
+                 ;01163090;/300Wx300H/01163090.jpg;/96Wx96H/01163090.jpg;;/96Wx96H/01163090.jpg;/96Wx96H/01163090.jpg;/96Wx96H/01163090.jpg;01163090;
+                 ;01163093;/300Wx300H/01163093.jpg;/96Wx96H/01163093.jpg;;/96Wx96H/01163093.jpg;/96Wx96H/01163093.jpg;/96Wx96H/01163093.jpg;01163093;
+                 ;g4957902026060;/300Wx300H/g4957902026057.jpg;/96Wx96H/g4957902026057.jpg;;/515Wx515H/g4957902026057.jpg,/300Wx300H/g4957902026057.jpg,/96Wx96H/g4957902026057.jpg,/65Wx65H/g4957902026057.jpg,/30Wx30H/g4957902026057.jpg;/96Wx96H/g4957902026057.jpg;/96Wx96H/g4957902026057.jpg;g4957902026057,g49579020260571;
 
-# uketoriSyudan 0 - Store Recipt, 1 - Home Receipt, 2 both
+                 ;installation-fee;/300Wx300H/installation-image.jpg;/96Wx96H/installation-image.jpg;;/515Wx515H/installation-image.jpg;/96Wx96H/installation-image.jpg;/96Wx96H/installation-image.jpg;installation-fee;
+                 ;00795085;/300Wx300H/installation-image.jpg;/96Wx96H/installation-image.jpg;;/515Wx515H/installation-image.jpg;/96Wx96H/installation-image.jpg;/96Wx96H/installation-image.jpg;installation-fee;
+
+
 
 INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price;minqtd;unitFactor;net
-# AB7-1939 Change installation Fee Artical ID
+                      ;g9501700110334;pieces;USD;188.17;1;1;true
+                      ;g9501700110334;pieces;JPY;21150;1;1;true
+                      ;00583033;pieces;USD;183.17;1;1;true
+                      ;00583033;pieces;JPY;26450;1;1;true
+                      ;00588524;pieces;USD;198.17;1;1;true
+                      ;00588524;pieces;JPY;28150;1;1;true
+                      ;00400092;pieces;USD;42.49;1;1;true
+                      ;00400092;pieces;JPY;4775;1;1;true
+                      ;00437548;pieces;USD;50.99;1;1;true
+                      ;00437548;pieces;JPY;5730;1;1;true
+                      ;00400098;pieces;USD;59.48;1;1;true
+                      ;00400098;pieces;JPY;6685;1;1;true
+                      ;g9501700110573;pieces;USD;10.23;1;1;true
+                      ;g9501700110573;pieces;JPY;115000;1;1;true
+                      ;00031458;pieces;USD;17.53;1;1;true
+                      ;00031458;pieces;JPY;1970;1;1;true
+                      ;00121111;pieces;USD;17.53;1;1;true
+                      ;00121111;pieces;JPY;1970;1;1;true
+                      ;g9501810019324;pieces;USD;18.86;1;1;true
+                      ;g9501810019324;pieces;JPY;2120;1;1;true
+                      ;00157916;pieces;USD;11.57;1;1;true
+                      ;00157916;pieces;JPY;1300;1;1;true
+                      ;g9501700017738;pieces;USD;43;1;1;true
+                      ;g9501700017738;pieces;JPY;3420;1;1;true
+                      ;01163090;pieces;USD;50.99;1;1;true
+                      ;01163090;pieces;JPY;5730;1;1;true
+                      ;01163093;pieces;USD;50.99;1;1;true
+                      ;01163093;pieces;JPY;5730;1;1;true
+                      ;g4957902026060;pieces;USD;50.99;1;1;true
+                      ;g4957902026060;pieces;JPY;5030;1;1;true
+                      ;g4957902026060_B;pieces;USD;51.99;1;1;true
+                      ;g4957902026060_B;pieces;JPY;5130;1;1;true
+                      ;011650550;pieces;USD;52.99;1;1;true
+                      ;011650550;pieces;JPY;5230;1;1;true
+                      ;01308608;pieces;USD;53.99;1;1;true
+                      ;01308608;pieces;JPY;5330;1;1;true
+                      ;g4957902026060_BL;pieces;USD;54.99;1;1;true
+                      ;g4957902026060_BL;pieces;JPY;5430;1;1;true
+                      ;01165055;pieces;USD;55.99;1;1;true
+                      ;01165055;pieces;JPY;5530;1;1;true
+                      ;011650550L;pieces;USD;56.99;1;1;true
+                      ;011650550L;pieces;JPY;5630;1;1;true
+
+                      ;installation-fee;pieces;USD;20;1;1;true
+                      ;installation-fee;pieces;JPY;2000;1;1;true
+
+                      ;00795085;pieces;USD;10;1;1;true
                       ;00795085;pieces;JPY;1000;1;1;true
 
+INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
+                        ;10;114110;forceInStock;9;0;0;0;g9501700110334;0
+                        ;10;114110;forceInStock;9;0;0;0;00583033;0
+                        ;10;114110;forceInStock;9;0;0;0;00588524;0
+                        ;10;114110;notSpecified;9;0;0;0;00400092;0
+                        ;12;114110;notSpecified;9;0;0;0;00437548;0
+                        ;14;114110;notSpecified;9;0;0;0;00400098;0
+                        ;10;114110;forceInStock;9;0;0;0;g9501700110573;0
+                        ;10;114110;notSpecified;9;0;0;0;00031458;0
+                        ;12;114110;forceInStock;9;0;0;0;00121111;0
+                        ;14;114110;notSpecified;9;0;0;0;g9501810019324;0
+                        ;10;114110;forceInStock;9;0;0;0;00157916;0
+                        ;10;114110;notSpecified;9;0;0;0;g9501700017738;0
+                        ;12;114110;forceInStock;9;0;0;0;01163090;0
+                        ;14;114110;notSpecified;9;0;0;0;01163093;0
+                        ;14;114110;notSpecified;9;0;0;0;g4957902026060;0
+                        ;15;114110;notSpecified;9;0;0;0;g4957902026060_B;0
+                        ;16;114110;notSpecified;9;0;0;0;011650550;0
+                        ;17;114110;notSpecified;9;0;0;0;01308608;0
+                        ;18;114110;notSpecified;9;0;0;0;g4957902026060_BL;0
+                        ;19;114110;notSpecified;9;0;0;0;01165055;0
+                        ;20;114110;notSpecified;9;0;0;0;011650550L;0
+
+                        ;0;114110;forceInStock;0;0;0;0;installation-fee;0
+                        ;0;114110;forceInStock;0;0;0;0;00795085;0
+
+UPDATE Product;code[unique=true];$catalogVersion;stockLevels(productCode,warehouse(code));vendors(code)
+              ;g9501700110334;;g9501700110334:114110;
+              ;00583033;;00583033:114110;
+#              ;00588524;;00588524:114110;
+              ;00400092;;00400092:114110;
+              ;00437548;;00437548:114110;
+              ;00400098;;00400098:114110;
+              ;g9501700110573;;g9501700110573:114110;
+              ;00031458;;00031458:114110;
+              ;00121111;;00121111:114110;
+              ;g9501810019324;;g9501810019324:114110;
+              ;00157916;;00157916:114110;
+              ;g9501700017738;;g9501700017738:114110;
+              ;01163090;;01163090:114110;
+              ;01163093;;01163093:114110;
+              ;g4957902026060;;g4957902026060:114110;
+#              ;g4957902026060_B;;g4957902026060_B:114110;
+#              ;011650550;;g4957902026060_B:114110;
+#              ;01308608;;01308608:114110;
+#              ;g4957902026060_BL;;g4957902026060_BL:114110;
+#              ;01165055;;01165055:114110;
+#              ;011650550L;;011650550L:114110;
+
+              ;installation-fee;;installation-fee:114110;
+              ;00795085;;00795085:114110;
+
+INSERT_UPDATE Product;$catalogVersion;code[unique=true];$supercategories[mode='append']
+                        ;;g9501700110334;50000000
+                        ;;00400092;50000000
+                        ;;00437548;50000000
+                        ;;00400098;50000000
+                        ;;g9501700110573;50000000
+                        ;;00031458;50000000
+                        ;;00121111;50000000
+                        ;;g9501810019324;50000000
+                        ;;00157916;50000000
+                        ;;g9501700017738;50000000
+                        ;;01163090;50000000
+                        ;;01163093;50000000
+                        ;;g4957902026060;50000000
+
+
+####################################################################
+#Identifier
+#Summary
+
+INSERT_UPDATE Product;$catalogVersion;ean;code[unique=true];$supercategories;$approved;$taxGroup;varianttype(code)
+                        ;;4958043282647;1478891;90001000;;;
+                        ;;4958043171293;1478889;90001000;;;
+                        ;;4958043171101;1478888;90001000;;;
+                        ;;4958043171095;1478887;90001000;;;
+                        ;;4958043171118;1478886;90001000;;;
+                        ;;4958043171125;1478890;90001000;;;
+                        ;;4958043111954;1478881;90001000;;;
+                        ;;4958043111947;1478880;90001000;;;
+                        ;;4958043111961;1478871;90001000;;;
+                        ;;4958043111985;1478873;90001000;;;
+                        ;;4958043111992;1478882;90001000;;;
+                        ;;4958043111824;1478864;90001000;;;
+                        ;;4958043171002;1478878;90001000;;;
+                        ;;4958043171033;1478877;90001000;;;
+                        ;;4958043171040;1478876;90001000;;;
+                        ;;4958043171019;1478875;90001000;;;
+                        ;;4958043171026;1478874;90001000;;;
+                        ;;4958043111978;1478872;90001000;;;
+                        ;;4958043171088;1478885;90001000;;;
+                        ;;4958043111879;1478867;90001000;;;
+                        ;;4958043111848;1478866;90001000;;;
+                        ;;4958043111930;1478879;90001000;;;
+                        ;;4958043111831;1478863;90001000;;;
+                        ;;4958043111862;1478868;90001000;;;
+                        ;;4958043171071;1478883;90001000;;;
+                        ;;4958043282630;1478884;90001000;;;
+                        ;;4958043171415;1501234;90001000;;;
+                        ;;4958043252114;1501248;90001000;;;
+                        ;;4958043252091;1501246;90001000;;;
+                        ;;4958043282999;1501253;90001000;;;
+                        ;;4958043252107;1501247;90001000;;;
+                        ;;4958043171989;1501237;90001000;;;
+                        ;;4958043252060;1501245;90001000;;;
+                        ;;4958043252176;1501251;90001000;;;
+                        ;;4958043252022;1501241;90001000;;;
+                        ;;4958043252183;1501252;90001000;;;
+                        ;;4958043252121;1501249;90001000;;;
+                        ;;4958043252138;1501250;90001000;;;
+                        ;;4958043170036;1478862;90001000;;;
+                        ;;4958043111886;1478869;90001000;;;
+                        ;;4958043171330;1481998;90001000;;;
+                        ;;4958043170029;1478859;90001000;;;
+                        ;;4958043171057;1478861;90001000;;;
+                        ;;4958043171064;1478860;90001000;;;
+                        ;;4958043111893;1478870;90001000;;;
+                        ;;4958043171965;1501235;90001000;;;
+                        ;;4958043111794;1478856;90001000;;;
+                        ;;4958043111800;1478858;90001000;;;
+                        ;;4958043111817;1478857;90001000;;;
+                        ;;4958043170012;1478852;90001000;;;
+                        ;;4958043111787;1478855;90001000;;;
+                        ;;4958043111770;1478854;90001000;;;
+                        ;;4958043111756;1478851;90001000;;;
+                        ;;4958043111763;1478853;90001000;;;
+                        ;;4958043252190;1501236;90001000;;;
+                        ;;4958043111275;1478850;90001000;;;
+                        ;;4958043111282;1478849;90001000;;;
+                        ;;4958043252008;1501239;90001000;;;
+                        ;;4958043171996;1501238;90001000;;;
+                        ;;4958043252015;1501240;90001000;;;
+                        ;;4958043252046;1501243;90001000;;;
+                        ;;4958043252039;1501242;90001000;;;
+                        ;;4958043252053;1501244;90001000;;;
+                        ;;4958043333509;1524850;90001000;;;
+                        ;;4958043246014;1538235;90001000;;;
+                        ;;4958043246021;1538236;90001000;;;
+                        ;;4958043111916;1478847;90001000;;;
+                        ;;4958043171620;1498135;90001000;;;
+                        ;;4958043171637;1498136;90001000;;;
+                        ;;4958043171507;1493411;90001000;;;
+                        ;;4958043171521;1493413;90001000;;;
+                        ;;4958043171538;1493414;90001000;;;
+                        ;;4958043171545;1493415;90001000;;;
+                        ;;4958043171552;1493416;90001000;;;
+                        ;;4958043171514;1493412;90001000;;;
+                        ;;4958043171606;1493421;90001000;;;
+                        ;;4958043171583;1493419;90001000;;;
+                        ;;4958043171590;1493420;90001000;;;
+                        ;;4958043171460;1493407;90001000;;;
+                        ;;4958043171484;1493409;90001000;;;
+                        ;;4958043171491;1493410;90001000;;;
+                        ;;4958043171477;1493408;90001000;;;
+                        ;;4958043171569;1493417;90001000;;;
+                        ;;4958043171576;1493418;90001000;;;
+                        ;;4958043111923;1478848;90001000;;;
+                        ;;4958043171613;1493422;90001000;;;
+                        ;;4953332696686;1547730;90001000;;;
+                        ;;4953332696679;1547729;90001000;;;
+                        ;;4988028411779;1546714;90002000;;;
+                        ;;4988028411847;1546715;90002000;;;
+                        ;;4988028387272;1493616;90002000;;;
+                        ;;4988028402401;1522000;90002000;;;
+                        ;;4988028409974;1521999;90002000;;;
+                        ;;4988028402340;1522010;90002000;;;
+                        ;;4988028402357;1522009;90002000;;;
+                        ;;4988028402364;1522005;90002000;;;
+                        ;;4988028402371;1522011;90002000;;;
+                        ;;4988028402395;1522008;90002000;;;
+                        ;;4988028402333;1522006;90002000;;;
+                        ;;4988028402388;1522007;90002000;;;
+
+
+####################################################################
+
+INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price;minqtd;unitFactor;net
+                      ;1478891;pieces;JPY;181440;1;1;true
+                      ;1478889;pieces;JPY;192240;1;1;true
+                      ;1478888;pieces;JPY;192240;1;1;true
+                      ;1478887;pieces;JPY;192240;1;1;true
+                      ;1478886;pieces;JPY;192240;1;1;true
+                      ;1478890;pieces;JPY;192240;1;1;true
+                      ;1478881;pieces;JPY;213840;1;1;true
+                      ;1478880;pieces;JPY;213840;1;1;true
+                      ;1478871;pieces;JPY;213840;1;1;true
+                      ;1478873;pieces;JPY;213840;1;1;true
+
+                      ;1478882;pieces;JPY;213840;1;1;true
+                      ;1478864;pieces;JPY;213840;1;1;true
+                      ;1478878;pieces;JPY;213840;1;1;true
+                      ;1478877;pieces;JPY;213840;1;1;true
+                      ;1478876;pieces;JPY;213840;1;1;true
+                      ;1478875;pieces;JPY;213840;1;1;true
+                      ;1478874;pieces;JPY;213840;1;1;true
+                      ;1478872;pieces;JPY;213840;1;1;true
+                      ;1478885;pieces;JPY;213840;1;1;true
+                      ;1478867;pieces;JPY;213840;1;1;true
+                      ;1478866;pieces;JPY;213840;1;1;true
+                      ;1478879;pieces;JPY;213840;1;1;true
+                      ;1478863;pieces;JPY;213840;1;1;true
+                      ;1478868;pieces;JPY;213840;1;1;true
+                      ;1478883;pieces;JPY;213840;1;1;true
+                      ;1478884;pieces;JPY;213840;1;1;true
+                      ;1501234;pieces;JPY;213840;1;1;true
+                      ;1501248;pieces;JPY;213840;1;1;true
+                      ;1501246;pieces;JPY;213840;1;1;true
+                      ;1501253;pieces;JPY;213840;1;1;true
+                      ;1501247;pieces;JPY;213840;1;1;true
+                      ;1501237;pieces;JPY;213840;1;1;true
+                      ;1501245;pieces;JPY;213840;1;1;true
+                      ;1501251;pieces;JPY;213840;1;1;true
+                      ;1501241;pieces;JPY;213840;1;1;true
+                      ;1501252;pieces;JPY;213840;1;1;true
+                      ;1501249;pieces;JPY;213840;1;1;true
+                      ;1501250;pieces;JPY;213840;1;1;true
+                      ;1478862;pieces;JPY;224640;1;1;true
+                      ;1478869;pieces;JPY;235440;1;1;true
+                      ;1481998;pieces;JPY;235440;1;1;true
+                      ;1478859;pieces;JPY;235440;1;1;true
+                      ;1478861;pieces;JPY;235440;1;1;true
+                      ;1478860;pieces;JPY;235440;1;1;true
+                      ;1478870;pieces;JPY;246240;1;1;true
+                      ;1501235;pieces;JPY;246240;1;1;true
+                      ;1478856;pieces;JPY;246240;1;1;true
+                      ;1478858;pieces;JPY;246240;1;1;true
+                      ;1478857;pieces;JPY;246240;1;1;true
+                      ;1478852;pieces;JPY;246240;1;1;true
+                      ;1478855;pieces;JPY;246240;1;1;true
+                      ;1478854;pieces;JPY;246240;1;1;true
+                      ;1478851;pieces;JPY;246240;1;1;true
+                      ;1478853;pieces;JPY;246240;1;1;true
+                      ;1501236;pieces;JPY;249990;1;1;true
+                      ;1478850;pieces;JPY;257040;1;1;true
+                      ;1478849;pieces;JPY;257040;1;1;true
+                      ;1501239;pieces;JPY;267840;1;1;true
+                      ;1501238;pieces;JPY;267840;1;1;true
+                      ;1501240;pieces;JPY;267840;1;1;true
+                      ;1501243;pieces;JPY;267840;1;1;true
+                      ;1501242;pieces;JPY;267840;1;1;true
+                      ;1501244;pieces;JPY;267840;1;1;true
+                      ;1524850;pieces;JPY;271078;1;1;true
+                      ;1538235;pieces;JPY;280798;1;1;true
+                      ;1538236;pieces;JPY;280798;1;1;true
+                      ;1478847;pieces;JPY;289440;1;1;true
+                      ;1498135;pieces;JPY;293758;1;1;true
+                      ;1498136;pieces;JPY;293758;1;1;true
+                      ;1493411;pieces;JPY;300240;1;1;true
+                      ;1493413;pieces;JPY;300240;1;1;true
+                      ;1493414;pieces;JPY;300240;1;1;true
+                      ;1493415;pieces;JPY;300240;1;1;true
+                      ;1493416;pieces;JPY;300240;1;1;true
+                      ;1493412;pieces;JPY;300240;1;1;true
+                      ;1493421;pieces;JPY;300240;1;1;true
+                      ;1493419;pieces;JPY;300240;1;1;true
+                      ;1493420;pieces;JPY;300240;1;1;true
+                      ;1493407;pieces;JPY;300240;1;1;true
+                      ;1493409;pieces;JPY;300240;1;1;true
+                      ;1493410;pieces;JPY;300240;1;1;true
+                      ;1493408;pieces;JPY;300240;1;1;true
+                      ;1493417;pieces;JPY;300240;1;1;true
+                      ;1493418;pieces;JPY;300240;1;1;true
+                      ;1478848;pieces;JPY;311038;1;1;true
+                      ;1493422;pieces;JPY;330478;1;1;true
+                      ;1547730;pieces;JPY;80998;1;1;true
+                      ;1547729;pieces;JPY;80998;1;1;true
+                      ;1546714;pieces;JPY;42984;1;1;true
+                      ;1546715;pieces;JPY;42984;1;1;true
+                      ;1493616;pieces;JPY;64584;1;1;true
+                      ;1522000;pieces;JPY;170638;1;1;true
+                      ;1521999;pieces;JPY;234358;1;1;true
+                      ;1522010;pieces;JPY;242998;1;1;true
+                      ;1522009;pieces;JPY;242998;1;1;true
+                      ;1522005;pieces;JPY;242998;1;1;true
+                      ;1522011;pieces;JPY;242998;1;1;true
+                      ;1522008;pieces;JPY;242998;1;1;true
+                      ;1522006;pieces;JPY;257038;1;1;true
+                      ;1522007;pieces;JPY;257038;1;1;true
+
+# AB7-649 Insert Real Product Data - start
+# amplifier_built-in_speaker ###################################
+INSERT_UPDATE Product;$catalogVersion;ean;code[unique=true];$supercategories;$approved;$taxGroup;varianttype(code)
+                        ;;4907986057737;01521316;90000000;;;
+                        ;;4983771840944;01476346;90000000;;;
+                        ;;4979969900811;01469077;90000000;;;
+                        ;;4975514059829;01560307;90000000;;;
+                        ;;4975514059836;01560308;90000000;;;
+                        ;;4582253541449;01370920;90000000;;;
+                        ;;4562344352116;01469098;90000000;;;
+                        ;;4560458179896;01391432;90000000;;;
+                        ;;4560458179933;01391436;90000000;;;
+                        ;;4968929016594;01461080;90000000;;;
+                        ;;4968929012237;01461085;90000000;;;
+                        ;;4968929019236;01476358;90000000;;;
+                        ;;4968929019243;01476357;90000000;;;
+                        ;;4968929019250;01476356;90000000;;;
+                        ;;4968929019267;01476354;90000000;;;
+                        ;;4968929024315;01476360;90000000;;;
+                        ;;4968929024391;01476359;90000000;;;
+                        ;;4968929019229;01476355;90000000;;;
+                        ;;4979969900774;01381734;90000000;;;
+                        ;;4971475284393;01495746;90000000;;;
+                        ;;4971475284423;01495749;90000000;;;
+                        ;;4971475317138;00031580;90000000;;;
+                        ;;4971475317145;00031581;90000000;;;
+                        ;;4971475317152;00031582;90000000;;;
+                        ;;4971475317169;00031583;90000000;;;
+                        ;;4971475317176;00031584;90000000;;;
+                        ;;4971475320596;00031561;90000000;;;
+                        ;;4971475323689;00031627;90000000;;;
+                        ;;4897032086562;00618304;90000000;;;
+                        ;;4897032086586;00618305;90000000;;;
+                        ;;4971475296105;00618306;90000000;;;
+
+INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price;minqtd;unitFactor;net
+                      ;01521316;pieces;JPY;4682;1;1;true
+                      ;01476346;pieces;JPY;5378;1;1;true
+                      ;01469077;pieces;JPY;5398;1;1;true
+                      ;01560307;pieces;JPY;13824;1;1;true
+                      ;01560308;pieces;JPY;13824;1;1;true
+                      ;01370920;pieces;JPY;14580;1;1;true
+                      ;01469098;pieces;JPY;17278;1;1;true
+                      ;01391432;pieces;JPY;5148;1;1;true
+                      ;01391436;pieces;JPY;5148;1;1;true
+                      ;01461080;pieces;JPY;5400;1;1;true
+                      ;01461085;pieces;JPY;7629;1;1;true
+                      ;01476358;pieces;JPY;9050;1;1;true
+                      ;01476357;pieces;JPY;9050;1;1;true
+                      ;01476356;pieces;JPY;9050;1;1;true
+                      ;01476354;pieces;JPY;9050;1;1;true
+                      ;01476360;pieces;JPY;9050;1;1;true
+                      ;01476359;pieces;JPY;9050;1;1;true
+                      ;01476355;pieces;JPY;11750;1;1;true
+                      ;01381734;pieces;JPY;3994;1;1;true
+                      ;01495746;pieces;JPY;3778;1;1;true
+                      ;01495749;pieces;JPY;3778;1;1;true
+                      ;00031580;pieces;JPY;3778;1;1;true
+                      ;00031581;pieces;JPY;3778;1;1;true
+                      ;00031582;pieces;JPY;3778;1;1;true
+                      ;00031583;pieces;JPY;3778;1;1;true
+                      ;00031584;pieces;JPY;3778;1;1;true
+                      ;00031561;pieces;JPY;3778;1;1;true
+                      ;00031627;pieces;JPY;3778;1;1;true
+                      ;00618304;pieces;JPY;5938;1;1;true
+                      ;00618305;pieces;JPY;5938;1;1;true
+                      ;00618306;pieces;JPY;5938;1;1;true
+# AB7-649 Insert Real Product data - End
+
+#Add real product for Dec DEMO
+INSERT_UPDATE Product;code[unique=true];$supercategories;unit(code);name[lang=$lang];name[lang=ja];summary;description;ean;$catalogVersion;$approved;$taxGroup;varianttype(code);
+                        ;01558954;90000000;pieces;Yupiteru　DRY-TW7500d　前後2カメラタイプドライブレコーダー;Yupiteru　DRY-TW7500d　前後2カメラタイプドライブレコーダー;人気の前後カメラタイプのスタンダードモデル※表示価格はメンテナンス/ポイント会員様限定価格です（当日入会可）（上記会員様以外は税込み23,544円）;;4968543712391;;;;;2019/11/01 00:00:00;2019/12/31 23:59:59;2019/11/01 00:00:00;2019/12/31 23:59:59;;FALSE;FALSE
+
+                        ;01485374_B;50000000;pieces;GORDON　MILLER　ボトルティシュー　ブルー;GORDON　MILLER　ボトルティシュー　ブルー;ボトル型ティシューペーパー;■カップホルダーに入るボトル型ティシューペーパー。<br>■手の届く場所に置けて、置き場所にも困らないので便利。;;;;;;;;;;;FALSE;FALSE
+
+                        ;01404886;50000000;pieces;レーベン　BL1　1665+50　5H114　シルバー　ホイール単品(1本);レーベン　BL1　1665+50　5H114　シルバー　ホイール単品(1本);ホイール単品(1本);;4971475267907;;;;;;;;;;FALSE;FALSE
+                        ;01541423;50000000;pieces;アイスエスポルテ 205/65R16 95Q;アイスエスポルテ 205/65R16 95Q;雪上性能と長持ち性能を重視！危機が長持ち！;;4961914962210;;;;;;;;;;FALSE;FALSE
+
+INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price;minqtd;unitFactor;net;startTime[dateformat=yyyy/MM/dd];endTime[dateformat=yyyy/MM/dd]
+                      ;01558954;pieces;JPY;21800;1;1;true;;
+                      ;01485374;pieces;JPY;199;1;1;true;;
+                      ;01485375;pieces;JPY;199;1;1;true;;
+                      ;01485376;pieces;JPY;199;1;1;true;;
+                      ;01404886;pieces;JPY;8399;1;1;true;;
+                      ;01541423;pieces;JPY;13800;1;1;true;;
+
+#INSERT PriceRow;product(code, $catalogVersion);unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price;minqtd;unitFactor;net;startTime[dateformat=yyyy/MM/dd];endTime[dateformat=yyyy/MM/dd]
+#               ;01558954;pieces;JPY;19800;1;1;true;2019/03/01 00:00:00;2019/09/30 23:59:59
 
 INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
-# AB7-1939 Change installation Fee Artical ID
-                        ;0;114114;forceInStock;0;0;0;0;00795085;0
+                        ;60;114110;forceInStock;0;0;0;0;01558954;0
+                        ;16;114110;forceInStock;0;0;0;0;01485374;0
+                        ;20;114110;forceInStock;0;0;0;0;01485375;0
+                        ;18;114110;forceInStock;0;0;0;0;01485376;0
+                        ;12;114110;forceInStock;0;0;0;0;01404886;0
+                        ;14;114110;forceInStock;0;0;0;0;01541423;0
 
 UPDATE Product;code[unique=true];$catalogVersion;stockLevels(productCode,warehouse(code));vendors(code)
-# AB7-1939 Change installation Fee Artical ID
-              ;00795085;;00795085:114114;
+              ;01558954;;01558954:114110;
+              ;01485374;;01485374:114110;
+              ;01485375;;01485375:114110;
+              ;01485376;;01485376:114110;
+              ;01404886;;01404886:114110;
+              ;01541423;;01541423:114110;
+
+# uketoriSyudan 0 - Store Recipt, 1 - Home Receipt, 2 both
+#UPDATE Product;$catalogVersion;code[unique=true];uketoriSyudan;leadTimeStartTenp;leadTimeEndTenp;leadTimeStartTkauhai;leadTimeEndTkauhai
+
+ #                ;;01558954;0;5;7;5;7
+  #               ;;01485374_B;2;5;7;5;7
+#                 ;;01485374;2;5;7;5;7
+#                 ;;01485375;2;5;7;5;7
+#                 ;;01485376;2;5;7;5;7
+#                 ;;01404886;2;5;7;5;7
+#                 ;;01541423;2;5;7;5;7
+
+INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];$catalogVersion;folder(qualifier)
+
+
+                   ;1200Wx1200H;/1200Wx1200H/01558954_1.jpeg;$siteResource/product/1200Wx1200H/01558954_1.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01558954_2.jpeg;$siteResource/product/1200Wx1200H/01558954_2.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01558954_3.jpeg;$siteResource/product/1200Wx1200H/01558954_3.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01558954_4.jpeg;$siteResource/product/1200Wx1200H/01558954_4.jpeg;;;images
+
+                   ;1200Wx1200H;/1200Wx1200H/01485374_1.jpeg;$siteResource/product/1200Wx1200H/01485374_1.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01485374_2.jpeg;$siteResource/product/1200Wx1200H/01485374_2.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01485374_3.jpeg;$siteResource/product/1200Wx1200H/01485374_3.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01485374_4.jpeg;$siteResource/product/1200Wx1200H/01485374_4.jpeg;;;images
+
+                   ;1200Wx1200H;/1200Wx1200H/01485375_1.jpeg;$siteResource/product/1200Wx1200H/01485375_1.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01485375_2.jpeg;$siteResource/product/1200Wx1200H/01485375_2.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01485375_3.jpeg;$siteResource/product/1200Wx1200H/01485375_3.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01485375_4.jpeg;$siteResource/product/1200Wx1200H/01485375_4.jpeg;;;images
+
+                   ;1200Wx1200H;/1200Wx1200H/01485376_1.jpeg;$siteResource/product/1200Wx1200H/01485376_1.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01485376_2.jpeg;$siteResource/product/1200Wx1200H/01485376_2.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01485376_3.jpeg;$siteResource/product/1200Wx1200H/01485376_3.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01485376_4.jpeg;$siteResource/product/1200Wx1200H/01485376_4.jpeg;;;images
+
+                   ;1200Wx1200H;/1200Wx1200H/01404886_1.jpeg;$siteResource/product/1200Wx1200H/01404886_1.jpeg;;;images
+                   ;1200Wx1200H;/1200Wx1200H/01541423.jpeg;$siteResource/product/1200Wx1200H/01541423.jpeg;;;images
+
+                   ;300Wx300H;/300Wx300H/01558954_1.jpeg;$siteResource/product/300Wx300H/01558954_1.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01558954_2.jpeg;$siteResource/product/300Wx300H/01558954_2.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01558954_3.jpeg;$siteResource/product/300Wx300H/01558954_3.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01558954_4.jpeg;$siteResource/product/300Wx300H/01558954_4.jpeg;;;images
+
+                   ;300Wx300H;/300Wx300H/01485374_1.jpeg;$siteResource/product/300Wx300H/01485374_1.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01485374_2.jpeg;$siteResource/product/300Wx300H/01485374_2.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01485374_3.jpeg;$siteResource/product/300Wx300H/01485374_3.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01485374_4.jpeg;$siteResource/product/300Wx300H/01485374_4.jpeg;;;images
+
+                   ;300Wx300H;/300Wx300H/01485375_1.jpeg;$siteResource/product/300Wx300H/01485375_1.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01485375_2.jpeg;$siteResource/product/300Wx300H/01485375_2.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01485375_3.jpeg;$siteResource/product/300Wx300H/01485375_3.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01485375_4.jpeg;$siteResource/product/300Wx300H/01485375_4.jpeg;;;images
+
+                   ;300Wx300H;/300Wx300H/01485376_1.jpeg;$siteResource/product/300Wx300H/01485376_1.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01485376_2.jpeg;$siteResource/product/300Wx300H/01485376_2.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01485376_3.jpeg;$siteResource/product/300Wx300H/01485376_3.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01485376_4.jpeg;$siteResource/product/300Wx300H/01485376_4.jpeg;;;images
+
+                   ;300Wx300H;/300Wx300H/01404886_1.jpeg;$siteResource/product/300Wx300H/01404886_1.jpeg;;;images
+                   ;300Wx300H;/300Wx300H/01541423.jpeg;$siteResource/product/300Wx300H/01541423.jpeg;;;images
+
+                   ;96Wx96H;/96Wx96H/01558954_1.jpeg;$siteResource/product/96Wx96H/01558954_1.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01558954_2.jpeg;$siteResource/product/96Wx96H/01558954_2.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01558954_3.jpeg;$siteResource/product/96Wx96H/01558954_3.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01558954_4.jpeg;$siteResource/product/96Wx96H/01558954_4.jpeg;;;images
+
+                   ;96Wx96H;/96Wx96H/01485374_1.jpeg;$siteResource/product/96Wx96H/01485374_1.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01485374_2.jpeg;$siteResource/product/96Wx96H/01485374_2.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01485374_3.jpeg;$siteResource/product/96Wx96H/01485374_3.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01485374_4.jpeg;$siteResource/product/96Wx96H/01485374_4.jpeg;;;images
+
+                   ;96Wx96H;/96Wx96H/01485375_1.jpeg;$siteResource/product/96Wx96H/01485375_1.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01485375_2.jpeg;$siteResource/product/96Wx96H/01485375_2.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01485375_3.jpeg;$siteResource/product/96Wx96H/01485375_3.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01485375_4.jpeg;$siteResource/product/96Wx96H/01485375_4.jpeg;;;images
+
+                   ;96Wx96H;/96Wx96H/01485376_1.jpeg;$siteResource/product/96Wx96H/01485376_1.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01485376_2.jpeg;$siteResource/product/96Wx96H/01485376_2.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01485376_3.jpeg;$siteResource/product/96Wx96H/01485376_3.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01485376_4.jpeg;$siteResource/product/96Wx96H/01485376_4.jpeg;;;images
+
+                   ;96Wx96H;/96Wx96H/01404886_1.jpeg;$siteResource/product/96Wx96H/01404886_1.jpeg;;;images
+                   ;96Wx96H;/96Wx96H/01541423.jpeg;$siteResource/product/96Wx96H/01541423.jpeg;;;images
+
+                   ;65Wx65H;/65Wx65H/01558954_1.jpeg;$siteResource/product/65Wx65H/01558954_1.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01558954_2.jpeg;$siteResource/product/65Wx65H/01558954_2.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01558954_3.jpeg;$siteResource/product/65Wx65H/01558954_3.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01558954_4.jpeg;$siteResource/product/65Wx65H/01558954_4.jpeg;;;images
+
+                   ;65Wx65H;/65Wx65H/01485374_1.jpeg;$siteResource/product/65Wx65H/01485374_1.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01485374_2.jpeg;$siteResource/product/65Wx65H/01485374_2.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01485374_3.jpeg;$siteResource/product/65Wx65H/01485374_3.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01485374_4.jpeg;$siteResource/product/65Wx65H/01485374_4.jpeg;;;images
+
+                   ;65Wx65H;/65Wx65H/01485375_1.jpeg;$siteResource/product/65Wx65H/01485375_1.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01485375_2.jpeg;$siteResource/product/65Wx65H/01485375_2.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01485375_3.jpeg;$siteResource/product/65Wx65H/01485375_3.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01485375_4.jpeg;$siteResource/product/65Wx65H/01485375_4.jpeg;;;images
+
+                   ;65Wx65H;/65Wx65H/01485376_1.jpeg;$siteResource/product/65Wx65H/01485376_1.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01485376_2.jpeg;$siteResource/product/65Wx65H/01485376_2.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01485376_3.jpeg;$siteResource/product/65Wx65H/01485376_3.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01485376_4.jpeg;$siteResource/product/65Wx65H/01485376_4.jpeg;;;images
+
+                   ;65Wx65H;/65Wx65H/01404886_1.jpeg;$siteResource/product/65Wx65H/01404886_1.jpeg;;;images
+                   ;65Wx65H;/65Wx65H/01541423.jpeg;$siteResource/product/65Wx65H/01541423.jpeg;;;images
+
+                   ;30Wx30H;/30Wx30H/01558954_1.jpeg;$siteResource/product/30Wx30H/01558954_1.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01558954_2.jpeg;$siteResource/product/30Wx30H/01558954_2.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01558954_3.jpeg;$siteResource/product/30Wx30H/01558954_3.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01558954_4.jpeg;$siteResource/product/30Wx30H/01558954_4.jpeg;;;images
+
+                   ;30Wx30H;/30Wx30H/01485374_1.jpeg;$siteResource/product/30Wx30H/01485374_1.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01485374_2.jpeg;$siteResource/product/30Wx30H/01485374_2.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01485374_3.jpeg;$siteResource/product/30Wx30H/01485374_3.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01485374_4.jpeg;$siteResource/product/30Wx30H/01485374_4.jpeg;;;images
+
+                   ;30Wx30H;/30Wx30H/01485375_1.jpeg;$siteResource/product/30Wx30H/01485375_1.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01485375_2.jpeg;$siteResource/product/30Wx30H/01485375_2.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01485375_3.jpeg;$siteResource/product/30Wx30H/01485375_3.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01485375_4.jpeg;$siteResource/product/30Wx30H/01485375_4.jpeg;;;images
+
+                   ;30Wx30H;/30Wx30H/01485376_1.jpeg;$siteResource/product/30Wx30H/01485376_1.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01485376_2.jpeg;$siteResource/product/30Wx30H/01485376_2.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01485376_3.jpeg;$siteResource/product/30Wx30H/01485376_3.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01485376_4.jpeg;$siteResource/product/30Wx30H/01485376_4.jpeg;;;images
+
+                   ;30Wx30H;/30Wx30H/01404886_1.jpeg;$siteResource/product/30Wx30H/01404886_1.jpeg;;;images
+                   ;30Wx30H;/30Wx30H/01541423.jpeg;$siteResource/product/30Wx30H/01541423.jpeg;;;images
+
+
+INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$catalogVersion
+                            ;01558954_1;/1200Wx1200H/01558954_1.jpeg,/300Wx300H/01558954_1.jpeg,/96Wx96H/01558954_1.jpeg,/65Wx65H/01558954_1.jpeg,/30Wx30H/01558954_1.jpeg;
+                            ;01558954_2;/1200Wx1200H/01558954_2.jpeg,/300Wx300H/01558954_2.jpeg,/96Wx96H/01558954_2.jpeg,/65Wx65H/01558954_2.jpeg,/30Wx30H/01558954_2.jpeg;
+                            ;01558954_3;/1200Wx1200H/01558954_3.jpeg,/300Wx300H/01558954_3.jpeg,/96Wx96H/01558954_3.jpeg,/65Wx65H/01558954_3.jpeg,/30Wx30H/01558954_3.jpeg;
+                            ;01558954_4;/1200Wx1200H/01558954_4.jpeg,/300Wx300H/01558954_4.jpeg,/96Wx96H/01558954_4.jpeg,/65Wx65H/01558954_4.jpeg,/30Wx30H/01558954_4.jpeg;
+
+                            ;01485374_1;/300Wx300H/01485374_1.jpeg,/96Wx96H/01485374_1.jpeg,/65Wx65H/01485374_1.jpeg,/30Wx30H/01485374_1.jpeg;
+                            ;01485374_2;/300Wx300H/01485374_2.jpeg,/96Wx96H/01485374_2.jpeg,/65Wx65H/01485374_2.jpeg,/30Wx30H/01485374_2.jpeg;
+                            ;01485374_3;/300Wx300H/01485374_3.jpeg,/96Wx96H/01485374_3.jpeg,/65Wx65H/01485374_3.jpeg,/30Wx30H/01485374_3.jpeg;
+                            ;01485374_4;/300Wx300H/01485374_4.jpeg,/96Wx96H/01485374_4.jpeg,/65Wx65H/01485374_4.jpeg,/30Wx30H/01485374_4.jpeg;
+
+                            ;01485375_1;/300Wx300H/01485375_1.jpeg,/96Wx96H/01485375_1.jpeg,/65Wx65H/01485375_1.jpeg,/30Wx30H/01485375_1.jpeg;
+                            ;01485375_2;/300Wx300H/01485375_2.jpeg,/96Wx96H/01485375_2.jpeg,/65Wx65H/01485375_2.jpeg,/30Wx30H/01485375_2.jpeg;
+                            ;01485375_3;/300Wx300H/01485375_3.jpeg,/96Wx96H/01485375_3.jpeg,/65Wx65H/01485375_3.jpeg,/30Wx30H/01485375_3.jpeg;
+                            ;01485375_4;/300Wx300H/01485375_4.jpeg,/96Wx96H/01485375_4.jpeg,/65Wx65H/01485375_4.jpeg,/30Wx30H/01485375_4.jpeg;
+
+                            ;01485376_1;/300Wx300H/01485376_1.jpeg,/96Wx96H/01485376_1.jpeg,/65Wx65H/01485376_1.jpeg,/30Wx30H/01485376_1.jpeg;
+                            ;01485376_2;/300Wx300H/01485376_2.jpeg,/96Wx96H/01485376_2.jpeg,/65Wx65H/01485376_2.jpeg,/30Wx30H/01485376_2.jpeg;
+                            ;01485376_3;/300Wx300H/01485376_3.jpeg,/96Wx96H/01485376_3.jpeg,/65Wx65H/01485376_3.jpeg,/30Wx30H/01485376_3.jpeg;
+                            ;01485376_4;/300Wx300H/01485376_4.jpeg,/96Wx96H/01485376_4.jpeg,/65Wx65H/01485376_4.jpeg,/30Wx30H/01485376_4.jpeg;
+
+                            ;01404886;/300Wx300H/01404886_1.jpeg,/96Wx96H/01404886_1.jpeg,/65Wx65H/01404886_1.jpeg,/30Wx30H/01404886_1.jpeg;
+                            ;01541423;/300Wx300H/01541423.jpeg,/96Wx96H/01541423.jpeg,/65Wx65H/01541423.jpeg,/30Wx30H/01541423.jpeg;
 
 
 
-UPDATE Product;code[unique=true];$catalogVersion;stockLevels(productCode,warehouse(code));vendors(code)
-# Engine Oilxia ↓
-              ;00612390;;00612390:114114;
-              ;00424340;;00424340:114114;
-              ;00583147;;00583147:114114;
-              ;00583149;;00583149:114114;
-              ;00436689;;00436689:114114;
-              ;00306126;;00306126:114114;
-              ;00407165;;00407165:114114;
-              ;00594400;;00594400:114114;
-              ;00526928;;00526928:114114;
-              ;00463293;;00463293:114114;
-              ;00592054;;00592054:114114;
-              ;00592053;;00592053:114114;
-              ;00416223;;00416223:114114;
-              ;00463300;;00463300:114114;
-              ;00612865;;00612865:114114;
-              ;00421105;;00421105:114114;
-              ;00594414;;00594414:114114;
-              ;00594418;;00594418:114114;
-              ;01281519;;01281519:114114;
-              ;00583150;;00583150:114114;
-              ;00306130;;00306130:114114;
-## Oil Filter ↓
-              ;00368543;;00368543:114114;
-              ;00596401;;00596401:114114;
-              ;00596314;;00596314:114114;
-              ;00251308;;00251308:114114;
-## Battery
-              ;00483828;;00483828:114114;
-              ;00575960;;00575960:114114;
-              ;00483800;;00483800:114114;
-              ;00483802;;00483802:114114;
-              ;01240269;;01240269:114114;
-              ;01240279;;01240279:114114;
-              ;01240289;;01240289:114114;
-              ;00622210;;00622210:114114;
-              ;00483818;;00483818:114114;
-              ;00483808;;00483808:114114;
-              ;01253098;;01253098:114114;
-## Air Filter
-              ;00251414;;00251414:114114;
-## Suspension
-              ;01312383;;01240279:114114;
-              ;01271251;;01240289:114114;
-              ;01227124;;00622210:114114;
-              ;01414255;;00483818:114114;
-              ;01245892;;00483808:114114;
-              ;01262330;;01253098:114114;
-## Muffler
-              ;01025653;;01025653:114114;
-              ;01025652;;01025652:114114;
-              ;01260144;;01260144:114114;
-              ;01263363;;01263363:114114;
-              ;01412532;;01412532:114114;
-## Air Cond Filter
-              ;01177151;;01177151:114114;
-              ;00551450;;00551450:114114;
+UPDATE Product;code[unique=true];$picture;$thumbnail;$detail;$others;$normal;$thumbnails;$galleryImages;$catalogVersion
+                 ;01558954;/300Wx300H/01558954_1.jpeg;/96Wx96H/01558954_1.jpeg;;/1200Wx1200H/01558954_1.jpeg,/300Wx300H/01558954_1.jpeg,/96Wx96H/01558954_1.jpeg,/65Wx65H/01558954_1.jpeg,/30Wx30H/01558954_1.jpeg;/96Wx96H/01558954_1.jpeg;/96Wx96H/01558954_1.jpeg,/96Wx96H/01558954_2.jpeg,/96Wx96H/01558954_3.jpeg,/96Wx96H/01558954_4.jpeg;01558954_1,01558954_2,01558954_3,01558954_4;
+                 ;01485374_B;/300Wx300H/01485374_1.jpeg;/96Wx96H/01485374_1.jpeg;;/1200Wx1200H/01485374_1.jpeg,/300Wx300H/01485374_1.jpeg,/96Wx96H/01485374_1.jpeg,/65Wx65H/01485374_1.jpeg,/30Wx30H/01485374_1.jpeg;/96Wx96H/01485374_1.jpeg;/96Wx96H/01485374_1.jpeg,/96Wx96H/01485374_2.jpeg,/96Wx96H/01485374_3.jpeg,/96Wx96H/01485374_4.jpeg;01485374_1,01485374_2,01485374_3,01485374_4,01485375_1,01485375_2,01485375_3,01485375_4,01485376_1,01485376_2,01485376_3,01485376_4;
+                 ;01404886;/300Wx300H/01404886_1.jpeg;/96Wx96H/01404886_1.jpeg;;/1200Wx1200H/01404886_1.jpeg,/300Wx300H/01404886_1.jpeg,/96Wx96H/01404886_1.jpeg,/65Wx65H/01404886_1.jpeg,/30Wx30H/01404886_1.jpeg;/96Wx96H/01404886_1.jpeg;/96Wx96H/01404886_1.jpeg;01404886;
+                 ;01541423;/300Wx300H/01541423.jpeg;/96Wx96H/01541423.jpeg;;/1200Wx1200H/01541423.jpeg,/300Wx300H/01541423.jpeg,/96Wx96H/01541423.jpeg,/65Wx65H/01541423.jpeg,/30Wx30H/01541423.jpeg;/96Wx96H/01541423.jpeg;/96Wx96H/01541423.jpeg;01541423;
+
+
+UPDATE Product;code[unique=true];$catalogVersion;description
+                 ;01558954;;■フロント、リアの2カメラで車両の前後を記録！映像が鮮明なので安心です。<br>■リアカメラユニットはブラケット一体型なので、リアガラスに近い位置に取付けでき、視界の妨げになりません。<br>■200万画素CMOSの高画質記録なら映像が鮮明なので安心です。<br>■HDR搭載で白とびや黒つぶれを抑え、より鮮明な映像を記録します。<br>■GPSは自車位置の情報・日時・速度情報なども映像とともに記録します。<br>■Gセンサーで衝撃を検知すると、衝撃前後の映像を上書きされないように専用フォルダに記録します。<br>■別売りのオプションで駐車中も一定時間記録を行い、いたずらや当て逃げなどにも対応します。
+
+
+#create variants
+UPDATE Product;code[unique=true];$catalogVersion;varianttype(code);
+#                 ;01485374_B;;CarElectronicsColorVariantProduct;;
+
+#;01485375;;CarElectronicsColorVariantProduct;
+#;01485376;;CarElectronicsColorVariantProduct;
+
+
 
