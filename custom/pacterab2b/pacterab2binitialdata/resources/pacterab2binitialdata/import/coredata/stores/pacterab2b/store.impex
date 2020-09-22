@@ -41,3 +41,9 @@ INSERT_UPDATE BaseStore2DeliveryModeRel;source(uid)[unique=true];target(code)[un
                                        ;pacterab2b;standard-gross
                                        ;pacterab2b;free-standard-shipping
 
+
+
+# Base Store
+INSERT_UPDATE BaseStore;uid[unique=true];checkoutFlowGroup;
+                       ;$storeUid;;$checkoutFlowGroup;
+

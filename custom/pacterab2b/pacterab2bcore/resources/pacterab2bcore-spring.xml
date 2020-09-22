@@ -42,6 +42,10 @@
     </bean>
 
 
+	<bean id="pacterab2bCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="1"/>
+		<!-- '1' is the root icecat category -->
+	</bean>
 	<bean id="electronicsCategorySource" parent="abstractCategorySource">
 		<property name="rootCategory" value="1"/>
 		<!-- '1' is the root icecat category -->
@@ -75,6 +79,38 @@
 		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
 		<property name="commonI18NService" ref="commonI18NService"/>
 	</bean>
+
+
+
+	<bean id="pacterab2bCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="pacterab2bCategorySource"/>
+	</bean>
+
+	<bean id="pacterab2bBrandCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="pacterab2bBrandCategorySource"/>
+	</bean>
+	<bean id="pacterab2bVariantCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="pacterab2bVariantCategorySource"/>
+	</bean>
+
+
+	<bean id="pacterab2bCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+		<property name="categorySource" ref="pacterab2bCategorySource"/>
+	</bean>
+
+	<bean id="pacterab2bBrandCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+		<property name="categorySource" ref="pacterab2bBrandCategorySource"/>
+	</bean>
+
+
+
+
+	<bean id="pacterab2bVariantCategorySource" parent="variantCategorySource"/>
+
+	<bean id="pacterab2bBrandCategorySource" parent="defaultCategorySource">
+		<property name="rootCategory" value="brands"/> <!-- 'brands' is the root of the brands hierarchy -->
+	</bean>
+
 
 	<bean id="electronicsCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
 		<property name="categorySource" ref="electronicsCategorySource"/>

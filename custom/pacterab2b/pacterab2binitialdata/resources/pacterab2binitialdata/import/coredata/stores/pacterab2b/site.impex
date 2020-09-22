@@ -93,3 +93,23 @@ INSERT_UPDATE SiteMapLanguageCurrency;&siteMapLanguageCurrency;language(isoCode)
 INSERT_UPDATE CMSSite;uid[unique=true];previewURL
                      ;$siteUid;$storefrontContextRoot/?site=$siteUid
 
+# CMS Site - Update the theme to be responsive
+INSERT_UPDATE CMSSite;uid[unique=true];theme(code);
+                     ;$siteUid;alpha;
+
+# Remove black and blue themes for responsive
+REMOVE SiteTheme;code[unique=true]
+                ;black
+                ;blue
+
+
+INSERT_UPDATE CxConfig; code[unique = true]; minAffinity; actionResultMaxRepeat; userChangedActions; ignoreRecalcForAnonymous[default = false]; anonymousUserDefaultActions; anonymousUserActions; anonymousUserMinRequestNumber; anonymousUserMinTime; anonymousUserIgnoreOtherActions
+                      ; $siteUid ; 0.5 ; 1 ; RECALCULATE,ASYNC_PROCESS ; ; RECALCULATE ; ; 10 ; 60000 ; false
+
+#default ConfigurableUrlVoter configuration
+INSERT_UPDATE CxUrlVoterConfig; cxConfig(code)[unique = true]; code[unique = true]; urlRegexp; actions; userType(code)
+                              ; $siteUid ; default ; .* ; LOAD ; REGISTERED
+
+INSERT_UPDATE BaseSite; uid[unique = true]; cxConfig(code);
+                      ; $siteUid ; $siteUid ;
+

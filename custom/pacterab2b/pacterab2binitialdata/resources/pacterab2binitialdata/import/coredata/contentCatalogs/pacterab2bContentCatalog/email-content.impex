@@ -226,22 +226,22 @@ INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];po
 ;;BottomContent-OrderCollectionReminderEmail;BottomContent;;EmailBottomSlot;true
 
 INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='OrderApprovalRejectionEmailTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
-;;SiteLogo-OrderApprovalRejectionEmail;SiteLogo;;SiteLogoSlot;true
+;;SiteLogo-OrderApprovalRejectionEmail;SiteLogo;;EmailSiteLogoSlot;true
 ;;TopContent-OrderApprovalRejectionEmail;TopContent;;EmailTopSlot;true
 ;;BottomContent-OrderApprovalRejectionEmail;BottomContent;;EmailBottomSlot;true
 
 INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='OrderPendingApprovalEmailTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
-;;SiteLogo-OrderPendingApprovalEmail;SiteLogo;;SiteLogoSlot;true
+;;SiteLogo-OrderPendingApprovalEmail;SiteLogo;;EmailSiteLogoSlot;true
 ;;TopContent-OrderPendingApprovalEmail;TopContent;;EmailTopSlot;true
 ;;BottomContent-OrderPendingApprovalEmail;BottomContent;;EmailBottomSlot;true
 
 INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='ReplenishmentOrderConfirmationEmailTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
-;;SiteLogo-ReplenishmentOrderConfirmationEmail;SiteLogo;;SiteLogoSlot;true
+;;SiteLogo-ReplenishmentOrderConfirmationEmail;SiteLogo;;EmailSiteLogoSlot;true
 ;;TopContent-ReplenishmentOrderConfirmationEmail;TopContent;;EmailTopSlot;true
 ;;BottomContent-ReplenishmentOrderConfirmationEmail;BottomContent;;EmailBottomSlot;true
 
 INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='ReplenishmentOrderPlacedEmailTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
-;;SiteLogo-ReplenishmentOrderPlacedEmail;SiteLogo;;SiteLogoSlot;true
+;;SiteLogo-ReplenishmentOrderPlacedEmail;SiteLogo;;EmailSiteLogoSlot;true
 ;;TopContent-ReplenishmentOrderPlacedEmail;TopContent;;EmailTopSlot;true
 ;;BottomContent-ReplenishmentOrderPlacedEmail;BottomContent;;EmailBottomSlot;true
 
