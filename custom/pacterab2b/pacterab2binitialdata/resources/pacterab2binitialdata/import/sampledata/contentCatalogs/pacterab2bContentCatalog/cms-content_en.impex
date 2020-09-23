@@ -20,7 +20,7 @@ $lang=en
 
 # Site Logo Component
 UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
-                            ;;SiteLogoComponent;/images/theme/logo_hybris_b2b_responsive.svg
+                            ;;SiteLogoComponent;/images/theme/pactera_logo.png
 
 # CMS Link Components
 UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=$lang]
@@ -121,15 +121,15 @@ UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];title[lang=$la
 
 # CMS Navigation Nodes
 UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];title[lang=en]
-                        ;;AngleGrindersNavNode;"Angle Grinders"
-                        ;;FootwearLinksNavNode;"Footwear"
-                        ;;HandToolsLinksNavNode;"Hand Tools"
-                        ;;HandToolsNavNode;"Hand Tools"
-                        ;;MeasuringLayoutToolsNavNode;"Measuring & Layout Tools"
-                        ;;PowerDrillsNavNode;"Power Drills"
-                        ;;SafetyNavNode;"Safety"
-                        ;;SandersNavNode;"Sanders"
-                        ;;ScrewdriversNavNode;"Screwdrivers"
+                        ;;AngleGrindersNavNode;"Wheel"
+                        ;;FootwearLinksNavNode;""
+                        ;;HandToolsLinksNavNode;""
+                        ;;HandToolsNavNode;""
+                        ;;MeasuringLayoutToolsNavNode;""
+                        ;;PowerDrillsNavNode;"Tire"
+                        ;;SafetyNavNode;""
+                        ;;SandersNavNode;""
+                        ;;ScrewdriversNavNode;""
 
 # Pacterab2 FAQ Page
 

@@ -11,53 +11,58 @@ INSERT_UPDATE B2BCreditLimit;code[unique=true];alertRateType(code,itemtype(code)
                             ;Monthly30KAlert3K;CURRENCY:B2BRateType;3000;30000;USD;MONTH:B2BPeriodRange;;
 
 INSERT_UPDATE B2BUnit;description;uid[unique=true];name;locName[lang=en];groups(uid);reportingOrganization(uid);Addresses(&addId);&B2BUnitID;accountManager(uid);accountManagerGroups(uid);creditLimit(code);approvalProcessCode;
-                     ;KIS;Pronto;Pronto;Pronto;;Pronto;ProntoAddrID1;ProntoID1;ab7backend;SuperAccountMangers;Monthly30KAlert3K;accApproval;
-                     ;Unit A;Pronto Goods;Pronto Goods;Pronto Goods;Pronto;Pronto;ProntoAddrID2;ProntoID2;;;;
-                     ;Unit B;Pronto Services;Pronto Services;Pronto Services;Pronto;Pronto;ProntoAddrID3;ProntoID3;;;;
+                     ;Benz-admin;Benz;Benz;Benz;;Benz;BeanzAddrID1;BeanzID1;ab7backend;SuperAccountMangers;Monthly30KAlert3K;accApproval;
+                     ;Benz-sales;Benz-Sales;Benz Sales;Benz Sales;Benz;Benz;BeanzAddrID1;BeanzID2;;;;
+                     ;Benz-services;Benz-Services;Benz Services;Benz Services;Benz;Benz;BeanzAddrID3;BeanzID3;;;;
 
 INSERT_UPDATE Address;streetname[unique=true];postalcode[unique=true];town;country(isocode);billingAddress;contactAddress;shippingAddress;unloadingAddress;firstname;lastname;email;title(code);&addId;owner(&B2BUnitID)[unique=true];
-                     ;3000 Lombard Street;94123;San Francisco;US;TRUE;TRUE;TRUE;TRUE;Akiro;Nakamura;akiro.nakamura@pronto-hw.com;mr;ProntoAddrID1;ProntoID1;
-                     ;700 E 50th Street;10022;New York;US;TRUE;TRUE;TRUE;TRUE;Gi;Sun;gi.sun@pronto-hw.com;mr;ProntoAddrID2;ProntoID2;
-                     ;11000 Bagby Street Houston;Texas;Houston;US;TRUE;TRUE;TRUE;TRUE;James;Bell;james.bell@Pronto-hw.com;mr;ProntoAddrID3;ProntoID3;
+                     ;3000 xxx;14123;Shanxi;CN;TRUE;TRUE;TRUE;TRUE;Benz;admin;beanz-admin@aa.com;mr;BeanzAddrID1;BeanzID1;
+                     ;700 xxxx;10022;DaLian;CN;TRUE;TRUE;TRUE;TRUE;Benz;Sales;Benz-sales@aa.com;mr;BeanzAddrID2;BeanzID2;
+                     ;11000 Bxxx;Texas;DaLian;CN;TRUE;TRUE;TRUE;TRUE;Benz;Services;Benz-services@aa.com;mr;BeanzAddrID3;BeanzID3;
 
 INSERT_UPDATE B2BUserGroup;uid[unique=true];name;unit(uid);permissions(code,unit(uid));
-                          ;enhancedPermissions;Enhanced Permissions;Pronto;Pronto 12K USD ORDER:Pronto,Pronto 15K USD MONTH:Pronto;
-                          ;commonPermissions;Common Permissions;Pronto;Pronto 6K USD ORDER:Pronto,Pronto 12K USD MONTH:Pronto;
+                          ;enhancedPermissions;Enhanced Permissions;Benz;Benz 12K USD ORDER:Benz,Benz 15K USD MONTH:Benz;
+                          ;commonPermissions;Common Permissions;Benz;Benz 6K USD ORDER:Benz,Benz 12K USD MONTH:Benz;
+
+
+INSERT_UPDATE Usergroup;uid[unique=true];groups(uid);locname[lang=en];
+                       ;vjdbcReportsGroup;;
+                       ;b2bgroup;customergroup;B2B Group;
+                       ;b2badmingroup;b2bgroup;B2B Admin Group;
+                       ;b2bcustomergroup;b2bgroup;B2B Customer Group;
+                       ;b2bmanagergroup;b2bgroup,vjdbcReportsGroup;B2B Manager Group;
+                       ;b2bapprovergroup;b2bgroup;B2B Approver Group;
+                       ;salesrepgroup;b2bgroup;Sales Group;
 
 INSERT_UPDATE B2BCustomer;description;uid[unique=true];email;name;title(code);groups(uid);permissionGroups(uid);sessionCurrency(isocode)[default='USD'];password[default=$defaultPassword]
-                         ;Admin A;linda.wolf@pronto-hw.com;linda.wolf@pronto-hw.com;Linda Wolf;ms;Pronto, b2badmingroup;
-                         ;Approver A;hanna.schmidt@pronto-hw.com;hanna.schmidt@pronto-hw.com;Hanna Schmidt;ms;Pronto, b2bapprovergroup;
-                         ;Approver B;james.bell@pronto-hw.com;james.bell@pronto-hw.com;James Bell;mr;Pronto Services, b2bapprovergroup;
-                         ;Customer A;mark.rivers@pronto-hw.com;mark.rivers@pronto-hw.com;Mark Rivers;mr;Pronto Goods, b2bcustomergroup,enhancedPermissions;;
-                         ;Customer B;mingmei.wang@pronto-hw.com;mingmei.wang@pronto-hw.com;Mingmei Wang;ms;Pronto Goods, b2bcustomergroup, commonPermissions;;
-                         ;Customer C;william.hunter@pronto-hw.com;william.hunter@pronto-hw.com;William Hunter;mr;Pronto Services, b2bcustomergroup, enhancedPermissions;
-                         ;Customer D;gi.sun@pronto-hw.com;gi.sun@pronto-hw.com;Gi Sun;mr;Pronto Services, b2bcustomergroup, commonPermissions;;
-                         ;Manager A;akiro.nakamura@pronto-hw.com;akiro.nakamura@pronto-hw.com;Akiro Nakamura;mr;Pronto, b2bmanagergroup;
-                         ;Manager B;anil.gupta@pronto-hw.com;anil.gupta@pronto-hw.com;Anil Gupta;mr;Pronto Goods, b2bmanagergroup;
+                         ;Admin A;beanz-admin@aa.com;beanz-admin@aa.com;beanz-admin;mr;Benz,b2badmingroup;
+                         ;Approver A;benz-services@aa.com;benz-services@aa.com;Benz-services;mr;Benz-Services,b2bapprovergroup;
+                         ;Customer A;benz-sales@aa.com;benz-sales@aa.com;benz-sales;mr;Benz-Sales,b2bcustomergroup,commonPermissions,enhancedPermissions;;
+                         ;Manager A;beanz-admin1@aa.com;beanz-admin1@aa.com;beanz-admin-manager;mr;Benz, b2bmanagergroup;
 
 INSERT_UPDATE B2BBudget;code[unique=true];Unit(uid);budget;currency(isocode)[allownull=true];dateRange[dateformat=dd.MM.yyyy hh:mm:ss,allownull=true];name[lang=en];
                        ;30K USD/MONTH;Pronto;30000;USD;01.01.2010 00:00:00,12.31.2021 12:59:59;30K USD/MONTH;
                        ;20K USD/MONTH;Pronto;20000;USD;01.01.2010 00:00:00,12.31.2021 12:59:59;20K USD/MONTH;
 
 INSERT_UPDATE B2BCostCenter;code[unique=true];Unit(uid);currency(isocode);budgets(code);name[lang=en];
-                           ;Pronto Goods;Pronto Goods;USD;30K USD/MONTH;Pronto Goods;
-                           ;Pronto Services;Pronto Services;USD;20K USD/MONTH;Pronto Services;
+                           ;benz-services-cc;Benz-Services;USD;30K USD/MONTH;Benz-Services-Costcenter;
+                           ;benz-sales-cc;Benz-Sales;USD;20K USD/MONTH;Benz-Sales-Costcenter;
 
 INSERT_UPDATE B2BOrderThresholdPermission;code[unique=true];Unit(uid);threshold;currency(isocode);
-                                         ;Pronto 5K USD ORDER;Pronto;5000;USD; -
-                                         ;Pronto 6K USD ORDER;Pronto;6000;USD; -
-                                         ;Pronto 10K USD ORDER;Pronto;10000;USD; -
-                                         ;Pronto 12K USD ORDER;Pronto;12000;USD; -
+                                         ;Benz 5K USD ORDER;Benz;5000;USD; -
+                                         ;Benz 6K USD ORDER;Benz;6000;USD; -
+                                         ;Benz 10K USD ORDER;Benz;10000;USD; -
+                                         ;Benz 12K USD ORDER;Benz;12000;USD; -
 
 INSERT_UPDATE B2BOrderThresholdTimespanPermission;code[unique=true];Unit(uid);threshold;currency(isocode);range(code,itemtype(code));
-                                                 ;Pronto 15K USD MONTH;Pronto;15000;USD;MONTH:B2BPeriodRange;
-                                                 ;Pronto 12K USD MONTH;Pronto;12000;USD;MONTH:B2BPeriodRange;
-                                                 ;Pronto Unlimited Threshold Timespan;Pronto;999999999;USD;MONTH:B2BPeriodRange;
+                                                 ;Benz 15K USD MONTH;Benz;15000;USD;MONTH:B2BPeriodRange;
+                                                 ;Benz 12K USD MONTH;Benz;12000;USD;MONTH:B2BPeriodRange;
+                                                 ;Benz Unlimited Threshold Timespan;Benz;999999999;USD;MONTH:B2BPeriodRange;
 
 UPDATE B2BUnit;uid[unique=true];creditLimit(code);accountManager(uid);approvers(uid)
-              ;Pronto;Monthly30KAlert3K;acctmgrd;hanna.schmidt@pronto-hw.com;
-              ;Pronto Services;;;james.bell@pronto-hw.com;
+              ;Benz;Monthly30KAlert3K;acctmgrd;beanz-admin@aa.com;
+              ;Benz-Services;;;beanz-admin1@aa.com;
 
 UPDATE B2BCustomer;uid[unique=true];permissions(code,unit(uid));
-                  ;hanna.schmidt@pronto-hw.com;Pronto Unlimited Threshold Timespan:Pronto,Pronto 10K USD ORDER:Pronto;
-                  ;james.bell@pronto-hw.com;Pronto 5K USD ORDER:Pronto;
+                  ;beanz-admin@aa.com;Benz Unlimited Threshold Timespan:Benz,Benz 10K USD ORDER:Benz;
+                  ;beanz-admin1@aa.com;Benz 5K USD ORDER:Benz;
