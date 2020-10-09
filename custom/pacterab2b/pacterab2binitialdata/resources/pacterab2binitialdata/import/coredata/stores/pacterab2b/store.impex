@@ -25,7 +25,7 @@ $pickupInStoreMode=BUY_AND_COLLECT
 $customerAllowedToIgnoreSuggestions=true
 $paymentProvider=Mockup
 $promoGrp=pacterab2bPromoGrp
-$checkoutFlowGroup=defaultCheckoutGroup
+$checkoutFlowGroup=b2bCheckoutGroup
 
 INSERT_UPDATE PromotionGroup;Identifier[unique=true];
 ;$promoGrp;

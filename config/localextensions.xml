@@ -100,12 +100,10 @@
     <extension name='pacterab2bfulfilmentprocess' />
     <extension name='pacterab2bcore' />
     <extension name='pacterab2bfacades' />
-<!--    <extension name='pacterab2btest' />-->
     <extension name='pacterab2binitialdata' />
     <extension name='pacterab2bbackoffice' />
     <extension name='pacterab2bstorefront' />
 
-<!--    <extension name='powertoolsstore' />-->
     <extension name='b2bcommercebackoffice' />
     <extension name='b2bacceleratoraddon' />
     <extension name='commerceorgaddon' />

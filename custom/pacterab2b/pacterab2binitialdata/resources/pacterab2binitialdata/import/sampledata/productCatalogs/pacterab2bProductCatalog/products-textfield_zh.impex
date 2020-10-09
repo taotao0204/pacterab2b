@@ -1,0 +1,30 @@
+$productCatalog=pacterab2bProductCatalog
+$productCatalogName=pacterab2b Product Catalog
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='approved']
+
+$lang=en
+$thumbnail=thumbnail(code, $catalogVersion)
+$picture=picture(code, $catalogVersion)
+$thumbnails=thumbnails(code, $catalogVersion)
+$detail=detail(code, $catalogVersion)
+$normal=normal(code, $catalogVersion)
+$others=others(code, $catalogVersion)
+$data_sheet=data_sheet(code, $catalogVersion)
+$medias=medias(code, $catalogVersion)
+$galleryImages=galleryImages(qualifier, $catalogVersion)
+$siteResource=jar:com.pactera.initialdata.setup.InitialDataSystemSetup&/pacterab2binitialdata/import/sampledata/productCatalogs/$productCatalog
+$s3BucketResource=https://lambda-s3-poc.s3.amazonaws.com/img
+$taxGroup=Europe1PriceFactory_PTG(code)[default=jp-vat-full]
+
+$lang=zh
+
+INSERT_UPDATE TextFieldConfiguratorSetting;id[unique=true];$catalogVersion;textFieldLabel[lang=$lang];textFieldDefaultValue[lang=$lang]
+                                          ;Tire_Cycling_mode;;骑行模式;越野
+                                          ;Tire_Sign;;Sign;Tony Liu
+                                          ;Tire_Patterns;;花纹;小碎花
+
+

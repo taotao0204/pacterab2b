@@ -11,6 +11,14 @@ $favCustomers=favoriteCustomers
 $bigSpenders=bigSpenders
 $catalogVersion=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$productCatalog]),CatalogVersion.version[default=Online])[default=$productCatalog:Online]
 
+$ruleImportProcessor=processor=de.hybris.platform.ruleengineservices.impex.impl.ConditionalImportProcessor,condition=de.hybris.platform.ruleengineservices.impex.impl.RuleImportCondition
+
+
+$defaultPassword=12341234
+$defaultRuleStatus = PUBLISHED
+$promotionModuleName = "promotions-module"
+$promotionPreviewModuleName = "promotions-preview-module"
+
 INSERT PromotionPriceRow;&tresholdId;Currency(isocode);price
 
 INSERT PromotionPriceRow;&priceId;Currency(isocode);price
@@ -36,3 +44,9 @@ INSERT_UPDATE ProductPerfectPartnerPromotion;PromotionGroup(Identifier[default=$
 INSERT PromotionPriceRow;&priceId;Currency(isocode);price
 
 INSERT_UPDATE ProductBundlePromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true,unique=true];code[unique=true];title;description;priority;products(code,$catalogVersion);bundlePrices(&priceId)
+
+
+UPDATE DroolsKIEModule;name[unique=true];mvnGroupId;mvnArtifactId;mvnVersion;ruleType(code);active;version;
+            ;promotions-preview-module;hybris-rules;promotions-preview;1.0.0;PROMOTION;false;-1;
+#            ;promotions-module;hybris-rules;promotions-preview;1.0.0;PROMOTION;true;-1;
+

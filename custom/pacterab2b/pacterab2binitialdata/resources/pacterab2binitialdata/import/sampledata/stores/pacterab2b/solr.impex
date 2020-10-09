@@ -101,12 +101,12 @@ INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[
 #                                 ;$solrIndexedType; primaryPromotionBanner ;string ;            ;    ;    ;    ;    ;    ;promotionImageValueProvider;
                                  ;$solrIndexedType; stockLevelStatus       ;string ;            ;    ;    ;    ;    ;    ;productStockLevelStatusValueProvider;
                                  ;$solrIndexedType; isNewRelease           ;boolean;            ;    ;    ;    ;    ;    ;      ;
-                                 ;$solrIndexedType; isRecommend            ;boolean;            ;    ;    ;    ;    ;    ;      ;
-                                 ;$solrIndexedType; isSpecialPrice       ;boolean;            ;    ;    ;    ;    ;    ;      ;
-                                 ;$solrIndexedType; isClearance          ;boolean;            ;    ;    ;    ;    ;           ;
-                                 ;$solrIndexedType; isNewProduct           ;boolean;            ;    ;    ;    ;    ;    ;      ;
-                                 ;$solrIndexedType; isReservation           ;boolean;            ;    ;    ;    ;    ;    ;      ;
-                                 ;$solrIndexedType; isMoutingPossible           ;boolean;            ;    ;    ;    ;    ;    ;      ;
+#                                 ;$solrIndexedType; isRecommend            ;boolean;            ;    ;    ;    ;    ;    ;      ;
+#                                 ;$solrIndexedType; isSpecialPrice       ;boolean;            ;    ;    ;    ;    ;    ;      ;
+#                                 ;$solrIndexedType; isClearance          ;boolean;            ;    ;    ;    ;    ;           ;
+#                                 ;$solrIndexedType; isNewProduct           ;boolean;            ;    ;    ;    ;    ;    ;      ;
+#                                 ;$solrIndexedType; isReservation           ;boolean;            ;    ;    ;    ;    ;    ;      ;
+#                                 ;$solrIndexedType; isMoutingPossible           ;boolean;            ;    ;    ;    ;    ;    ;      ;
                                  ;$solrIndexedType; approvalStatus       ;string ;            ;    ;    ;    ;    ;    ;solrEnumValueResolver;
 #                                 ;$solrIndexedType; ec_daibri_mei           ;text;sortabletext;    ;true;    ;    ;    ;;    ;true; ;true;    ;true;    ;   ;  ;
 #                                 ;$solrIndexedType; ec_chubri_mei           ;text;sortabletext;    ;true;    ;    ;    ;;    ;true; ;true;    ;true;    ;   ;  ;
